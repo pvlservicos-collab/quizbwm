@@ -434,7 +434,7 @@
     S.postRenderFn = function () { animPath('ccortisol'); animPath('ctesto'); };
     return '<div class="cbox2">'
       + '<h2 class="cbig aitem">Forçar seus limites não é necessário!</h2>'
-      + '<p class="csub2 aitem">Com o Desafio BWM 14 Dias você trabalha de forma inteligente, não excessiva</p>'
+      + '<p class="csub2 aitem">Com o Desafio BWM 14 Dias você conquista o máximo de resultado com o mínimo de esforço</p>'
       + '<div class="csvg aitem">'
       + '<svg id="chartCort" viewBox="0 0 320 150" width="100%" xmlns="http://www.w3.org/2000/svg">'
       + '<line x1="30" y1="10" x2="30" y2="128" stroke="#2a2218" stroke-width="1"/>'
