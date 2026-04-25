@@ -203,7 +203,6 @@
       align-items: center
     }
 
-    /* QUIZ LAYOUT */
     .sw {
       width: 100%;
       min-height: 100dvh;
@@ -240,8 +239,6 @@
       gap: 10px
     }
 
-    /* QUIZ OPTION CARD — image RIGHT flush, radio LEFT */
-    /* ── QUIZ OPTION CARD ── */
     .ocard {
       background: var(--glass);
       border: 1.5px solid var(--gb);
@@ -268,7 +265,6 @@
       box-shadow: 0 0 20px rgba(232, 98, 42, .12)
     }
 
-    /* radio circle — LEFT via ::before */
     .ocard::before {
       content: "";
       position: absolute;
@@ -291,12 +287,10 @@
       box-shadow: inset 0 0 0 5px rgba(255, 255, 255, .92), 0 0 12px rgba(232, 98, 42, .45)
     }
 
-    /* hide old checkmark ::after */
     .ocard.sel::after {
       display: none
     }
 
-    /* text */
     .olbl {
       font-size: 15px;
       font-weight: 600;
@@ -311,7 +305,6 @@
       margin-top: 3px
     }
 
-    /* IMAGE — pushed to RIGHT via order */
     .oimg {
       order: 100;
       align-self: stretch;
@@ -336,7 +329,6 @@
       min-height: 80px
     }
 
-    /* icon variant (no image) */
     .oico {
       width: 44px;
       height: 44px;
@@ -351,14 +343,12 @@
       order: 0
     }
 
-    /* MULTI-SELECT */
     .mlist {
       display: flex;
       flex-direction: column;
       gap: 10px
     }
 
-    /* mopt — checkbox left, image RIGHT */
     .mopt {
       background: var(--glass);
       border: 1.5px solid var(--gb);
@@ -382,7 +372,6 @@
       background: linear-gradient(135deg, rgba(232, 98, 42, .09), rgba(232, 98, 42, .02))
     }
 
-    /* image pushed to RIGHT in mopt */
     .mopt .oimg {
       order: 100;
       align-self: stretch;
@@ -433,7 +422,6 @@
       display: block
     }
 
-    /* BTN */
     .btn {
       width: 100%;
       padding: 17px;
@@ -480,7 +468,6 @@
       box-shadow: none
     }
 
-    /* quiz extras */
     .qglow {
       position: relative;
       margin-bottom: 22px;
@@ -1009,7 +996,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, .32, 1.275), opacity 0.4s;
       transform-origin: 50% 100%;
       will-change: transform, opacity;
       background: var(--glass);
@@ -1018,7 +1005,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .3)
     }
 
     .tinder-card .simg {
@@ -1056,7 +1043,7 @@
 
     @keyframes swipeD {
       to {
-        transform: translateY(150%) scale(0.8);
+        transform: translateY(150%) scale(.8);
         opacity: 0
       }
     }
@@ -1087,7 +1074,6 @@
       animation: pgIn .3s ease
     }
 
-    /* COMMIT MODAL */
     #commitModal {
       position: fixed;
       inset: 0;
@@ -1172,7 +1158,6 @@
       background: rgba(232, 98, 42, .08)
     }
 
-    /* LOADING */
     #loading {
       flex-direction: column
     }
@@ -1229,7 +1214,6 @@
       font-style: italic
     }
 
-    /* LANDING */
     #landing {
       flex-direction: column
     }
@@ -1525,7 +1509,6 @@
       }
     }
 
-    /* RESULT */
     #result {
       flex-direction: column
     }
@@ -1534,7 +1517,6 @@
       width: 100%
     }
 
-    /* EVOLUTION SECTION */
     .evosec {
       padding: 4vh 16px 3vh;
       width: 100%;
@@ -1559,7 +1541,6 @@
       margin-bottom: 20px
     }
 
-    /* Hero image above both cards */
     .evo-hero-img {
       width: 100%;
       height: auto;
@@ -1661,7 +1642,6 @@
       padding: 0 4px
     }
 
-    /* SUMMARY */
     .summsec {
       background: var(--bg);
       padding: 4vh 16px 3.5vh;
@@ -1906,7 +1886,6 @@
       margin-bottom: 20px
     }
 
-    /* GOALS SECTION — redesigned */
     .goalsec {
       padding: 4vh 16px;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -1999,7 +1978,6 @@
       padding-top: 6px
     }
 
-    /* PRE-BONUS IMAGE */
     .prebonus-img {
       width: 100%;
       max-height: 300px;
@@ -2008,7 +1986,6 @@
       display: block
     }
 
-    /* BONUS SECTION */
     .bonussec {
       padding: 4vh 16px;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -2120,7 +2097,7 @@
       color: #a78bfa
     }
 
-    /* SOCIAL PROOF */
+    /* ── SOCIAL PROOF ── */
     .socblk {
       padding: 5vh 16px;
       text-align: center;
@@ -2154,41 +2131,220 @@
       margin-bottom: 18px
     }
 
-    .starsbox {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      background: #1c1816;
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-radius: 8px;
-      padding: 12px 28px;
-      margin-bottom: 14px
-    }
-
-    .starsrow {
-      font-size: 22px;
-      color: var(--amber);
-      letter-spacing: 2px
-    }
-
-    .starssub {
-      font-size: 13px;
-      color: var(--tx3)
-    }
-
-    .ratingn {
-      color: var(--hot);
-      font-weight: 800
-    }
-
     .laur-hero {
       font-size: 15px;
       font-weight: 700;
       font-family: var(--fh)
     }
 
-    /* FULL WORKOUT PLAN — numbered steps, orange theme */
+    /* ── IMAGE CAROUSEL ── */
+    .img-carousel-wrap {
+      margin: 28px 0 0;
+      position: relative
+    }
+
+    .img-carousel {
+      overflow: hidden;
+      border-radius: 12px
+    }
+
+    .img-car-track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+      gap: 10px
+    }
+
+    .img-car-slide {
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 3/4
+    }
+
+    /* desktop: 3 per view */
+    .img-car-slide {
+      width: calc((100% - 20px) / 3)
+    }
+
+    .img-car-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block
+    }
+
+    .car-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .car-arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(232, 98, 42, .15);
+      border: 1.5px solid var(--hot);
+      color: var(--hot);
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      flex-shrink: 0;
+      line-height: 1
+    }
+
+    .car-arrow-btn:hover {
+      background: var(--hot);
+      color: #fff
+    }
+
+    .car-arrow-btn:disabled {
+      opacity: .3;
+      cursor: not-allowed
+    }
+
+    .car-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .car-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(232, 98, 42, .3);
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      padding: 0
+    }
+
+    .car-dot.active {
+      background: var(--hot);
+      width: 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(232, 98, 42, .6)
+    }
+
+    @media(max-width:600px) {
+      .img-car-slide {
+        width: calc((100% - 10px) / 2)
+      }
+    }
+
+    /* ── VIDEO CAROUSEL ── */
+    .vid-carousel-sec {
+      padding: 4vh 16px;
+      border-top: 1px solid rgba(255, 255, 255, .04);
+      background: var(--bg)
+    }
+
+    .vid-carousel-in {
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .vid-carousel-title {
+      font-family: var(--fh);
+      font-size: clamp(20px, 5vw, 28px);
+      font-weight: 800;
+      margin-bottom: 6px
+    }
+
+    .vid-carousel-sub {
+      font-size: 13px;
+      color: var(--tx3);
+      margin-bottom: 20px
+    }
+
+    .vid-carousel-wrap {
+      overflow: hidden;
+      border-radius: 12px
+    }
+
+    .vid-car-track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+      gap: 12px
+    }
+
+    .vid-car-slide {
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 9/16;
+      position: relative
+    }
+
+    /* desktop: 3 per view */
+    .vid-car-slide {
+      width: calc((100% - 24px) / 3)
+    }
+
+    .vid-car-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .vid-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      transition: background .3s
+    }
+
+    .vid-play-overlay:hover {
+      background: rgba(0, 0, 0, .2)
+    }
+
+    .vid-play-overlay.paused {
+      background: rgba(0, 0, 0, .35)
+    }
+
+    .vid-play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .6);
+      border: 2px solid rgba(255, 255, 255, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      transition: transform .2s, background .2s;
+      position: absolute;
+      bottom: 12px;
+      right: 12px
+    }
+
+    .vid-play-overlay:hover .vid-play-btn {
+      transform: scale(1.12);
+      background: rgba(232, 98, 42, .9)
+    }
+
+    @media(max-width:600px) {
+      .vid-car-slide {
+        width: 100%
+      }
+    }
+
+    /* ── FULL PLAN ── */
     .fullplan-sec {
       padding: 8vh 16px 8vh;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -2229,7 +2385,6 @@
       padding-bottom: 0
     }
 
-    /* vertical line — orange */
     .step-item:not(:last-child)::after {
       content: "";
       position: absolute;
@@ -2276,7 +2431,6 @@
       line-height: 1.65
     }
 
-    /* scroll reveal */
     .step-item {
       opacity: 0;
       transform: translateX(-20px);
@@ -2288,7 +2442,7 @@
       transform: none
     }
 
-    /* PRICING */
+    /* ── PRICING ── */
     .pricsec {
       padding: 4vh 0 5vh;
       background: var(--bg);
@@ -2325,7 +2479,7 @@
     }
 
     .pric-left {
-      padding: 0 0 0 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -2365,7 +2519,6 @@
       color: rgba(255, 255, 255, .85)
     }
 
-    /* image overflows left — bigger than card */
     .pric-bodyimg {
       width: 115%;
       max-width: none;
@@ -2385,7 +2538,6 @@
       padding: 20px 20px 20px 0
     }
 
-    /* single price card — dark container */
     .price-card-wrap {
       background: #131110;
       border: 1px solid rgba(255, 255, 255, .09);
@@ -2464,7 +2616,7 @@
       line-height: 1.5
     }
 
-    /* GUARANTEE */
+    /* ── GUARANTEE ── */
     .gsec {
       padding: 3vh 16px;
       background: var(--bg);
@@ -2509,7 +2661,6 @@
       color: var(--hot)
     }
 
-    /* seal graphic */
     .gseal-wrap {
       flex-shrink: 0
     }
@@ -2558,7 +2709,6 @@
       line-height: 1.4
     }
 
-    /* stars around seal */
     .gseal::before {
       content: "\2605 \2605 \2605";
       position: absolute;
@@ -2572,108 +2722,146 @@
     }
 
     .gseal::after {
-      content: "";
+      content: ""
     }
 
-    /* TESTIMONIALS */
-    .testsec {
+    /* ── FAQ ── */
+    .faq-sec {
+      padding: 5vh 16px;
       background: var(--bg);
-      padding: 4vh 16px;
       border-top: 1px solid rgba(255, 255, 255, .04)
     }
 
-    .testin {
+    .faq-in {
       max-width: 700px;
-      margin: 0 auto;
-      text-align: center
+      margin: 0 auto
     }
 
-    .testtitle {
-      font-size: 16px;
-      color: var(--tx3)
-    }
-
-    .testnum {
+    .faq-title {
       font-family: var(--fh);
-      font-size: clamp(28px, 7vw, 48px);
+      font-size: clamp(22px, 5.5vw, 34px);
       font-weight: 900;
-      margin-bottom: 4px
+      margin-bottom: 6px
     }
 
-    .testsub {
+    .faq-sub {
       font-size: 14px;
       color: var(--tx3);
-      margin-bottom: 24px
+      margin-bottom: 28px
     }
 
-    .testcards {
-      display: grid;
-      gap: 10px
-    }
-
-    .testcard {
-      background: #1c1816;
+    .faq-item {
       border: 1px solid rgba(255, 255, 255, .07);
       border-radius: 10px;
-      padding: 14px;
-      text-align: left
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color .2s
     }
 
-    .testhd {
+    .faq-item.open {
+      border-color: rgba(232, 98, 42, .35)
+    }
+
+    .faq-q {
       display: flex;
-      gap: 10px;
       align-items: center;
-      margin-bottom: 10px
+      justify-content: space-between;
+      padding: 16px 18px;
+      cursor: pointer;
+      gap: 12px;
+      background: rgba(255, 255, 255, .03)
     }
 
-    .testav {
-      width: 38px;
-      height: 38px;
+    .faq-q:hover {
+      background: rgba(255, 255, 255, .05)
+    }
+
+    .faq-qtxt {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--fh);
+      color: var(--tx)
+    }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: rgba(232, 98, 42, .15);
-      border: 1px solid rgba(232, 98, 42, .3);
+      border: 1.5px solid rgba(255, 255, 255, .2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
       flex-shrink: 0;
-      font-family: var(--fh);
-      font-weight: 800;
-      color: var(--hot)
+      transition: all .3s;
+      font-size: 14px;
+      color: var(--tx3)
     }
 
-    .testnm {
+    .faq-item.open .faq-icon {
+      border-color: var(--hot);
+      color: var(--hot);
+      transform: rotate(45deg)
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px
+    }
+
+    .faq-atxt {
+      padding: 0 18px 16px;
       font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.7
+    }
+
+    /* WhatsApp button */
+    .wa-wrap {
+      text-align: center;
+      margin-top: 24px
+    }
+
+    .wa-notfound {
+      font-size: 13px;
+      color: var(--tx3);
+      margin-bottom: 12px
+    }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 15px;
       font-weight: 700;
-      font-family: var(--fh)
+      font-family: var(--fh);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, .35)
     }
 
-    .teststars {
-      color: var(--amber);
-      font-size: 13px;
-      letter-spacing: 1px
+    .wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(34, 197, 94, .5)
     }
 
-    .testver {
-      font-size: 10px;
-      color: #22c55e;
-      margin-left: auto;
-      white-space: nowrap
+    .wa-btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0
     }
 
-    .testtxt {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .75);
-      line-height: 1.6
-    }
-
-    @media(min-width:600px) {
-      .testcards {
-        grid-template-columns: 1fr 1fr 1fr
-      }
-    }
-
-    /* FOOTER */
+    /* ── FOOTER ── */
     .rfooter {
       background: #0d0b09;
       padding: 36px 16px 90px;
@@ -2707,12 +2895,24 @@
       overflow: hidden
     }
 
+    .footico:hover {
+      transform: scale(1.08)
+    }
+
     .footico-ig {
       background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
     }
 
     .footico-fb {
       background: #1877f2
+    }
+
+    .footico-tt {
+      background: #010101
+    }
+
+    .footico-yt {
+      background: #FF0000
     }
 
     .foottxt {
@@ -2763,7 +2963,6 @@
       font-size: 16px
     }
 
-    /* STICKY CTA — fixed size, never wraps */
     .sticky-cta-bar {
       display: none;
       position: fixed;
@@ -2874,8 +3073,7 @@
         </div>
         <p class="llegal">Ao continuar, voc&ecirc; concorda com nossos <a href="#">Termos de Servi&ccedil;o</a> e nossa
           <a href="#">Pol&iacute;tica de Privacidade</a>.<br>Este site n&atilde;o oferece aconselhamento m&eacute;dico.
-          Consulte um profissional de sa&uacute;de.
-        </p>
+          Consulte um profissional de sa&uacute;de.</p>
       </div>
     </div>
   </section>
@@ -2995,7 +3193,6 @@
               <div class="wygdesc">abordagem adequada para iniciantes obterem resultados em semanas.</div>
             </div>
           </div>
-          <!-- r2 image after last wygitem — full natural height -->
           <div style="margin:20px -16px 0;overflow:hidden">
             <img src="img/r2.png" style="width:100%;height:auto;display:block;object-fit:contain" alt=""
               onerror="this.parentElement.style.display='none'">
@@ -3003,7 +3200,7 @@
         </div>
       </div>
 
-      <!-- 3. GOALS — redesigned -->
+      <!-- 3. GOALS -->
       <div class="goalsec">
         <div class="goalsin">
           <h2 class="goalstitle">Seu programa <span>tamb&eacute;m inclui</span></h2>
@@ -3034,50 +3231,38 @@
         </div>
       </div>
 
-      <!-- 4. BONUS SECTION -->
+      <!-- 4. BONUS -->
       <div class="bonussec">
         <div class="bonusin">
           <h2 class="bonustitle">B&ocirc;nus Exclusivos</h2>
           <p class="bonussub">Para te ajudar ainda mais, al&eacute;m do protocolo completo, voc&ecirc; tamb&eacute;m
             recebe dois presentes que resolvem os dois fatores que mais sabotam o processo &mdash; fora da dieta e do
-            treino. E o &uacute;ltimo &eacute; literalmente um presente exclusivo.</p>
-
-          <!-- Bonus 1 -->
+            treino.</p>
           <div class="bonus-card">
-            <div class="bonus-img-col">
-              <img src="img/b1.png" alt="Protocolo Acelerador BWM"
-                onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0e05,#2a1408)'">
-            </div>
+            <div class="bonus-img-col"><img src="img/b1.png" alt="Protocolo Acelerador BWM"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0e05,#2a1408)'"></div>
             <div class="bonus-txt-col">
               <span class="bonus-tag">B&Ocirc;NUS 01</span>
               <div class="bonus-name">Protocolo Acelerador BWM</div>
               <div class="bonus-desc">F&oacute;rmulas manipuladas usadas h&aacute; mais de 13 anos com alunos. Ajustadas
-                na pr&aacute;tica para controlar fome, reduzir ansiedade, aumentar energia e melhorar o desempenho. Te
-                mant&eacute;m no controle durante todo o processo &mdash; quando a fome aumenta, quando a energia cai ou
-                quando a rotina aperta.</div>
+                na pr&aacute;tica para controlar fome, reduzir ansiedade, aumentar energia e melhorar o desempenho.
+              </div>
             </div>
           </div>
-
-          <!-- Bonus 2 -->
           <div class="bonus-card">
-            <div class="bonus-img-col">
-              <img src="img/b2.png" alt="Revis&atilde;o Estrat&eacute;gica BWM"
-                onerror="this.parentElement.style.background='linear-gradient(135deg,#06001a,#100830)'">
-            </div>
+            <div class="bonus-img-col"><img src="img/b2.png" alt="Revis&atilde;o Estrat&eacute;gica BWM"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#06001a,#100830)'"></div>
             <div class="bonus-txt-col">
               <span class="bonus-tag bonus-tag2">B&Ocirc;NUS 02 &mdash; EXCLUSIVO</span>
               <div class="bonus-name">Revis&atilde;o Estrat&eacute;gica BWM</div>
               <div class="bonus-desc">Em um momento espec&iacute;fico do seu processo, voc&ecirc; passa por uma
-                an&aacute;lise individual com algu&eacute;m da equipe, especializada no m&eacute;todo. Um olhar
-                t&eacute;cnico aplicado diretamente no seu caso. Se ao se aproximar do final o seu shape ainda
-                n&atilde;o estiver como voc&ecirc; quer &mdash; voc&ecirc; n&atilde;o fica sozinho. Existe um ajuste
-                direcionado para garantir que voc&ecirc; termine com o resultado que veio buscar.</div>
+                an&aacute;lise individual com algu&eacute;m da equipe, especializada no m&eacute;todo.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 5. SOCIAL PROOF -->
+      <!-- 5. SOCIAL PROOF — modified -->
       <div class="socblk">
         <div class="socin">
           <div class="laurrow">
@@ -3092,7 +3277,7 @@
               <ellipse cx="17" cy="56" rx="6" ry="2.5" transform="rotate(-65 17 56)" fill="#E8622A" opacity=".55" />
             </svg>
             <div>
-              <div class="laurtxt">+3 Milh&otilde;es</div>
+              <div class="laurtxt">+5 Mil</div>
             </div>
             <svg width="48" height="70" viewBox="0 0 48 70" fill="none" xmlns="http://www.w3.org/2000/svg"
               style="transform:scaleX(-1)">
@@ -3106,20 +3291,48 @@
               <ellipse cx="17" cy="56" rx="6" ry="2.5" transform="rotate(-65 17 56)" fill="#E8622A" opacity=".55" />
             </svg>
           </div>
-          <div class="laursub">come&ccedil;aram sua jornada fitness conosco</div>
-          <div class="starsbox">
-            <div class="starsrow">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-            <div class="starssub"><span class="ratingn">4,7</span> de 5</div>
-          </div>
-          <div class="laur-hero">Mais de 200.000 avalia&ccedil;&otilde;es 5 estrelas de usu&aacute;rios satisfeitos
+          <div class="laursub" style="margin-bottom:14px">Come&ccedil;aram a jornada de transforma&ccedil;&atilde;o do
+            seu f&iacute;sico</div>
+          <div class="laur-hero" style="color:var(--hot);margin-bottom:28px">Mais de 71 t&iacute;tulos em campeonatos de
+            fisiculturismo com esse m&eacute;todo</div>
+
+          <!-- IMAGE CAROUSEL d1.png – d9.png -->
+          <div class="img-carousel-wrap">
+            <div class="img-carousel">
+              <div class="img-car-track" id="imgCarTrack">
+                <div class="img-car-slide"><img src="img/d1.png" alt="Resultado 1"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d2.png" alt="Resultado 2"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d3.png" alt="Resultado 3"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d4.png" alt="Resultado 4"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d5.png" alt="Resultado 5"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d6.png" alt="Resultado 6"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d7.png" alt="Resultado 7"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d8.png" alt="Resultado 8"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+                <div class="img-car-slide"><img src="img/d9.png" alt="Resultado 9"
+                    onerror="this.parentElement.style.background='#1a1208'"></div>
+              </div>
+            </div>
+            <div class="car-nav">
+              <button class="car-arrow-btn" id="imgPrev" aria-label="Anterior">&#8249;</button>
+              <div class="car-dots" id="imgDots"></div>
+              <button class="car-arrow-btn" id="imgNext" aria-label="Pr&oacute;ximo">&#8250;</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 6. FULL PLAN — numbered steps -->
+      <!-- 6. FULL PLAN — title changed -->
       <div class="fullplan-sec">
         <div class="fullplan-in">
-          <h2 class="fullplan-title">Plano de treino completo</h2>
+          <h2 class="fullplan-title">Plano personalizado de treinos e dietas semanais</h2>
           <div class="steps-list" id="stepsList">
             <div class="step-item">
               <div class="step-num">1</div>
@@ -3149,7 +3362,7 @@
         </div>
       </div>
 
-      <!-- 7. PRICING -->
+      <!-- 7. PRICING — modified -->
       <div class="pricsec" id="pricingSection">
         <div class="pric-layout">
           <div class="pric-left">
@@ -3163,16 +3376,17 @@
           <div class="pric-right">
             <div class="price-card-wrap">
               <div class="congrbox">
-                <div style="font-size:17px;font-weight:800;font-family:var(--fh)">Parab&eacute;ns! &#127881;</div>
-                <div style="font-size:13px;color:var(--tx3);margin-top:2px">Voc&ecirc; ganhou o maior desconto extra!
-                </div>
+                <div style="font-size:17px;font-weight:800;font-family:var(--fh)">Pre&ccedil;o exclusivo para quem
+                  chegou at&eacute; aqui &#127881;</div>
+                <div style="font-size:13px;color:var(--tx3);margin-top:2px">Um &uacute;nico valor, acesso imediato</div>
               </div>
               <div class="price-body">
-                <!-- b3.png mockup acima do titulo, tamanho natural -->
                 <img src="img/b3.png" style="width:100%;height:auto;display:block;margin-bottom:18px" alt="Desafio BWM"
                   onerror="this.style.display='none'">
-                <div class="planstitle" style="font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:20px">
-                  Desafio BWM &mdash; 14 Dias</div>
+                <div class="planstitle"
+                  style="font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:20px;text-transform:uppercase;letter-spacing:.04em">
+                  ADQUIRA SEU ACESSO AO DESAFIO BWM 14 Dias
+                </div>
                 <div class="plan-single">
                   <div class="plan-single-left">
                     <div class="plan-single-name">PLANO COMPLETO</div>
@@ -3181,7 +3395,7 @@
                   </div>
                   <div class="plan-single-price">
                     <div class="plan-single-old">R$ 197,00</div>
-                    <div class="plan-single-val">R$ 47</div>
+                    <div class="plan-single-val">R$ 49,90</div>
                     <div class="plan-single-per">pagamento &uacute;nico</div>
                   </div>
                 </div>
@@ -3199,16 +3413,15 @@
         </div>
       </div>
 
-      <!-- 8. GUARANTEE -->
+      <!-- 8. GUARANTEE — 14 dias -->
       <div class="gsec">
         <div class="gin">
           <div class="gbox">
             <div class="gbox-text">
-              <div class="gtitle">Money-Back Guarantee</div>
-              <div class="gtxt">Acreditamos que nosso plano vai funcionar para voc&ecirc; e voc&ecirc; ver&aacute;
-                resultados vis&iacute;veis em 4 semanas! Estamos prontos para reembolsar completamente em at&eacute; 30
-                dias ap&oacute;s a compra, caso voc&ecirc; n&atilde;o obtenha resultados vis&iacute;veis e consiga
-                demonstrar que seguiu o plano.<br><br><a href="#" class="glink">Saiba mais sobre as
+              <div class="gtitle">Garantia de 14 Dias</div>
+              <div class="gtxt">Seguiu o plano e n&atilde;o obteve resultado vis&iacute;vel em 14 dias? Devolvemos 100%
+                do seu dinheiro, sem perguntas. Acreditamos que o m&eacute;todo funciona &mdash; e colocamos nosso
+                compromisso financeiro nisso.<br><br><a href="#" class="glink">Saiba mais sobre as
                   limita&ccedil;&otilde;es aplic&aacute;veis em nossa pol&iacute;tica de devolu&ccedil;&atilde;o.</a>
               </div>
             </div>
@@ -3216,8 +3429,8 @@
               <div class="gseal">
                 <div class="gseal-ring"></div>
                 <div class="gseal-inner">
-                  <span class="gseal-n">30</span>
-                  <span class="gseal-txt">DAYS AFTER<br>PURCHASE</span>
+                  <span class="gseal-n">14</span>
+                  <span class="gseal-txt">DIAS DE<br>GARANTIA</span>
                 </div>
               </div>
             </div>
@@ -3225,62 +3438,226 @@
         </div>
       </div>
 
-      <!-- 9. TESTIMONIALS -->
-      <div class="testsec">
-        <div class="testin">
-          <div class="testtitle">Ajudamos mais de</div>
-          <div class="testnum">60.000 pessoas</div>
-          <div class="testsub">a alcan&ccedil;ar o f&iacute;sico dos seus sonhos</div>
-          <div class="testcards">
-            <div class="testcard">
-              <div class="testhd">
-                <div class="testav">S</div>
-                <div>
-                  <div class="testnm">Stephen Davidson</div>
-                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <!-- 9. VIDEO CAROUSEL — replaces testimonials -->
+      <div class="vid-carousel-sec">
+        <div class="vid-carousel-in">
+          <h2 class="vid-carousel-title">Resultados reais dos nossos alunos</h2>
+          <p class="vid-carousel-sub">Veja as transforma&ccedil;&otilde;es de quem j&aacute; completou o Desafio BWM 14
+            Dias</p>
+          <div class="vid-carousel-wrap">
+            <div class="vid-car-track" id="vidCarTrack">
+              <div class="vid-car-slide">
+                <video src="img/v1.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
                 </div>
-                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">Ganhei 5kg de m&uacute;sculo mas ao mesmo tempo consigo tirar minha cal&ccedil;a com
-                o cinto ainda preso. M&eacute;todo surpreendentemente eficaz!</div>
-            </div>
-            <div class="testcard">
-              <div class="testhd">
-                <div class="testav">R</div>
-                <div>
-                  <div class="testnm">Robert Matthews</div>
-                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="vid-car-slide">
+                <video src="img/v2.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
                 </div>
-                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">&Eacute; uma &oacute;tima maneira de entrar em forma. Devia ter feito isso h&aacute;
-                muito tempo! &#128578;</div>
-            </div>
-            <div class="testcard">
-              <div class="testhd">
-                <div class="testav">H</div>
-                <div>
-                  <div class="testnm">Hyrum Keddington</div>
-                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="vid-car-slide">
+                <video src="img/v3.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
                 </div>
-                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">O primeiro programa que me deu tudo que precisava para come&ccedil;ar, incluindo um
-                menu e uma lista de compras.</div>
+              <div class="vid-car-slide">
+                <video src="img/v4.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v5.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v6.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v7.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v8.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v9.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
+              <div class="vid-car-slide">
+                <video src="img/v10.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <div class="vid-play-overlay" onclick="toggleVid(this)">
+                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg></div>
+                </div>
+              </div>
             </div>
           </div>
-          <p style="font-size:12px;color:var(--tx3);margin-top:16px">Voc&ecirc; pode ler como coletamos
-            avalia&ccedil;&otilde;es em nossa <a href="#"
-              style="color:var(--tx3);text-decoration:underline">Pol&iacute;tica de Avalia&ccedil;&otilde;es</a></p>
+          <div class="car-nav">
+            <button class="car-arrow-btn" id="vidPrev" aria-label="Anterior">&#8249;</button>
+            <div class="car-dots" id="vidDots"></div>
+            <button class="car-arrow-btn" id="vidNext" aria-label="Pr&oacute;ximo">&#8250;</button>
+          </div>
         </div>
       </div>
 
-      <!-- 10. FOOTER -->
+      <!-- 10. FAQ -->
+      <div class="faq-sec">
+        <div class="faq-in">
+          <h2 class="faq-title">Perguntas Frequentes</h2>
+          <p class="faq-sub">Tudo que voc&ecirc; precisa saber antes de come&ccedil;ar</p>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">Para quem &eacute; o Desafio BWM 14 Dias?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">O desafio foi criado para homens de qualquer n&iacute;vel que querem dar um ponto de
+                partida real na sua transforma&ccedil;&atilde;o f&iacute;sica. Seja voc&ecirc; iniciante ou
+                algu&eacute;m que quer retomar os treinos, o plano &eacute; estruturado para se adaptar ao seu ritmo.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">Preciso de academia ou equipamentos?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">N&atilde;o obrigatoriamente. O plano oferece vers&otilde;es adapt&aacute;veis tanto
+                para academia quanto para treino em casa. Voc&ecirc; recebe orienta&ccedil;&otilde;es para os dois
+                cen&aacute;rios.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">Em quanto tempo verei resultados?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">A maioria dos alunos relata perceber mudan&ccedil;as vis&iacute;veis j&aacute; na
+                primeira semana: menos inchaço, rosto mais afinado e corpo mais firme. Os resultados mais expressivos
+                aparecem entre o 10&ordm; e o 14&ordm; dia, quando o metabolismo j&aacute; est&aacute; acelerado.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">Como funciona a garantia de 14 dias?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">Se voc&ecirc; seguir o plano e n&atilde;o obtiver resultado vis&iacute;vel em 14 dias,
+                devolvemos 100% do seu dinheiro. Basta entrar em contato com a nossa equipe demonstrando que cumpriu o
+                protocolo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">O pagamento &eacute; recorrente?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">N&atilde;o. &Eacute; um pagamento &uacute;nico de R$ 49,90 e voc&ecirc; tem acesso
+                imediato a todo o conte&uacute;do. N&atilde;o h&aacute; cobran&ccedil;a autom&aacute;tica ou
+                renova&ccedil;&atilde;o.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-qtxt">O que est&aacute; inclu&iacute;do no plano?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              <p class="faq-atxt">Voc&ecirc; recebe: plano completo de treino semana a semana, plano de dieta
+                personalizado, b&ocirc;nus Protocolo Acelerador BWM e a Revis&atilde;o Estrat&eacute;gica exclusiva com
+                a equipe.</p>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="wa-wrap">
+            <p class="wa-notfound">N&atilde;o encontrou sua d&uacute;vida?</p>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="wa-btn">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.858L.057 23.882l6.186-1.624A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-5.003-1.371l-.358-.214-3.724.977.997-3.647-.234-.372A9.804 9.804 0 0 1 2.182 12C2.182 6.572 6.572 2.182 12 2.182S21.818 6.572 21.818 12 17.428 21.818 12 21.818z" />
+              </svg>
+              Fale comigo no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. FOOTER — with TikTok + YouTube -->
       <div class="rfooter">
         <div style="font-size:16px;font-weight:800;margin-bottom:4px;font-family:var(--fh)">Siga-nos</div>
         <div style="font-size:13px;color:var(--tx3);margin-bottom:18px">para turbinar seus resultados!</div>
         <div class="footsocial">
-          <a href="#" class="footico footico-ig" title="Instagram" style="text-decoration:none">
+          <!-- Instagram -->
+          <a href="#" class="footico footico-ig" title="Instagram">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -3288,13 +3665,21 @@
               <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none" />
             </svg>
           </a>
-          <a href="#" class="footico footico-fb" title="Facebook" style="text-decoration:none">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          <!-- TikTok -->
+          <a href="#" class="footico footico-tt" title="TikTok">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="footico footico-yt" title="YouTube">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
           </a>
         </div>
-        <div class="foottxt">Alguma d&uacute;vida? Estamos <a href="#" class="footlink">aqui</a> para ajudar.</div>
         <div class="footcopy">&copy; 2025 Desafio BWM 14 Dias. Todos os direitos reservados.</div>
       </div>
 
@@ -3305,6 +3690,7 @@
   <script>
     if (window.twemoji) { twemoji.parse(document.body, { folder: "svg", ext: ".svg", base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/" }); }
 
+    // sticky CTA
     var rs = document.getElementById("result"), sc = document.getElementById("stickyCTA");
     new MutationObserver(function () { sc.classList.toggle("vis", rs.classList.contains("active")) }).observe(rs, { attributes: true, attributeFilter: ["class"] });
     if ("IntersectionObserver" in window) {
@@ -3312,16 +3698,13 @@
       if (ps) { new IntersectionObserver(function (en) { en.forEach(function (e) { sc.style.opacity = e.isIntersecting ? "0" : "1" }) }, { threshold: 0.3 }).observe(ps); }
     }
 
-    // Scroll reveal for steps
+    // scroll reveal steps
     if ("IntersectionObserver" in window) {
-      var stepObs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("revealed"); stepObs.unobserve(e.target); } });
-      }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
+      var stepObs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("revealed"); stepObs.unobserve(e.target); } }); }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
       document.querySelectorAll(".step-item").forEach(function (el, i) { el.style.transitionDelay = (i * 0.18) + "s"; stepObs.observe(el); });
-    } else {
-      document.querySelectorAll(".step-item").forEach(function (el) { el.classList.add("revealed"); });
-    }
+    } else { document.querySelectorAll(".step-item").forEach(function (el) { el.classList.add("revealed"); }); }
 
+    // water cups
     function renderWaterCups(liters) {
       var el = document.getElementById("r-water-cups"); if (!el) return;
       var filled = Math.min(8, Math.round(liters / 0.35));
@@ -3352,13 +3735,11 @@
       document.getElementById("r-water").textContent = water.toFixed(1) + "l";
       renderWaterCups(water);
     }
-
     new MutationObserver(function () { if (rs.classList.contains("active")) setTimeout(populateResult, 200); }).observe(rs, { attributes: true, attributeFilter: ["class"] });
 
     if (!window.scrollToPricing) window.scrollToPricing = function () { var el = document.getElementById("pricingSection"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
     if (!window.handleGetPlan) window.handleGetPlan = function () { window.scrollToPricing(); };
 
-    // No animation on first quiz screen
     (function () {
       var quizEl = document.getElementById("quiz-screen"), firstTime = true;
       if (!quizEl) return;
@@ -3371,6 +3752,137 @@
       }).observe(quizEl, { attributes: true, attributeFilter: ["class"] });
     })();
 
+    // ── FAQ ──
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      item.classList.toggle("open");
+    }
+
+    // ── VIDEO: clique tira o mudo ──
+    var MUTE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>';
+    var UNMUTE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+
+    function toggleVid(overlay) {
+      var vid = overlay.previousElementSibling;
+      var btn = overlay.querySelector(".vid-play-btn");
+      if (vid.muted) {
+        // primeiro clique: tira o mudo, mantém tocando
+        vid.muted = false;
+        vid.play();
+        btn.innerHTML = UNMUTE_ICON;
+        overlay.classList.remove("paused");
+      } else {
+        // segundo clique: muta de volta
+        vid.muted = true;
+        btn.innerHTML = MUTE_ICON;
+      }
+    }
+
+    // autoplay all videos muted (browser requires muted for autoplay)
+    document.querySelectorAll(".vid-car-slide video").forEach(function (v) {
+      v.muted = true;
+      var p = v.play();
+      if (p !== undefined) {
+        p.catch(function () {
+          // autoplay blocked — show play button
+          var ov = v.nextElementSibling;
+          if (ov) ov.classList.add("paused");
+        });
+      }
+    });
+
+    // ── GENERIC CAROUSEL FACTORY ──
+    function initCarousel(opts) {
+      var track = document.getElementById(opts.trackId);
+      var dotsEl = document.getElementById(opts.dotsId);
+      var prevBtn = document.getElementById(opts.prevId);
+      var nextBtn = document.getElementById(opts.nextId);
+      if (!track) return;
+
+      var slides = track.querySelectorAll(opts.slideClass);
+      var total = slides.length;
+      var current = 0;
+
+      function perView() { return window.innerWidth <= 600 ? opts.mobileCount : opts.desktopCount; }
+      function pages() { return Math.ceil(total / perView()); }
+
+      function buildDots() {
+        dotsEl.innerHTML = "";
+        var p = pages();
+        for (var i = 0; i < p; i++) {
+          var d = document.createElement("button");
+          d.className = "car-dot" + (i === 0 ? " active" : "");
+          d.setAttribute("aria-label", "P\u00e1gina " + (i + 1));
+          d.dataset.idx = i;
+          d.addEventListener("click", (function (idx) { return function () { goTo(idx); }; })(i));
+          dotsEl.appendChild(d);
+        }
+      }
+
+      function updateDots() {
+        var ds = dotsEl.querySelectorAll(".car-dot");
+        var page = Math.floor(current / perView());
+        ds.forEach(function (d, i) { d.classList.toggle("active", i === page); });
+      }
+
+      function goTo(slideIdx) {
+        current = Math.max(0, Math.min(slideIdx, total - perView()));
+        var pv = perView();
+        var gap = 10;
+        var slideW = track.parentElement.offsetWidth;
+        var itemW = (slideW - (gap * (pv - 1))) / pv;
+        track.style.transform = "translateX(-" + ((itemW + gap) * current) + "px)";
+        updateDots();
+        prevBtn.disabled = (current === 0);
+        nextBtn.disabled = (current >= total - perView());
+      }
+
+      function onResize() {
+        buildDots();
+        goTo(0);
+        setSizes();
+      }
+
+      function setSizes() {
+        var pv = perView();
+        var gap = 10;
+        var wrap = track.parentElement;
+        var total_w = wrap.offsetWidth;
+        var itemW = (total_w - (gap * (pv - 1))) / pv;
+        slides.forEach(function (s) { s.style.width = itemW + "px"; });
+        track.style.gap = gap + "px";
+      }
+
+      buildDots();
+      setSizes();
+      goTo(0);
+      window.addEventListener("resize", onResize);
+
+      prevBtn.addEventListener("click", function () { goTo(current - perView()); });
+      nextBtn.addEventListener("click", function () { goTo(current + perView()); });
+    }
+
+    // init image carousel
+    initCarousel({
+      trackId: "imgCarTrack",
+      dotsId: "imgDots",
+      prevId: "imgPrev",
+      nextId: "imgNext",
+      slideClass: ".img-car-slide",
+      desktopCount: 3,
+      mobileCount: 2
+    });
+
+    // init video carousel
+    initCarousel({
+      trackId: "vidCarTrack",
+      dotsId: "vidDots",
+      prevId: "vidPrev",
+      nextId: "vidNext",
+      slideClass: ".vid-car-slide",
+      desktopCount: 3,
+      mobileCount: 1
+    });
   </script>
   <script src="script.js"></script>
 </body>
