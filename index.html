@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0a0806">
-  <title>Desafio BWM 14 Dias — Seu Plano Personalizado</title>
+  <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
@@ -17,7 +17,6 @@
       --amber: #F5A623;
       --ember: #C04A18;
       --bg: #0A0806;
-      --bg2: #0A0806;
       --glass: rgba(255, 255, 255, .05);
       --gb: rgba(255, 255, 255, .1);
       --glow: rgba(232, 98, 42, .25);
@@ -26,8 +25,8 @@
       --tx3: rgba(255, 255, 255, .55);
       --r: 6px;
       --rl: 10px;
-      --fh: 'Outfit', sans-serif;
-      --fb: 'DM Sans', sans-serif;
+      --fh: "Outfit", sans-serif;
+      --fb: "DM Sans", sans-serif;
     }
 
     *,
@@ -35,16 +34,16 @@
     *::after {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      box-sizing: border-box
     }
 
     * {
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: transparent
     }
 
     html {
       height: 100%;
-      -webkit-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%
     }
 
     body {
@@ -55,27 +54,40 @@
       overflow-x: hidden;
       min-height: 100dvh;
       overscroll-behavior: none;
-      line-height: 1.5;
+      line-height: 1.5
     }
 
     h1,
     h2,
     h3 {
-      font-family: var(--fh);
+      font-family: var(--fh)
+    }
+
+    img.emoji {
+      height: 1.1em;
+      width: 1.1em;
+      vertical-align: -0.1em;
+      display: inline-block
+    }
+
+    .oico img.emoji {
+      filter: sepia(1) saturate(6) hue-rotate(335deg) brightness(.85);
+      height: 20px;
+      width: 20px
     }
 
     .section {
       display: none;
-      opacity: 0;
+      opacity: 0
     }
 
     .section.active {
       display: flex;
-      animation: pgIn .35s cubic-bezier(.4, 0, .2, 1) forwards;
+      animation: pgIn .35s cubic-bezier(.4, 0, .2, 1) forwards
     }
 
     .section.leaving {
-      animation: pgOut .2s cubic-bezier(.4, 0, .2, 1) forwards;
+      animation: pgOut .2s cubic-bezier(.4, 0, .2, 1) forwards
     }
 
     @keyframes pgIn {
@@ -101,18 +113,17 @@
       }
     }
 
-    /* PROGRESS */
     #gProg {
       flex: 1;
       height: 4px;
       background: rgba(255, 255, 255, .1);
       border-radius: 2px;
       overflow: hidden;
-      display: none;
+      display: none
     }
 
     #gProg.vis {
-      display: block;
+      display: block
     }
 
     #pFill {
@@ -120,10 +131,9 @@
       width: 0%;
       background: linear-gradient(90deg, var(--ember), var(--hot), var(--hot2));
       transition: width .5s ease;
-      box-shadow: 0 0 10px var(--hot);
+      box-shadow: 0 0 10px var(--hot)
     }
 
-    /* TOP BAR */
     #topBar {
       position: fixed;
       top: 0;
@@ -132,13 +142,13 @@
       z-index: 190;
       display: none;
       flex-direction: column;
-      padding: 10px 16px 10px;
+      padding: 10px 16px;
       background: var(--bg);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, .05)
     }
 
     #topBar.vis {
-      display: flex;
+      display: flex
     }
 
     .tb-row2 {
@@ -146,13 +156,13 @@
       align-items: center;
       width: 100%;
       margin-top: 10px;
-      gap: 12px;
+      gap: 12px
     }
 
     .tl {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 7px
     }
 
     .tl-mark {
@@ -166,78 +176,76 @@
       font-family: var(--fh);
       font-size: 11px;
       font-weight: 900;
-      color: #fff;
+      color: #fff
     }
 
     .tl-txt {
       font-family: var(--fh);
       font-size: 14px;
       font-weight: 800;
-      letter-spacing: .02em;
-      color: var(--tx);
+      letter-spacing: .02em
     }
 
     .ts {
       font-size: 11px;
-      color: var(--tx3);
+      color: var(--tx3)
     }
 
     #backBtn {
       background: none;
       border: none;
-      color: var(--tx2);
+      color: var(--tx);
       font-size: 26px;
       cursor: pointer;
       padding: 0;
       line-height: 1;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: center
     }
 
-    /* SCREEN LAYOUT */
+    /* QUIZ LAYOUT */
     .sw {
       width: 100%;
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 100px 16px 56px;
+      padding: 100px 20px 64px
     }
 
     .si {
       width: 100%;
-      max-width: 520px;
+      max-width: 560px
     }
 
     .stitle {
       font-family: var(--fh);
-      font-size: clamp(18px, 5.5vw, 26px);
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 6px;
-      letter-spacing: -.01em;
+      margin-bottom: 20px;
+      letter-spacing: -.01em
     }
 
     .ssub {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--tx2);
-      margin-bottom: 20px;
-      line-height: 1.6;
+      margin-bottom: 22px;
+      line-height: 1.6
     }
 
-    /* OPTION CARDS */
     .olist {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px
     }
 
+    /* QUIZ OPTION CARD — image RIGHT flush, radio LEFT */
+    /* ── QUIZ OPTION CARD ── */
     .ocard {
       background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 13px 14px;
+      border: 1.5px solid var(--gb);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -245,151 +253,198 @@
       transition: border-color .2s, background .2s, box-shadow .2s;
       position: relative;
       overflow: hidden;
+      min-height: 80px;
+      padding-left: 50px
     }
 
     .ocard:hover {
       border-color: rgba(232, 98, 42, .4);
-      background: rgba(255, 255, 255, .06);
+      background: rgba(255, 255, 255, .06)
     }
 
     .ocard.sel {
       border-color: var(--hot);
       background: linear-gradient(135deg, rgba(232, 98, 42, .1), rgba(232, 98, 42, .03));
-      box-shadow: 0 0 20px rgba(232, 98, 42, .12);
+      box-shadow: 0 0 20px rgba(232, 98, 42, .12)
     }
 
-    .ocard.sel::after {
-      content: '✓';
+    /* radio circle — LEFT via ::before */
+    .ocard::before {
+      content: "";
       position: absolute;
-      right: 13px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      width: 21px;
-      height: 21px;
-      background: var(--hot);
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 900;
-      color: #fff;
-      line-height: 21px;
-      text-align: center;
+      border: 2px solid rgba(255, 255, 255, .28);
+      background: transparent;
+      z-index: 2;
+      transition: all .2s;
+      pointer-events: none
     }
 
-    .oico {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--r);
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
+    .ocard.sel::before {
+      border-color: var(--hot);
+      background: var(--hot);
+      box-shadow: inset 0 0 0 5px rgba(255, 255, 255, .92), 0 0 12px rgba(232, 98, 42, .45)
     }
 
+    /* hide old checkmark ::after */
+    .ocard.sel::after {
+      display: none
+    }
+
+    /* text */
+    .olbl {
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--fh);
+      color: var(--tx);
+      flex: 1
+    }
+
+    .osub {
+      font-size: 13px;
+      color: var(--tx2);
+      margin-top: 3px
+    }
+
+    /* IMAGE — pushed to RIGHT via order */
     .oimg {
-      width: 52px;
-      height: 66px;
-      border-radius: var(--r);
-      background: #141414;
+      order: 100;
+      align-self: stretch;
       flex-shrink: 0;
+      width: 90px;
+      min-height: 80px;
       overflow: hidden;
+      border-radius: 0 8px 8px 0;
+      margin: 0;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      align-items: center;
+      justify-content: center
     }
 
     .oimg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
+      display: block;
+      align-self: stretch;
+      min-height: 80px
     }
 
-    .olbl {
-      font-size: 14px;
-      font-weight: 600;
-      font-family: var(--fh);
-      color: var(--tx);
+    /* icon variant (no image) */
+    .oico {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      order: 0
     }
 
-    .osub {
-      font-size: 11px;
-      color: var(--tx2);
-      margin-top: 2px;
-    }
-
-    /* MULTI SELECT */
+    /* MULTI-SELECT */
     .mlist {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px
     }
 
+    /* mopt — checkbox left, image RIGHT */
     .mopt {
       background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 12px 14px;
+      border: 1.5px solid var(--gb);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 12px;
       cursor: pointer;
       transition: all .2s;
+      overflow: hidden;
+      padding: 14px 0 14px 14px;
+      min-height: 72px
     }
 
     .mopt:hover {
-      border-color: rgba(232, 98, 42, .3);
+      border-color: rgba(232, 98, 42, .3)
     }
 
     .mopt.chk {
       border-color: var(--hot);
-      background: linear-gradient(135deg, rgba(232, 98, 42, .09), rgba(232, 98, 42, .02));
+      background: linear-gradient(135deg, rgba(232, 98, 42, .09), rgba(232, 98, 42, .02))
+    }
+
+    /* image pushed to RIGHT in mopt */
+    .mopt .oimg {
+      order: 100;
+      align-self: stretch;
+      flex-shrink: 0;
+      width: 80px;
+      min-height: 72px;
+      margin: 0;
+      border-radius: 0 8px 8px 0;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch
+    }
+
+    .mopt .oimg img {
+      width: 100%;
+      flex: 1;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      min-height: 72px
     }
 
     .cbox {
-      width: 19px;
-      height: 19px;
-      border-radius: 4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
       border: 1.5px solid #3a3028;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: all .2s;
+      transition: all .2s
     }
 
     .mopt.chk .cbox {
       background: var(--hot);
-      border-color: var(--hot);
+      border-color: var(--hot)
     }
 
     .cmk {
       display: none;
       color: #fff;
-      font-size: 11px;
-      font-weight: 900;
+      font-size: 13px;
+      font-weight: 900
     }
 
     .mopt.chk .cmk {
-      display: block;
+      display: block
     }
 
-    /* BUTTON */
+    /* BTN */
     .btn {
       width: 100%;
-      padding: 15px;
-      margin-top: 18px;
+      padding: 17px;
+      margin-top: 20px;
       background: linear-gradient(135deg, var(--hot) 0%, var(--ember) 100%);
       color: #fff;
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 700;
       font-family: var(--fh);
       border: none;
-      border-radius: var(--r);
+      border-radius: 10px;
       cursor: pointer;
       transition: all .2s;
       display: flex;
@@ -399,44 +454,401 @@
       letter-spacing: .02em;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(232, 98, 42, .28);
+      box-shadow: 0 4px 24px rgba(232, 98, 42, .28)
     }
 
     .btn::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, .1) 0%, transparent 50%);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, .1) 0%, transparent 50%)
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 32px rgba(232, 98, 42, .42);
+      box-shadow: 0 6px 32px rgba(232, 98, 42, .42)
     }
 
     .btn:active {
-      transform: scale(.98);
+      transform: scale(.98)
     }
 
     .btn:disabled {
       background: #2a2218;
       color: #4a3e34;
       cursor: not-allowed;
-      box-shadow: none;
+      box-shadow: none
     }
 
-    /* SWIPE */
+    /* quiz extras */
+    .qglow {
+      position: relative;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(232, 98, 42, .07), rgba(245, 163, 64, .04));
+      border: 1px solid rgba(232, 98, 42, .22);
+      border-radius: var(--rl);
+      padding: 22px 18px;
+      overflow: hidden
+    }
+
+    .qglow::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      height: 100px;
+      background: radial-gradient(ellipse, rgba(232, 98, 42, .28) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .qtxt {
+      font-size: 16px;
+      font-weight: 600;
+      font-family: var(--fh);
+      text-align: center;
+      padding: 6px 4px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1
+    }
+
+    .sbtns2 {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 10px
+    }
+
+    .scbtn {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--r);
+      background: var(--glass);
+      border: 1px solid var(--gb);
+      color: var(--tx2);
+      font-size: 19px;
+      font-weight: 700;
+      font-family: var(--fh);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .scbtn:hover {
+      border-color: rgba(232, 98, 42, .4)
+    }
+
+    .scbtn.sc {
+      background: linear-gradient(135deg, var(--hot), var(--ember));
+      border-color: var(--hot);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(232, 98, 42, .32)
+    }
+
+    .slbls {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--tx3)
+    }
+
+    .ig {
+      margin-bottom: 16px
+    }
+
+    .ilbl {
+      font-size: 15px;
+      color: var(--tx2);
+      margin-bottom: 8px;
+      display: block;
+      font-weight: 500
+    }
+
+    .qinp {
+      width: 100%;
+      background: var(--glass);
+      border: 1.5px solid var(--gb);
+      border-radius: 10px;
+      padding: 16px 18px;
+      color: var(--tx);
+      font-size: 18px;
+      font-family: var(--fb);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      -webkit-appearance: none
+    }
+
+    .qinp:focus {
+      border-color: var(--hot);
+      box-shadow: 0 0 0 3px rgba(232, 98, 42, .1)
+    }
+
+    .urow {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px
+    }
+
+    .ubtn {
+      padding: 6px 14px;
+      border-radius: var(--r);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--fh);
+      border: 1px solid var(--gb);
+      background: transparent;
+      color: var(--tx2);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .ubtn.on {
+      background: var(--hot);
+      border-color: var(--hot);
+      color: #fff
+    }
+
+    .iu {
+      position: relative;
+      display: flex;
+      align-items: center
+    }
+
+    .iu .qinp {
+      padding-right: 46px
+    }
+
+    .iulbl {
+      position: absolute;
+      right: 14px;
+      color: var(--tx3);
+      font-size: 13px
+    }
+
+    .crow {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 10px
+    }
+
+    .cchk {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--hot);
+      flex-shrink: 0;
+      margin-top: 3px
+    }
+
+    .ctxt {
+      font-size: 11px;
+      color: var(--tx3);
+      line-height: 1.5
+    }
+
+    .ctxt a {
+      color: var(--hot)
+    }
+
+    .ibox {
+      width: 100%;
+      border-radius: var(--rl);
+      background: var(--glass);
+      border: 1px solid var(--gb);
+      overflow: hidden;
+      margin: 18px 0;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .ibox img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .cbox2 {
+      width: 100%
+    }
+
+    .cbig {
+      font-family: var(--fh);
+      font-size: clamp(19px, 5.5vw, 28px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px
+    }
+
+    .csub2 {
+      font-size: 13px;
+      color: var(--tx2);
+      margin-bottom: 18px
+    }
+
+    .csvg {
+      width: 100%;
+      border-radius: var(--rl);
+      padding: 18px 14px 10px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .03), rgba(232, 98, 42, .03));
+      border: 1px solid var(--gb)
+    }
+
+    .cnote {
+      font-size: 11px;
+      color: var(--tx3);
+      margin-top: 10px;
+      line-height: 1.5
+    }
+
+    .slpwrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px
+    }
+
+    .slpsvg {
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0
+    }
+
+    .slpbars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 11px
+    }
+
+    .sbr {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .sbrlbl {
+      font-size: 11px;
+      color: var(--tx2);
+      font-weight: 500
+    }
+
+    .sbrtrk {
+      height: 5px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .sbrfill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1.3s cubic-bezier(.4, 0, .2, 1);
+      width: 0
+    }
+
+    .fares {
+      text-align: center
+    }
+
+    .fasub {
+      font-size: 13px;
+      color: var(--tx2);
+      margin-bottom: 4px
+    }
+
+    .fanum {
+      font-size: 64px;
+      font-weight: 900;
+      font-family: var(--fh);
+      line-height: 1
+    }
+
+    .faunit {
+      font-size: 18px;
+      color: var(--tx2);
+      margin: 4px 0 0
+    }
+
+    .faline {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ember), var(--hot), var(--hot2));
+      margin: 10px auto 20px;
+      border-radius: 2px
+    }
+
+    .fadesc {
+      font-size: 13px;
+      color: var(--tx2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: left
+    }
+
+    .facard {
+      background: var(--glass);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 12px 14px
+    }
+
+    .fatrk {
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #22c55e 0%, #facc15 40%, var(--hot) 65%, #ef4444 100%);
+      position: relative;
+      margin: 8px 0 6px
+    }
+
+    .famkr {
+      position: absolute;
+      top: -5px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--hot);
+      transform: translateX(-50%);
+      transition: left .9s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .falbl {
+      font-size: 12px;
+      color: var(--tx2);
+      font-weight: 600;
+      text-align: center;
+      margin-top: 2px
+    }
+
+    .tipbox {
+      background: linear-gradient(135deg, rgba(30, 58, 95, .6), rgba(15, 30, 50, .8));
+      border: 1px solid rgba(59, 130, 246, .25);
+      border-radius: var(--r);
+      padding: 12px 14px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #90CAF9;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5
+    }
+
     .sstack {
       position: relative;
       height: 296px;
-      margin-bottom: 14px;
+      margin-bottom: 14px
     }
 
     .sbg {
       position: absolute;
       border-radius: var(--rl);
       background: rgba(255, 255, 255, .02);
-      border: 1px solid rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .05)
     }
 
     .sbg.b1 {
@@ -444,7 +856,7 @@
       left: 6%;
       top: 12px;
       height: 278px;
-      z-index: 1;
+      z-index: 1
     }
 
     .sbg.b2 {
@@ -452,7 +864,7 @@
       left: 3%;
       top: 6px;
       height: 284px;
-      z-index: 2;
+      z-index: 2
     }
 
     .smain {
@@ -460,14 +872,14 @@
       width: 100%;
       top: 0;
       left: 0;
-      z-index: 3;
+      z-index: 3
     }
 
     .scard {
       background: var(--glass);
       border: 1px solid var(--gb);
       border-radius: var(--rl);
-      overflow: hidden;
+      overflow: hidden
     }
 
     .simg {
@@ -478,13 +890,13 @@
       align-items: center;
       justify-content: center;
       font-size: 80px;
-      position: relative;
+      position: relative
     }
 
     .simg img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover
     }
 
     .slbl {
@@ -498,13 +910,13 @@
       font-size: 13px;
       font-weight: 700;
       color: var(--tx);
-      font-family: var(--fh);
+      font-family: var(--fh)
     }
 
     .sbtns {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
+      gap: 8px
     }
 
     .sbtn {
@@ -521,417 +933,158 @@
       color: var(--tx2);
       font-size: 11px;
       font-weight: 600;
-      font-family: var(--fh);
-    }
-
-    .sbtn:hover {
-      border-color: rgba(255, 255, 255, .2);
+      font-family: var(--fh)
     }
 
     .sico {
-      font-size: 22px;
+      font-size: 22px
     }
 
     .sd {
       border-color: #ef4444 !important;
       background: rgba(239, 68, 68, .08) !important;
-      color: #ef4444 !important;
+      color: #ef4444 !important
     }
 
     .sn {
       border-color: #888 !important;
       background: rgba(136, 136, 136, .08) !important;
-      color: #ccc !important;
+      color: #ccc !important
     }
 
     .sl {
       border-color: var(--hot) !important;
       background: rgba(232, 98, 42, .08) !important;
-      color: var(--hot) !important;
+      color: var(--hot) !important
     }
 
-    /* SCALE */
-    .qglow {
-      position: relative;
-      margin-bottom: 22px;
-      background: linear-gradient(135deg, rgba(232, 98, 42, .07), rgba(245, 163, 64, .04));
+    .phdr {
+      background: linear-gradient(135deg, rgba(34, 20, 10, .9), rgba(20, 12, 6, .9));
       border: 1px solid rgba(232, 98, 42, .22);
-      border-radius: var(--rl);
-      padding: 22px 18px;
-      overflow: hidden;
-    }
-
-    .qglow::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 260px;
-      height: 100px;
-      background: radial-gradient(ellipse, rgba(232, 98, 42, .28) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .qglow::after {
-      content: '';
-      position: absolute;
-      bottom: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      height: 80px;
-      background: radial-gradient(ellipse, rgba(245, 163, 64, .12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .qqm {
-      font-size: 30px;
-      color: rgba(232, 98, 42, .3);
-      line-height: .8;
-    }
-
-    .qtxt {
-      font-size: 16px;
-      font-weight: 600;
-      font-family: var(--fh);
-      color: var(--tx);
-      text-align: center;
-      padding: 6px 4px;
-      line-height: 1.5;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sbtns2 {
+      border-radius: var(--r);
+      padding: 10px 14px;
       display: flex;
+      align-items: center;
       gap: 8px;
-      justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 16px
     }
 
-    .scbtn {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--r);
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      color: var(--tx2);
-      font-size: 19px;
-      font-weight: 700;
-      font-family: var(--fh);
-      cursor: pointer;
-      transition: all .2s;
+    .phdr-ico {
+      color: #22c55e;
+      font-size: 18px
     }
 
-    .scbtn:hover {
-      border-color: rgba(232, 98, 42, .4);
-      color: var(--tx);
-    }
-
-    .scbtn.sc {
-      background: linear-gradient(135deg, var(--hot), var(--ember));
-      border-color: var(--hot);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(232, 98, 42, .32);
-    }
-
-    .slbls {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--tx3);
-    }
-
-    /* INPUTS */
-    .ig {
-      margin-bottom: 14px;
-    }
-
-    .ilbl {
+    .phdr-txt {
       font-size: 12px;
-      color: var(--tx2);
-      margin-bottom: 6px;
-      display: block;
-      font-weight: 500;
+      color: var(--tx2)
     }
 
-    .qinp {
-      width: 100%;
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 13px 14px;
-      color: var(--tx);
-      font-size: 16px;
-      font-family: var(--fb);
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-      -webkit-appearance: none;
+    .pprog {
+      height: 5px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 3px;
+      margin-bottom: 22px
     }
 
-    .qinp:focus {
-      border-color: var(--hot);
-      box-shadow: 0 0 0 3px rgba(232, 98, 42, .1);
-    }
-
-    .urow {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .ubtn {
-      padding: 6px 14px;
-      border-radius: var(--r);
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--fh);
-      border: 1px solid var(--gb);
-      background: transparent;
-      color: var(--tx2);
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .ubtn.on {
-      background: var(--hot);
-      border-color: var(--hot);
-      color: #fff;
-    }
-
-    .iu {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .iu .qinp {
-      padding-right: 46px;
-    }
-
-    .iulbl {
-      position: absolute;
-      right: 14px;
-      color: var(--tx3);
-      font-size: 13px;
-    }
-
-    .crow {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 10px;
-    }
-
-    .cchk {
-      width: 17px;
-      height: 17px;
-      accent-color: var(--hot);
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    .ctxt {
-      font-size: 11px;
-      color: var(--tx3);
-      line-height: 1.5;
-    }
-
-    .ctxt a {
-      color: var(--hot);
-    }
-
-    /* INFO SLIDE */
-    .ibox {
-      width: 100%;
-      border-radius: var(--rl);
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      overflow: hidden;
-      margin: 18px 0;
-      aspect-ratio: 16/10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ibox img {
-      width: 100%;
+    .pprogf {
       height: 100%;
-      object-fit: cover;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--ember), var(--hot));
+      box-shadow: 0 0 8px var(--hot)
     }
 
-    /* CHART */
-    .cbox2 {
+    .tinder-stack {
+      position: relative;
+      height: 380px;
+      margin-bottom: 20px;
       width: 100%;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto
     }
 
-    .cbig {
-      font-family: var(--fh);
-      font-size: clamp(19px, 5.5vw, 28px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    .csub2 {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 18px;
-    }
-
-    .csvg {
-      width: 100%;
-      border-radius: var(--rl);
-      padding: 18px 14px 10px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, .03), rgba(232, 98, 42, .03));
+    .tinder-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+      transform-origin: 50% 100%;
+      will-change: transform, opacity;
+      background: var(--glass);
       border: 1px solid var(--gb);
+      border-radius: var(--rl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
     }
 
-    .cnote {
-      font-size: 11px;
-      color: var(--tx3);
-      margin-top: 10px;
-      line-height: 1.5;
+    .tinder-card .simg {
+      flex: 1;
+      height: auto;
+      border-radius: 0;
+      background: #000
     }
 
-    .tipbox {
-      background: linear-gradient(135deg, rgba(30, 58, 95, .6), rgba(15, 30, 50, .8));
-      border: 1px solid rgba(59, 130, 246, .25);
+    .swipe-left {
+      animation: swipeL 0.4s forwards
+    }
+
+    .swipe-right {
+      animation: swipeR 0.4s forwards
+    }
+
+    .swipe-down {
+      animation: swipeD 0.4s forwards
+    }
+
+    @keyframes swipeL {
+      to {
+        transform: translateX(-150%) rotate(-15deg);
+        opacity: 0
+      }
+    }
+
+    @keyframes swipeR {
+      to {
+        transform: translateX(150%) rotate(15deg);
+        opacity: 0
+      }
+    }
+
+    @keyframes swipeD {
+      to {
+        transform: translateY(150%) scale(0.8);
+        opacity: 0
+      }
+    }
+
+    .aitem {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .3s ease, transform .3s ease
+    }
+
+    .aitem.show {
+      opacity: 1;
+      transform: none
+    }
+
+    .fbanner {
+      background: linear-gradient(135deg, rgba(30, 58, 95, .7), rgba(15, 30, 50, .9));
+      border: 1px solid rgba(59, 130, 246, .28);
       border-radius: var(--r);
       padding: 12px 14px;
       margin-top: 14px;
       font-size: 13px;
       color: #90CAF9;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: flex-start;
       line-height: 1.5;
-    }
-
-    /* SLEEP */
-    .slpwrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .slpsvg {
-      width: 110px;
-      height: 110px;
-      flex-shrink: 0;
-    }
-
-    .slpbars {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .sbr {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .sbrlbl {
-      font-size: 11px;
-      color: var(--tx2);
-      font-weight: 500;
-    }
-
-    .sbrtrk {
-      height: 5px;
-      background: rgba(255, 255, 255, .06);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .sbrfill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 1.3s cubic-bezier(.4, 0, .2, 1);
-      width: 0;
-    }
-
-    /* FITNESS AGE */
-    .fares {
-      text-align: center;
-    }
-
-    .fasub {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 4px;
-    }
-
-    .fanum {
-      font-size: 64px;
-      font-weight: 900;
-      font-family: var(--fh);
-      line-height: 1;
-    }
-
-    .faunit {
-      font-size: 18px;
-      color: var(--tx2);
-      margin: 4px 0 0;
-    }
-
-    .faline {
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--ember), var(--hot), var(--hot2));
-      margin: 10px auto 20px;
-      border-radius: 2px;
-      box-shadow: 0 0 10px var(--glow);
-    }
-
-    .fadesc {
-      font-size: 13px;
-      color: var(--tx2);
-      line-height: 1.6;
-      margin-bottom: 16px;
-      text-align: left;
-    }
-
-    .facard {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 12px 14px;
-    }
-
-    .fatrk {
-      height: 8px;
-      border-radius: 4px;
-      background: linear-gradient(90deg, #22c55e 0%, #facc15 40%, var(--hot) 65%, #ef4444 100%);
-      position: relative;
-      margin: 8px 0 6px;
-    }
-
-    .famkr {
-      position: absolute;
-      top: -5px;
-      width: 18px;
-      height: 18px;
-      background: #fff;
-      border-radius: 50%;
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 3px var(--hot);
-      transform: translateX(-50%);
-      transition: left .9s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .falbl {
-      font-size: 12px;
-      color: var(--tx2);
-      font-weight: 600;
-      text-align: center;
-      margin-top: 2px;
+      animation: pgIn .3s ease
     }
 
     /* COMMIT MODAL */
@@ -944,11 +1097,11 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 16px
     }
 
     #commitModal.op {
-      display: flex;
+      display: flex
     }
 
     .mbox {
@@ -959,14 +1112,14 @@
       width: 100%;
       max-width: 420px;
       box-shadow: 0 0 60px rgba(232, 98, 42, .18), 0 24px 80px rgba(0, 0, 0, .8);
-      animation: pgIn .35s ease;
+      animation: pgIn .35s ease
     }
 
     .mhdr {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 14px
     }
 
     .mbadge {
@@ -978,7 +1131,7 @@
       font-weight: 800;
       color: var(--hot);
       letter-spacing: .06em;
-      font-family: var(--fh);
+      font-family: var(--fh)
     }
 
     .mtitle {
@@ -986,17 +1139,17 @@
       font-size: 18px;
       font-weight: 800;
       line-height: 1.3;
-      margin-bottom: 14px;
+      margin-bottom: 14px
     }
 
     .mtitle span {
-      color: var(--hot);
+      color: var(--hot)
     }
 
     .mopts {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 8px
     }
 
     .mopt2 {
@@ -1010,16 +1163,18 @@
       color: var(--tx);
       text-align: left;
       transition: all .2s;
+      display: block;
+      width: 100%
     }
 
     .mopt2:hover {
       border-color: var(--hot);
-      background: rgba(232, 98, 42, .08);
+      background: rgba(232, 98, 42, .08)
     }
 
     /* LOADING */
     #loading {
-      flex-direction: column;
+      flex-direction: column
     }
 
     .lwrap {
@@ -1029,7 +1184,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 24px
     }
 
     .lcirc {
@@ -1042,7 +1197,7 @@
       justify-content: center;
       margin-bottom: 28px;
       box-shadow: 0 0 60px rgba(232, 98, 42, .5);
-      animation: lp 1.6s ease-in-out infinite;
+      animation: lp 1.6s ease-in-out infinite
     }
 
     @keyframes lp {
@@ -1062,7 +1217,7 @@
       font-weight: 900;
       font-family: var(--fh);
       color: #fff;
-      line-height: 1;
+      line-height: 1
     }
 
     .ltxt {
@@ -1071,12 +1226,12 @@
       text-align: center;
       max-width: 280px;
       transition: opacity .3s;
-      font-style: italic;
+      font-style: italic
     }
 
     /* LANDING */
     #landing {
-      flex-direction: column;
+      flex-direction: column
     }
 
     .lwrap2 {
@@ -1086,596 +1241,636 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 16px 60px; /* Mais espaço embaixo para o rodapé */
+      padding: 48px 32px 52px;
       text-align: center;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden
     }
 
     .lwrap2::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(232, 98, 42, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(232, 98, 42, .05) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
-      pointer-events: none;
+      background-image: linear-gradient(rgba(232, 98, 42, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(232, 98, 42, .06) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 75%);
+      pointer-events: none
     }
 
     .lwrap2::after {
-      content: '';
+      content: "";
       position: absolute;
-      top: 30%;
+      top: 28%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px;
-      height: 320px;
-      background: radial-gradient(ellipse, rgba(232, 98, 42, .18) 0%, rgba(232, 98, 42, .04) 50%, transparent 80%);
-      pointer-events: none;
+      width: min(500px, 75vw);
+      height: 260px;
+      background: radial-gradient(ellipse, rgba(232, 98, 42, .16) 0%, rgba(232, 98, 42, .04) 55%, transparent 80%);
+      pointer-events: none
     }
 
     .lcont {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1400px; /* Expandido para dar espaço total aos cards */
+      max-width: 860px
     }
 
     .bwmlogo {
       display: inline-flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 5px;
+      justify-content: center;
+      gap: 0;
       margin-bottom: 28px;
+      line-height: 1
     }
 
     .bwmmark {
-      width: 58px;
-      height: 58px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--hot) 0%, var(--ember) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--fh);
-      font-size: 18px;
-      font-weight: 900;
-      color: #fff;
-      box-shadow: 0 0 32px rgba(232, 98, 42, .44), 0 8px 24px rgba(0, 0, 0, .5);
-      position: relative;
-    }
-
-    .bwmmark::after {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, .2);
+      display: none
     }
 
     .bwmname {
+      display: none
+    }
+
+    .bwmlogo-desafio {
       font-family: var(--fh);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      color: var(--tx3);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: .12em;
+      text-transform: uppercase
+    }
+
+    .bwmlogo-sep {
+      font-family: var(--fh);
+      font-size: clamp(20px, 2.6vw, 32px);
+      font-weight: 300;
+      color: rgba(255, 255, 255, .35);
+      letter-spacing: 0
+    }
+
+    .bwmlogo-dias {
+      font-family: var(--fh);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--hot);
+      letter-spacing: .12em;
       text-transform: uppercase;
+      text-shadow: 0 0 28px rgba(232, 98, 42, .6)
     }
 
     .lbrow {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: .14em;
       color: var(--hot);
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 14px
     }
 
     .ltitleland {
       font-family: var(--fh);
-      font-size: clamp(20px, 6vw, 34px);
+      font-size: clamp(36px, 5.5vw, 72px);
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 8px;
-      background: linear-gradient(170deg, #fff 0%, var(--hot2) 80%, var(--hot) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 1;
+      white-space: nowrap;
+      margin-bottom: 18px;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      background-clip: unset;
+      letter-spacing: -.01em
     }
 
     .lsubland {
-      font-size: 14px;
-      color: var(--tx2);
-      margin-bottom: 30px;
-      max-width: 360px;
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 28px;
+      max-width: 560px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6
+    }
+
+    .ltitle-white {
+      color: #ffffff;
+      -webkit-text-fill-color: #ffffff
+    }
+
+    .ltitle-sep {
+      color: rgba(255, 255, 255, .28);
+      -webkit-text-fill-color: rgba(255, 255, 255, .28);
+      font-weight: 300
+    }
+
+    .ltitle-orange {
+      background: linear-gradient(90deg, var(--hot) 0%, var(--hot2) 35%, #fff 50%, var(--hot2) 65%, var(--hot) 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      animation: shimmerTxt 1.4s linear infinite;
+      filter: drop-shadow(0 0 22px rgba(232, 98, 42, .65))
+    }
+
+    @keyframes shimmerTxt {
+      0% {
+        background-position: 150% center
+      }
+
+      100% {
+        background-position: -150% center
+      }
     }
 
     .lctakey {
-      font-size: 12px;
+      font-size: 15px;
       color: var(--tx3);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      letter-spacing: .02em
     }
 
     .agrid {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 4vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
       width: 100%;
-      max-width: 100vw;
-      padding: 24px 6vw 40px;
-      margin: 0 auto 3vh;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .agrid::-webkit-scrollbar {
-      display: none;
+      max-width: 860px;
+      padding: 4px 0 28px;
+      margin: 0 auto
     }
 
     .acard {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--rl);
+      background: rgba(255, 255, 255, .04);
+      border: 1.5px solid rgba(255, 255, 255, .1);
+      border-radius: 14px;
       overflow: hidden;
       cursor: pointer;
       transition: all .25s;
       display: flex;
       flex-direction: column;
-      flex: 0 0 28vh;
-      scroll-snap-align: center;
+      min-width: 0
     }
 
     .acard:hover {
-      border-color: rgba(232, 98, 42, .8);
-      box-shadow: 0 0 16px rgba(232, 98, 42, .25);
+      border-color: rgba(232, 98, 42, .85);
+      box-shadow: 0 0 24px rgba(232, 98, 42, .3), 0 4px 16px rgba(0, 0, 0, .4);
+      transform: translateY(-3px)
     }
 
     .acard:active {
-      transform: scale(.97);
+      transform: scale(.97)
     }
 
     .aimg {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #1a1410, #0f0c0a);
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(180deg, #1e1209 0%, #0f0c0a 100%);
       display: flex;
       align-items: flex-end;
       justify-content: center;
       overflow: hidden;
+      position: relative
     }
 
     .aimg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top;
+      object-position: top center;
+      display: block
+    }
+
+    .aimg::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(10, 8, 6, .7) 0%, transparent 100%);
+      pointer-events: none
     }
 
     .albl {
-      padding: 10px 8px;
-      font-size: 13px;
+      padding: 13px 10px 14px;
+      font-size: 15px;
       font-weight: 700;
       font-family: var(--fh);
       color: var(--tx);
       text-align: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, .04);
+      white-space: nowrap;
+      letter-spacing: .01em
     }
 
     .llegal {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 9px;
-      color: #333;
+      font-size: 10px;
+      color: #444;
       max-width: 90%;
       line-height: 1.4;
       text-align: center;
-      width: 100%;
+      margin: 0 auto
     }
 
     .llegal a {
-      color: #333;
+      color: #555
     }
 
-    @media(min-width:540px) {
+    @media(max-width:700px) {
+      .lwrap2 {
+        padding: 40px 16px 48px;
+        justify-content: flex-start
+      }
+
+      .ltitleland {
+        font-size: clamp(26px, 7.5vw, 46px);
+        white-space: normal
+      }
+
+      .lsubland {
+        font-size: 15px;
+        margin-bottom: 20px
+      }
+
+      .lctakey {
+        font-size: 13px
+      }
+
       .agrid {
-        justify-content: flex-start;
-        width: max-content;
-        max-width: 100%;
-        gap: 32px;
-        margin: 0 auto 3vh;
-        padding-left: 20px;
-        padding-right: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        max-width: 100%
       }
-      .acard {
-        flex: 0 0 280px; /* Cards grandes e imponentes no desktop */
+
+      .albl {
+        font-size: 13px;
+        padding: 10px 6px
       }
     }
 
-    /* TINDER SWIPE */
-    .tinder-stack {
-      position: relative;
-      height: 380px;
-      margin-bottom: 20px;
-      width: 100%;
-      max-width: 320px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .tinder-card {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
-      transform-origin: 50% 100%;
-      will-change: transform, opacity;
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--rl);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .tinder-card .simg {
-      flex: 1;
-      height: auto;
-      border-radius: 0;
-      background: #000;
-    }
-    .swipe-left { animation: swipeL 0.4s forwards; }
-    .swipe-right { animation: swipeR 0.4s forwards; }
-    .swipe-down { animation: swipeD 0.4s forwards; }
+    @media(max-width:400px) {
+      .ltitleland {
+        font-size: 24px;
+        white-space: normal
+      }
 
-    @keyframes swipeL { to { transform: translateX(-150%) rotate(-15deg); opacity: 0; } }
-    @keyframes swipeR { to { transform: translateX(150%) rotate(15deg); opacity: 0; } }
-    @keyframes swipeD { to { transform: translateY(150%) scale(0.8); opacity: 0; } }
-
-    /* PLAN HEADER */
-    .phdr {
-      background: linear-gradient(135deg, rgba(34, 20, 10, .9), rgba(20, 12, 6, .9));
-      border: 1px solid rgba(232, 98, 42, .22);
-      border-radius: var(--r);
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .phdr-ico {
-      color: #22c55e;
-      font-size: 18px;
-    }
-
-    .phdr-txt {
-      font-size: 12px;
-      color: var(--tx2);
-    }
-
-    .pprog {
-      height: 5px;
-      background: rgba(255, 255, 255, .06);
-      border-radius: 3px;
-      margin-bottom: 22px;
-    }
-
-    .pprogf {
-      height: 100%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--ember), var(--hot));
-      box-shadow: 0 0 8px var(--hot);
+      .lsubland {
+        font-size: 14px
+      }
     }
 
     /* RESULT */
     #result {
-      flex-direction: column;
+      flex-direction: column
     }
 
     .rbody {
+      width: 100%
+    }
+
+    /* EVOLUTION SECTION */
+    .evosec {
+      padding: 4vh 16px 3vh;
       width: 100%;
+      background: var(--bg)
     }
 
-    /* CALENDAR COMPONENT */
-    .cal-wrap {
-      position: relative;
-      margin-top: 80px;
-      margin-bottom: 30px;
-      background: linear-gradient(180deg, #1c1815 0%, #100d0b 100%);
-      border: 1px solid rgba(255, 255, 255, .05);
-      border-radius: var(--rl);
-      padding: 40px 16px 20px;
+    .evosec-in {
+      max-width: 700px;
+      margin: 0 auto
     }
 
-    .cal-imgwrap {
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140px;
-      height: 140px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 2;
-      pointer-events: none;
+    .evotitle {
+      font-family: var(--fh);
+      font-size: clamp(20px, 5.5vw, 26px);
+      font-weight: 800;
+      margin-bottom: 6px
     }
 
-    .cal-photo {
-      max-height: 100%;
-      width: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    .cal-grid {
-      display: grid;
-      grid-template-columns: 24px repeat(7, 1fr);
-      gap: 4px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cal-hdr {
-      font-size: 8px;
-      color: var(--tx3);
-      text-align: center;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .cal-wk {
-      font-size: 8px;
+    .evosub {
+      font-size: 13px;
       color: var(--tx2);
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 4px;
-      padding: 4px 0;
+      margin-bottom: 20px
     }
 
-    .cal-cell {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 4px;
-      aspect-ratio: 1;
+    /* Hero image above both cards */
+    .evo-hero-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px 12px 0 0;
+      display: block;
+      margin-bottom: 0
+    }
+
+    .evo-hero-wrap {
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      margin-bottom: 0
+    }
+
+    .evo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden
+    }
+
+    .evo-card {
+      background: #0f0d0b;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255, 255, 255, .07)
+    }
+
+    .evo-card:last-child {
+      border-right: none
+    }
+
+    .evo-week-row {
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 10px 12px;
+      background: #1a1510;
+      border-bottom: 1px solid rgba(255, 255, 255, .05)
+    }
+
+    .evo-badge {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 30px;
+      background: rgba(232, 98, 42, .15);
+      border: 1px solid rgba(232, 98, 42, .4);
+      color: var(--hot)
+    }
+
+    .evo-desc-row {
       font-size: 10px;
       color: var(--tx3);
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      line-height: 1.4;
+      font-style: italic
     }
 
-    .cal-cell.active {
-      background: rgba(232, 98, 42, .12);
-      color: var(--hot);
-      border: 1px solid rgba(232, 98, 42, .25);
+    .evo-bullets {
+      padding: 10px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px
+    }
+
+    .evo-bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.4
+    }
+
+    .evo-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--hot);
+      flex-shrink: 0;
+      margin-top: 4px;
+      box-shadow: 0 0 6px rgba(232, 98, 42, .6)
+    }
+
+    .evodiscl {
+      font-size: 10px;
+      color: var(--tx3);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+      padding: 0 4px
     }
 
     /* SUMMARY */
     .summsec {
       background: var(--bg);
-      padding: 28px 16px;
+      padding: 4vh 16px 3.5vh;
+      border-top: 1px solid rgba(255, 255, 255, .04)
     }
 
     .summin {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto
     }
 
     .summtitle {
       font-family: var(--fh);
-      font-size: clamp(20px, 5.5vw, 30px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 22px;
+      font-size: clamp(22px, 6vw, 38px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 22px
     }
 
     .bmicard {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--rl);
-      padding: 16px;
-      margin-bottom: 16px;
+      background: #1c1816;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px
     }
 
     .bmirow {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 6px
     }
 
     .bmilbl {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--tx3);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .08em
     }
 
     .bmival {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 900;
       font-family: var(--fh);
+      margin-bottom: 12px
     }
 
     .bmitrk {
-      height: 7px;
+      height: 8px;
       border-radius: 4px;
       background: linear-gradient(90deg, #3b82f6 0%, #22c55e 25%, #facc15 50%, var(--hot) 75%, #ef4444 100%);
       position: relative;
-      margin: 8px 0 5px;
+      margin-bottom: 8px
     }
 
     .bmimkr {
       position: absolute;
       top: -5px;
-      width: 17px;
-      height: 17px;
-      background: #fff;
-      border-radius: 50%;
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 3px #fff;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 11px solid #fff;
       transform: translateX(-50%);
-      transition: left .9s ease;
+      transition: left .9s ease
     }
 
     .bmirange {
       display: flex;
       justify-content: space-between;
-      font-size: 10px;
+      font-size: 11px;
       color: var(--tx3);
-      margin-bottom: 8px;
+      margin-bottom: 10px
     }
 
     .bmistatus {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 800;
       font-family: var(--fh);
+      margin-bottom: 6px
     }
 
     .bmidesc {
       font-size: 12px;
-      color: var(--tx2);
-      margin-top: 4px;
-      line-height: 1.5;
+      color: var(--tx3);
+      line-height: 1.6
     }
 
     .sn2 {
-      color: #22c55e;
+      color: #22c55e
     }
 
     .sow {
-      color: #facc15;
+      color: #facc15
     }
 
     .sob {
-      color: var(--hot);
+      color: var(--hot)
     }
 
     .su {
-      color: #3b82f6;
+      color: #3b82f6
     }
 
     .recgrid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
 
     .reccard {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--rl);
+      background: #1c1816;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 12px;
       padding: 14px;
+      position: relative
     }
 
     .recbadge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
       font-size: 9px;
       font-weight: 800;
-      color: var(--hot);
-      border: 1px solid rgba(232, 98, 42, .3);
-      border-radius: 30px;
-      padding: 2px 8px;
-      display: inline-block;
-      margin-bottom: 8px;
+      color: #fff;
+      background: var(--hot);
+      border-radius: 0 0 8px 8px;
+      padding: 2px 10px;
       letter-spacing: .04em;
-      font-family: var(--fh);
+      font-family: var(--fh)
     }
 
     .recico {
-      font-size: 26px;
-      margin-bottom: 6px;
-      display: block;
+      font-size: 24px;
+      margin: 12px 0 6px;
+      display: block
     }
 
     .recname {
       font-size: 11px;
-      color: var(--tx2);
-      margin-bottom: 2px;
+      color: var(--tx3);
+      margin-bottom: 2px
     }
 
     .recval {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       font-family: var(--fh);
+      margin-bottom: 10px
     }
 
     .recsldr {
-      height: 4px;
+      height: 5px;
       background: rgba(255, 255, 255, .08);
-      border-radius: 2px;
-      margin: 8px 0 4px;
-      position: relative;
+      border-radius: 3px;
+      margin: 6px 0 4px;
+      position: relative
     }
 
     .recsf {
       height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--ember), var(--hot));
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--ember), var(--hot))
     }
 
     .recst {
       position: absolute;
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
       background: var(--hot);
       border-radius: 50%;
       top: -4.5px;
       transform: translateX(-50%);
-      box-shadow: 0 0 8px var(--hot);
+      box-shadow: 0 0 8px var(--hot)
     }
 
     .recrng {
       display: flex;
       justify-content: space-between;
       font-size: 10px;
-      color: var(--tx3);
+      color: var(--tx3)
     }
 
-    .wdots {
+    .water-cups {
       display: flex;
-      gap: 2px;
+      gap: 4px;
       flex-wrap: wrap;
-      margin-top: 6px;
+      margin-top: 8px
     }
 
-    .wd {
-      font-size: 14px;
+    .wcup {
+      font-size: 18px;
+      line-height: 1
     }
 
-    .wd.dim {
-      opacity: .2;
-    }
-
-    /* WHAT YOU GET */
-    .wygsec {
-      padding: 28px 16px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .wygtitle {
-      font-family: var(--fh);
-      font-size: clamp(20px, 5vw, 26px);
-      font-weight: 800;
-      margin-bottom: 20px;
+    .wcup.dim {
+      opacity: .2
     }
 
     .wygitem {
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      margin-bottom: 22px;
+      margin-bottom: 22px
     }
 
     .wygico {
@@ -1688,684 +1883,916 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 20px
     }
 
     .wygtit {
       font-size: 14px;
       font-weight: 700;
       font-family: var(--fh);
-      margin-bottom: 3px;
+      margin-bottom: 3px
     }
 
     .wygdesc {
       font-size: 12px;
       color: var(--tx2);
-      line-height: 1.5;
+      line-height: 1.5
     }
 
-    /* PRODUCT */
-    .prodsec {
-      background: var(--bg);
-      padding: 28px 16px;
-      border-top: 1px solid rgba(255, 255, 255, .04);
-    }
-
-    .prodin {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .prodoico {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, var(--hot), var(--ember));
-      border-radius: var(--rl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin: 0 auto 10px;
-    }
-
-    .prodlbl {
-      font-size: 12px;
-      color: var(--tx2);
-      margin-bottom: 5px;
-    }
-
-    .prodtitle {
+    .wygtitle {
       font-family: var(--fh);
       font-size: clamp(20px, 5vw, 26px);
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 20px
     }
 
-    .prodimgw {
-      width: 100%;
-      max-width: 380px;
-      margin: 0 auto 20px;
-      border-radius: var(--rl);
-      overflow: hidden;
-      background: var(--glass);
-      border: 1px solid var(--gb);
+    /* GOALS SECTION — redesigned */
+    .goalsec {
+      padding: 4vh 16px;
+      border-top: 1px solid rgba(255, 255, 255, .04);
+      background: linear-gradient(180deg, #0e0a07 0%, var(--bg) 100%)
     }
 
-    .prodimgw img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: var(--rl);
+    .goalsin {
+      max-width: 700px;
+      margin: 0 auto
     }
 
-    .prodimgph {
-      height: 200px;
+    .goalstitle {
+      font-family: var(--fh);
+      font-size: clamp(26px, 5.5vw, 40px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 8px
+    }
+
+    .goalstitle span {
+      background: linear-gradient(135deg, var(--hot), var(--hot2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .goalssub {
+      font-size: 15px;
+      color: var(--tx3);
+      margin-bottom: 24px;
+      line-height: 1.6
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    @media(max-width:500px) {
+      .goals-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(232, 98, 42, .06), rgba(232, 98, 42, .02));
+      border: 1px solid rgba(232, 98, 42, .18);
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .goal-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ember), var(--hot));
+      opacity: .6
+    }
+
+    .goal-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hot), var(--ember));
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--tx3);
-      font-size: 13px;
-    }
-
-    .goaltit {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 12px;
-      text-align: left;
-    }
-
-    .goalgrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      text-align: left;
-      margin-bottom: 24px;
-    }
-
-    .goalitem {
-      display: flex;
-      gap: 7px;
-      align-items: flex-start;
-      font-size: 13px;
-      color: var(--tx2);
-    }
-
-    .goalchk {
-      color: var(--hot);
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      font-family: var(--fh);
       flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(232, 98, 42, .4)
     }
 
-    /* SOCIAL */
+    .goal-txt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--tx);
+      line-height: 1.4;
+      padding-top: 6px
+    }
+
+    /* PRE-BONUS IMAGE */
+    .prebonus-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block
+    }
+
+    /* BONUS SECTION */
+    .bonussec {
+      padding: 4vh 16px;
+      border-top: 1px solid rgba(255, 255, 255, .04);
+      background: var(--bg)
+    }
+
+    .bonusin {
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .bonustitle {
+      font-family: var(--fh);
+      font-size: clamp(22px, 5.5vw, 34px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 8px
+    }
+
+    .bonussub {
+      font-size: 14px;
+      color: var(--tx3);
+      line-height: 1.7;
+      margin-bottom: 28px
+    }
+
+    .bonus-card {
+      background: linear-gradient(135deg, #18110a, #120d08);
+      border: 1px solid rgba(232, 98, 42, .2);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch
+    }
+
+    .bonus-img-col {
+      flex-shrink: 0;
+      width: 130px;
+      overflow: hidden;
+      background: #1a0e05
+    }
+
+    .bonus-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block
+    }
+
+    @media(max-width:500px) {
+      .bonus-card {
+        flex-direction: column
+      }
+
+      .bonus-img-col {
+        width: 100%;
+        height: 180px
+      }
+
+      .bonus-img-col img {
+        height: 180px
+      }
+    }
+
+    .bonus-txt-col {
+      flex: 1;
+      padding: 18px 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      border-left: 1px solid rgba(255, 255, 255, .05)
+    }
+
+    .bonus-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--hot);
+      background: rgba(232, 98, 42, .12);
+      border: 1px solid rgba(232, 98, 42, .35);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 10px
+    }
+
+    .bonus-name {
+      font-family: var(--fh);
+      font-size: clamp(17px, 4vw, 22px);
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #fff
+    }
+
+    .bonus-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .7);
+      line-height: 1.7
+    }
+
+    .bonus-tag2 {
+      background: linear-gradient(135deg, rgba(100, 60, 200, .15), rgba(60, 100, 220, .1));
+      border-color: rgba(120, 80, 220, .3);
+      color: #a78bfa
+    }
+
+    /* SOCIAL PROOF */
     .socblk {
-      padding: 28px 16px;
+      padding: 5vh 16px;
       text-align: center;
       background: var(--bg);
-      border-top: 1px solid rgba(255, 255, 255, .04);
+      border-top: 1px solid rgba(255, 255, 255, .04)
     }
 
     .socin {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto
     }
 
     .laurrow {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 4px;
+      gap: 14px;
+      margin-bottom: 6px
     }
 
     .laurtxt {
-      font-size: clamp(24px, 6vw, 38px);
-      font-weight: 900;
       font-family: var(--fh);
-      line-height: 1;
+      font-size: clamp(26px, 6vw, 42px);
+      font-weight: 900;
+      line-height: 1
     }
 
-    .laursym {
-      font-size: 36px;
-      line-height: 1;
-      color: var(--hot);
-    }
-
-    .socsub {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 16px;
+    .laursub {
+      font-size: 14px;
+      color: var(--tx3);
+      margin-bottom: 18px
     }
 
     .starsbox {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 10px 18px;
-      margin-bottom: 14px;
+      gap: 5px;
+      background: #1c1816;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 8px;
+      padding: 12px 28px;
+      margin-bottom: 14px
     }
 
     .starsrow {
-      font-size: 18px;
+      font-size: 22px;
       color: var(--amber);
-      letter-spacing: 2px;
+      letter-spacing: 2px
     }
 
     .starssub {
-      font-size: 12px;
-      color: var(--tx2);
+      font-size: 13px;
+      color: var(--tx3)
     }
 
     .ratingn {
+      color: var(--hot);
+      font-weight: 800
+    }
+
+    .laur-hero {
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--fh)
+    }
+
+    /* FULL WORKOUT PLAN — numbered steps, orange theme */
+    .fullplan-sec {
+      padding: 8vh 16px 8vh;
+      border-top: 1px solid rgba(255, 255, 255, .04);
+      background: linear-gradient(180deg, #1a0b00 0%, #0f0700 50%, #0A0806 100%)
+    }
+
+    .fullplan-in {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center
+    }
+
+    .fullplan-title {
+      font-family: var(--fh);
+      font-size: clamp(22px, 5.5vw, 32px);
+      font-weight: 900;
+      margin-bottom: 40px;
+      color: #fff
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      text-align: left;
+      position: relative
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 40px
+    }
+
+    .step-item:last-child {
+      padding-bottom: 0
+    }
+
+    /* vertical line — orange */
+    .step-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 42px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(232, 98, 42, .7), rgba(232, 98, 42, .1))
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hot), var(--ember));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      font-family: var(--fh);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 24px rgba(232, 98, 42, .55)
+    }
+
+    .step-txt-wrap {
+      padding-top: 8px
+    }
+
+    .step-title {
+      font-family: var(--fh);
       font-size: 16px;
       font-weight: 800;
-      color: var(--hot);
+      color: var(--hot2);
+      margin-bottom: 6px
     }
 
-    /* CHAMP */
-    .champblk {
-      background: var(--bg);
-      padding: 20px 16px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, .04);
+    .step-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .7);
+      line-height: 1.65
     }
 
-    .champnum {
-      font-family: var(--fh);
-      font-size: clamp(22px, 6vw, 34px);
-      font-weight: 900;
-      color: var(--hot);
+    /* scroll reveal */
+    .step-item {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity .6s ease, transform .6s ease
     }
 
-    .champdesc {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-top: 2px;
+    .step-item.revealed {
+      opacity: 1;
+      transform: none
     }
 
     /* PRICING */
     .pricsec {
-      padding: 28px 16px 32px;
+      padding: 4vh 0 5vh;
       background: var(--bg);
+      border-top: 1px solid rgba(255, 255, 255, .04);
+      overflow: hidden
     }
 
-    .pricin {
-      max-width: 700px;
+    .pric-top-cta {
+      padding: 20px 16px
+    }
+
+    .pric-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(290px, 1fr);
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .dtimer {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 10px;
-      display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0
     }
 
-    .timerv {
-      color: var(--hot);
-      font-weight: 800;
-      font-size: 18px;
-      font-variant-numeric: tabular-nums;
+    @media(max-width:680px) {
+      .pric-layout {
+        grid-template-columns: 1fr
+      }
+
+      .pric-left {
+        order: 2;
+        padding: 20px 16px 0
+      }
+
+      .pric-right {
+        order: 1
+      }
     }
 
-    .buyersfeed {
-      font-size: 12px;
-      color: var(--tx3);
+    .pric-left {
+      padding: 0 0 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: visible;
+      position: relative
+    }
+
+    .pric-buyers {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: 8px;
+      text-align: center;
+      width: 100%;
+      padding-left: 16px
+    }
+
+    .pric-names {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
       margin-bottom: 14px;
+      padding-left: 16px
+    }
+
+    .pric-nametag {
+      font-size: 11px;
+      background: #1c1816;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: var(--tx3)
+    }
+
+    .pric-nametag strong {
+      color: rgba(255, 255, 255, .85)
+    }
+
+    /* image overflows left — bigger than card */
+    .pric-bodyimg {
+      width: 115%;
+      max-width: none;
+      object-fit: contain;
+      display: block;
+      margin-left: -8%
+    }
+
+    @media(max-width:680px) {
+      .pric-bodyimg {
+        width: 90%;
+        margin: 0 auto
+      }
+    }
+
+    .pric-right {
+      padding: 20px 20px 20px 0
+    }
+
+    /* single price card — dark container */
+    .price-card-wrap {
+      background: #131110;
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 16px;
+      overflow: hidden
     }
 
     .congrbox {
-      background: linear-gradient(135deg, rgba(34, 20, 10, .8), rgba(20, 12, 6, .8));
-      border: 1px solid rgba(232, 98, 42, .28);
-      border-radius: var(--r);
-      padding: 12px 14px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .planstitle {
-      font-family: var(--fh);
-      font-size: 18px;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .plancard {
-      background: var(--glass);
-      border: 1.5px solid var(--gb);
-      border-radius: var(--rl);
+      background: linear-gradient(135deg, #2a1c0e, #1a1208);
+      border-bottom: 1px solid rgba(232, 98, 42, .25);
       padding: 16px;
-      cursor: pointer;
-      transition: all .2s;
-      position: relative;
-      margin-bottom: 10px;
+      text-align: center
     }
 
-    .plancard:hover {
-      border-color: rgba(232, 98, 42, .4);
+    .price-body {
+      padding: 20px
     }
 
-    .plancard.psel {
-      border-color: var(--hot);
+    .plan-single {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
       background: rgba(232, 98, 42, .06);
+      border: 1.5px solid var(--hot);
+      border-radius: 12px;
+      margin-bottom: 16px
     }
 
-    .plancard.ppop {
-      border-color: var(--hot);
-    }
+    .plan-single-left {}
 
-    .popbdg {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--ember), var(--hot));
-      color: #fff;
-      font-size: 9px;
-      font-weight: 800;
+    .plan-single-name {
       font-family: var(--fh);
-      padding: 3px 14px;
-      border-radius: 0 0 8px 8px;
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-
-    .plantop {
-      display: flex;
-      align-items: center;
-    }
-
-    .planradio {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid #3a3028;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color .2s;
-    }
-
-    .plancard.psel .planradio {
-      border-color: var(--hot);
-    }
-
-    .planrdot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--hot);
-      display: none;
-    }
-
-    .plancard.psel .planrdot {
-      display: block;
-    }
-
-    .planname {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
-      font-family: var(--fh);
-      flex: 1;
-      padding: 0 10px;
+      letter-spacing: .04em;
+      margin-bottom: 4px
     }
 
-    .planold {
+    .plan-single-sub {
+      font-size: 11px;
+      color: var(--tx3)
+    }
+
+    .plan-single-price {
+      text-align: right
+    }
+
+    .plan-single-old {
       font-size: 11px;
       color: var(--tx3);
-      text-decoration: line-through;
+      text-decoration: line-through
     }
 
-    .planprice {
-      font-size: 22px;
+    .plan-single-val {
+      font-size: 32px;
       font-weight: 900;
       font-family: var(--fh);
+      line-height: 1;
+      color: #fff
     }
 
-    .planper {
-      font-size: 10px;
-      color: var(--tx3);
-    }
-
-    .planbonus {
+    .plan-single-per {
       font-size: 11px;
-      color: var(--hot);
-      margin-top: 8px;
+      color: var(--tx3)
     }
 
     .plannote {
       font-size: 12px;
-      color: var(--tx2);
-      margin: 12px 0;
+      color: var(--tx3);
+      margin: 0 0 16px;
       display: flex;
       gap: 8px;
+      align-items: flex-start;
+      line-height: 1.5
     }
 
     /* GUARANTEE */
     .gsec {
-      padding: 24px 16px;
+      padding: 3vh 16px;
       background: var(--bg);
-      border-top: 1px solid rgba(255, 255, 255, .04);
+      border-top: 1px solid rgba(255, 255, 255, .04)
     }
 
     .gin {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto
     }
 
     .gbox {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--rl);
-      padding: 20px;
+      background: #1a1614;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 14px;
+      padding: 24px;
       display: flex;
-      gap: 16px;
+      gap: 24px;
       align-items: center;
+      flex-wrap: wrap
     }
 
-    .gseal {
-      width: 80px;
-      height: 80px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(232, 98, 42, .08), rgba(192, 74, 24, .04));
-      border: 2px solid rgba(232, 98, 42, .35);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--hot);
-      text-align: center;
-      line-height: 1.2;
-      font-family: var(--fh);
-    }
-
-    .gsealn {
-      font-size: 25px;
-      font-weight: 900;
-      display: block;
+    .gbox-text {
+      flex: 1;
+      min-width: 200px
     }
 
     .gtitle {
       font-family: var(--fh);
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 10px
     }
 
     .gtxt {
-      font-size: 12px;
-      color: var(--tx2);
-      line-height: 1.6;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.7
     }
 
     .glink {
+      color: var(--hot)
+    }
+
+    /* seal graphic */
+    .gseal-wrap {
+      flex-shrink: 0
+    }
+
+    .gseal {
+      width: 110px;
+      height: 110px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .gseal-ring {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid var(--hot);
+      position: absolute;
+      inset: 0;
+      box-shadow: 0 0 20px rgba(232, 98, 42, .35), inset 0 0 20px rgba(232, 98, 42, .1)
+    }
+
+    .gseal-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center
+    }
+
+    .gseal-n {
+      font-size: 36px;
+      font-weight: 900;
+      font-family: var(--fh);
       color: var(--hot);
+      line-height: 1;
+      display: block;
+      text-shadow: 0 0 20px rgba(232, 98, 42, .6)
+    }
+
+    .gseal-txt {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--hot);
+      line-height: 1.4
+    }
+
+    /* stars around seal */
+    .gseal::before {
+      content: "\2605 \2605 \2605";
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      color: var(--hot);
+      letter-spacing: 4px;
+      opacity: .8
+    }
+
+    .gseal::after {
+      content: "";
     }
 
     /* TESTIMONIALS */
     .testsec {
       background: var(--bg);
-      padding: 28px 16px 32px;
-      border-top: 1px solid rgba(255, 255, 255, .04);
+      padding: 4vh 16px;
+      border-top: 1px solid rgba(255, 255, 255, .04)
     }
 
     .testin {
       max-width: 700px;
       margin: 0 auto;
+      text-align: center
     }
 
     .testtitle {
       font-size: 16px;
-      color: var(--tx2);
+      color: var(--tx3)
     }
 
     .testnum {
       font-family: var(--fh);
-      font-size: clamp(24px, 6vw, 36px);
+      font-size: clamp(28px, 7vw, 48px);
       font-weight: 900;
-      margin-bottom: 4px;
+      margin-bottom: 4px
     }
 
     .testsub {
-      font-size: 13px;
-      color: var(--tx2);
-      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--tx3);
+      margin-bottom: 24px
     }
 
     .testcards {
       display: grid;
-      gap: 10px;
+      gap: 10px
     }
 
     .testcard {
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: var(--r);
+      background: #1c1816;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 10px;
       padding: 14px;
+      text-align: left
     }
 
     .testhd {
       display: flex;
       gap: 10px;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 10px
     }
 
     .testav {
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(232, 98, 42, .18);
-      border: 1px solid rgba(232, 98, 42, .28);
+      background: rgba(232, 98, 42, .15);
+      border: 1px solid rgba(232, 98, 42, .3);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 14px;
       flex-shrink: 0;
       font-family: var(--fh);
-      font-weight: 700;
-      color: var(--hot);
+      font-weight: 800;
+      color: var(--hot)
     }
 
     .testnm {
       font-size: 13px;
       font-weight: 700;
-      font-family: var(--fh);
+      font-family: var(--fh)
     }
 
     .teststars {
       color: var(--amber);
-      font-size: 12px;
+      font-size: 13px;
+      letter-spacing: 1px
     }
 
     .testver {
       font-size: 10px;
       color: #22c55e;
       margin-left: auto;
+      white-space: nowrap
     }
 
     .testtxt {
-      font-size: 12px;
-      color: var(--tx2);
-      line-height: 1.6;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.6
     }
 
     @media(min-width:600px) {
       .testcards {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr
       }
     }
 
     /* FOOTER */
     .rfooter {
-      background: var(--bg);
-      padding: 28px 16px;
+      background: #0d0b09;
+      padding: 36px 16px 90px;
       text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, .06);
-    }
-
-    .footsocial {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .footico {
-      width: 46px;
-      height: 46px;
-      background: var(--glass);
-      border: 1px solid var(--gb);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .footico:hover {
-      border-color: var(--hot);
-      box-shadow: 0 0 16px var(--glow);
-    }
-
-    .foottxt {
-      font-size: 13px;
-      color: var(--tx3);
-    }
-
-    .footlink {
-      color: var(--hot);
+      border-top: 1px solid rgba(255, 255, 255, .06)
     }
 
     .footcopy {
       font-size: 11px;
-      color: var(--tx3);
-      margin-top: 10px;
+      color: rgba(255, 255, 255, .2);
+      margin-top: 12px
     }
 
-    /* CTA */
-    .ctamain {
-      width: 100%;
-      max-width: 520px;
-      margin: 0 auto;
+    .footsocial {
       display: flex;
-      background: linear-gradient(135deg, var(--hot) 0%, var(--ember) 100%);
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 14px
+    }
+
+    .footico {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      overflow: hidden
+    }
+
+    .footico-ig {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
+    }
+
+    .footico-fb {
+      background: #1877f2
+    }
+
+    .foottxt {
+      font-size: 14px;
+      color: var(--tx3);
+      margin-bottom: 6px
+    }
+
+    .footlink {
+      color: var(--hot)
+    }
+
+    /* CTA BUTTONS */
+    .ctamain {
+      display: inline-flex;
+      background: linear-gradient(135deg, var(--hot), var(--ember));
       color: #fff;
       border: none;
       border-radius: var(--r);
-      padding: 16px;
-      font-size: 16px;
+      padding: 14px 32px;
+      font-size: 15px;
       font-weight: 800;
       font-family: var(--fh);
       cursor: pointer;
-      text-align: center;
       align-items: center;
       justify-content: center;
       gap: 8px;
       box-shadow: 0 4px 24px rgba(232, 98, 42, .36);
       transition: all .2s;
-      letter-spacing: .02em;
+      letter-spacing: .02em
     }
 
     .ctamain:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 36px rgba(232, 98, 42, .5);
+      box-shadow: 0 8px 36px rgba(232, 98, 42, .5)
     }
 
     .ctamain:active {
-      transform: scale(.98);
+      transform: scale(.98)
     }
 
-    .stickyc {
+    .pric-top-cta .ctamain,
+    .pric-right .ctamain,
+    .pric-right #btnGetPlan {
+      display: flex;
+      width: 100%;
+      padding: 16px;
+      font-size: 16px
+    }
+
+    /* STICKY CTA — fixed size, never wraps */
+    .sticky-cta-bar {
+      display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 16px;
-      background: linear-gradient(to top, #0f0c0a 80%, transparent);
-      z-index: 999;
+      z-index: 200;
+      padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(to top, rgba(10, 8, 6, .96) 60%, transparent);
+      pointer-events: none;
+      text-align: center
     }
 
-    /* UTILS */
-    .aitem {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity .3s ease, transform .3s ease;
+    .sticky-cta-bar.vis {
+      display: block
     }
 
-    .aitem.show {
-      opacity: 1;
-      transform: none;
-    }
-
-    .fbanner {
-      background: linear-gradient(135deg, rgba(30, 58, 95, .7), rgba(15, 30, 50, .9));
-      border: 1px solid rgba(59, 130, 246, .28);
-      border-radius: var(--r);
-      padding: 12px 14px;
-      margin-top: 14px;
-      font-size: 13px;
-      color: #90CAF9;
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      line-height: 1.5;
-      animation: pgIn .3s ease;
-    }
-
-    .evoimgwrap {
-      position: absolute;
-      top: -45px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 110px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 2;
-    }
-
-    .evo-photo {
-      max-height: 100%;
-      width: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    .r-photo-wrap {
-      width: 100%;
-      border-radius: var(--rl);
+    .sticky-cta-bar .ctamain {
+      pointer-events: all;
+      display: inline-flex;
+      width: 280px;
+      padding: 14px 24px;
+      font-size: 15px;
+      border-radius: 50px;
+      box-shadow: 0 4px 32px rgba(232, 98, 42, .5);
+      white-space: nowrap;
       overflow: hidden;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .r-photo {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: var(--rl);
+      text-overflow: ellipsis;
+      flex-shrink: 0
     }
   </style>
 </head>
@@ -2373,14 +2800,13 @@
 <body>
 
   <div id="topBar">
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
       <div class="tl">
-        <div class="tl-mark">BWM</div>
-        <span class="tl-txt">Desafio BWM · 14 Dias</span>
+        <div class="tl-mark">BWM</div><span class="tl-txt">Desafio BWM &middot; 14 Dias</span>
       </div>
     </div>
     <div class="tb-row2">
-      <button id="backBtn" aria-label="Voltar">‹</button>
+      <button id="backBtn" aria-label="Voltar">&#8249;</button>
       <div id="gProg">
         <div id="pFill" style="width:0%"></div>
       </div>
@@ -2388,65 +2814,68 @@
     </div>
   </div>
 
-  <!-- MODAL -->
   <div id="commitModal">
     <div class="mbox">
       <div class="mhdr">
-        <span style="font-size:22px">🎉</span>
-        <span class="mbadge">QUASE LÁ!</span>
+        <span style="font-size:22px">&#127881;</span>
+        <span class="mbadge">QUASE L&Aacute;!</span>
         <button onclick="document.getElementById('commitModal').classList.remove('op')"
-          style="margin-left:auto;background:none;border:none;color:#4a3e34;font-size:22px;cursor:pointer;line-height:1">×</button>
+          style="margin-left:auto;background:none;border:none;color:#4a3e34;font-size:22px;cursor:pointer;line-height:1">&times;</button>
       </div>
-      <div class="mtitle"><span>Você está pronto</span> para assumir o compromisso?</div>
+      <div class="mtitle"><span>Voc&ecirc; est&aacute; pronto</span> para assumir o compromisso?</div>
       <div class="mopts">
-        <button class="mopt2" onclick="commitChoice('tomorrow')">Sim, farei meu primeiro treino amanhã 👌</button>
-        <button class="mopt2" onclick="commitChoice('today')">Sim! Farei meu primeiro treino hoje! 😎</button>
-        <button class="mopt2" onclick="commitChoice('no')" style="color:var(--tx3);font-size:12px">Não estou pronto para
-          me comprometer</button>
+        <button class="mopt2" onclick="commitChoice('tomorrow')">Sim, farei meu primeiro treino amanh&atilde;
+          &#128076;</button>
+        <button class="mopt2" onclick="commitChoice('today')">Sim! Farei meu primeiro treino hoje! &#128526;</button>
+        <button class="mopt2" onclick="commitChoice('no')" style="color:var(--tx3);font-size:12px">N&atilde;o estou
+          pronto para me comprometer</button>
       </div>
     </div>
+  </div>
+
+  <div class="sticky-cta-bar" id="stickyCTA">
+    <button class="ctamain" onclick="scrollToPricing()">Obter meu plano &#8594;</button>
   </div>
 
   <!-- LANDING -->
   <section id="landing" class="section active">
     <div class="lwrap2">
       <div class="lcont">
-        <div class="bwmlogo">
-          <div class="bwmmark">BWM</div>
-          <span class="bwmname">Desafio BWM · 14 Dias</span>
-        </div>
-        <h1 class="ltitleland">CONSTRUA SEU CORPO IDEAL</h1>
-        <p class="lsubland">Plano personalizado baseado no seu IMC, idade e objetivo com resultados em 14 dias</p>
-        <div class="lctakey">Selecione sua faixa etária para começar</div>
+        <h1 class="ltitleland"><span class="ltitle-white">DESAFIO BWM</span><span
+            class="ltitle-sep">&nbsp;&middot;&nbsp;</span><span class="ltitle-orange">14 DIAS</span></h1>
+        <p class="lsubland">Construa seu corpo ideal. Plano personalizado baseado no seu IMC, idade e objetivo.
+          Resultados em 14 dias.</p>
+        <div class="lctakey">Selecione sua faixa et&aacute;ria para come&ccedil;ar</div>
         <div class="agrid" id="ageGrid">
           <div class="acard" onclick="selectAge('18-29')">
-            <div class="aimg"><img src="img/c1m1.png" alt="18 a 29"
-                onerror="this.parentElement.innerHTML='<div style=\'font-size:58px;padding-bottom:6px\'>🧑</div>'">
+            <div class="aimg"><img src="img/c1m1.png" alt="18-29"
+                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129485;</div>'">
             </div>
-            <div class="albl">18 a 29 anos</div>
+            <div class="albl">18 &ndash; 29 anos</div>
           </div>
           <div class="acard" onclick="selectAge('30-39')">
-            <div class="aimg"><img src="img/c1m2.png" alt="30 a 39"
-                onerror="this.parentElement.innerHTML='<div style=\'font-size:58px;padding-bottom:6px\'>👨</div>'">
+            <div class="aimg"><img src="img/c1m2.png" alt="30-39"
+                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'">
             </div>
-            <div class="albl">30 a 39 anos</div>
+            <div class="albl">30 &ndash; 39 anos</div>
           </div>
           <div class="acard" onclick="selectAge('40-49')">
-            <div class="aimg"><img src="img/c1m3.png" alt="40 a 49"
-                onerror="this.parentElement.innerHTML='<div style=\'font-size:58px;padding-bottom:6px\'>👨‍🦳</div>'">
+            <div class="aimg"><img src="img/c1m3.png" alt="40-49"
+                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'">
             </div>
-            <div class="albl">40 a 49 anos</div>
+            <div class="albl">40 &ndash; 49 anos</div>
           </div>
           <div class="acard" onclick="selectAge('50+')">
             <div class="aimg"><img src="img/c1m4.png" alt="50+"
-                onerror="this.parentElement.innerHTML='<div style=\'font-size:58px;padding-bottom:6px\'>🧓</div>'">
+                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129491;</div>'">
             </div>
             <div class="albl">50+ anos</div>
           </div>
         </div>
-        <p class="llegal">Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e nossa <a
-            href="#">Política de Privacidade</a>.<br>Este site não oferece aconselhamento médico. Consulte um
-          profissional de saúde.</p>
+        <p class="llegal">Ao continuar, voc&ecirc; concorda com nossos <a href="#">Termos de Servi&ccedil;o</a> e nossa
+          <a href="#">Pol&iacute;tica de Privacidade</a>.<br>Este site n&atilde;o oferece aconselhamento m&eacute;dico.
+          Consulte um profissional de sa&uacute;de.
+        </p>
       </div>
     </div>
   </section>
@@ -2472,316 +2901,477 @@
   <section id="result" class="section">
     <div class="rbody">
 
-      <!-- Summary -->
+      <!-- 1. EVOLUTION -->
+      <div class="evosec">
+        <div class="evosec-in">
+          <h2 class="evotitle">Sua evolu&ccedil;&atilde;o nas pr&oacute;ximas 2 semanas</h2>
+          <p class="evosub">Baseado nas suas respostas, veja o que te espera</p>
+          <div class="evo-hero-wrap">
+            <img src="img/r1.png" class="evo-hero-img" alt="Evolu&ccedil;&atilde;o"
+              onerror="this.parentElement.style.display='none'">
+          </div>
+          <div class="evo-grid">
+            <div class="evo-card">
+              <div class="evo-week-row"><span class="evo-badge">SEMANA 01</span></div>
+              <div class="evo-desc-row">Voc&ecirc; desincha o corpo e o rosto de maneira percept&iacute;vel</div>
+              <div class="evo-bullets">
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Desincha seu corpo</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Afina seu rosto</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Perde peso</span></div>
+              </div>
+            </div>
+            <div class="evo-card">
+              <div class="evo-week-row"><span class="evo-badge">SEMANA 02</span></div>
+              <div class="evo-desc-row">M&uacute;sculos mais cheios e pele mais fina e definida</div>
+              <div class="evo-bullets">
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Afina a pele</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Enche o m&uacute;sculo</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Acelera seu metabolismo</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="evodiscl">*Resultados baseados nas suas respostas. Resultados individuais podem variar conforme
+            dieta, metabolismo e dedica&ccedil;&atilde;o.</p>
+        </div>
+      </div>
+
+      <!-- 2. SUMMARY -->
       <div class="summsec">
         <div class="summin">
-          <h2 class="summtitle" style="margin-top:20px">Resumo personalizado baseado nas suas respostas</h2>
+          <h2 class="summtitle">Resumo personalizado baseado nas suas respostas</h2>
           <div class="bmicard">
-            <div class="bmirow"><span class="bmilbl">IMC Atual</span></div>
-            <div class="bmival" id="r-bmi">—</div>
+            <div class="bmirow"><span class="bmilbl">IMC Atual</span><button
+                style="width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--tx3);font-size:12px;cursor:pointer">i</button>
+            </div>
+            <div class="bmival" id="r-bmi">&mdash;</div>
             <div class="bmitrk">
               <div class="bmimkr" id="r-bmi-mkr" style="left:30%"></div>
             </div>
             <div class="bmirange"><span>Abaixo do peso</span><span>Obeso</span></div>
-            <div class="bmistatus" id="r-bmi-status">—</div>
-            <div class="bmidesc">O IMC usa sua altura e peso para avaliar se você está na faixa saudável de peso.</div>
+            <div class="bmistatus" id="r-bmi-status">&mdash;</div>
+            <div class="bmidesc">O <strong style="color:rgba(255,255,255,.8);font-weight:600">&iacute;ndice de massa
+                corporal (IMC)</strong> usa sua altura e peso para avaliar se voc&ecirc; est&aacute; na faixa
+              saud&aacute;vel de peso.</div>
           </div>
           <div class="recgrid">
             <div class="reccard">
-              <span class="recbadge">RECOMENDADO</span>
-              <span class="recico">🍽️</span>
-              <div class="recname">Calorias diárias</div>
-              <div class="recval" id="r-cal">—</div>
+              <div class="recbadge">recomendado</div>
+              <span class="recico">&#127828;</span>
+              <div class="recname">Calorias di&aacute;rias</div>
+              <div class="recval" id="r-cal">&mdash;</div>
               <div class="recsldr">
                 <div class="recsf" id="r-cal-fill" style="width:35%"></div>
                 <div class="recst" id="r-cal-thumb" style="left:35%"></div>
               </div>
-              <div class="recrng"><span>1000</span><span>5000 kcal</span></div>
+              <div class="recrng"><span>1000 kcal</span><span>5000 kcal</span></div>
             </div>
             <div class="reccard">
-              <span class="recbadge">RECOMENDADO</span>
-              <span class="recico">💧</span>
-              <div class="recname">Água diária</div>
-              <div class="recval" id="r-water">—</div>
-              <div class="wdots" id="r-water-dots"></div>
+              <div class="recbadge">recomendado</div>
+              <span class="recico">&#128167;</span>
+              <div class="recname">&Aacute;gua di&aacute;ria</div>
+              <div class="recval" id="r-water">&mdash;</div>
+              <div class="water-cups" id="r-water-cups"></div>
             </div>
           </div>
-          <div class="wygtitle" style="margin-top:4px">O que você recebe?</div>
+          <div class="wygtitle" style="margin-top:4px">O que voc&ecirc; recebe?</div>
           <div class="wygitem">
-            <div class="wygico">📋</div>
+            <div class="wygico">&#128203;</div>
             <div>
-              <div class="wygtit">Um plano personalizado de treino e dieta</div>
-              <div class="wygdesc">Estruturado para você na primeira e na segunda semana</div>
+              <div class="wygtit">Um plano de treino estruturado</div>
+              <div class="wygdesc">personalizado para sua idade, tipo de corpo e objetivos de bem-estar.</div>
             </div>
           </div>
           <div class="wygitem">
-            <div class="wygico">📅</div>
+            <div class="wygico">&#9201;</div>
             <div>
-              <div class="wygtit">Plano de execução diário</div>
-              <div class="wygdesc">Projetado para você atingir o máximo de resultados</div>
+              <div class="wygtit">Plano de 15&ndash;30 minutos por dia</div>
+              <div class="wygdesc">projetado para construir m&uacute;sculos e perder peso.</div>
             </div>
           </div>
           <div class="wygitem">
-            <div class="wygico">👣</div>
+            <div class="wygico">&#128099;</div>
             <div>
               <div class="wygtit">Passo a passo</div>
-              <div class="wygdesc">Abordagem adequada para obter resultados em 14 dias</div>
+              <div class="wygdesc">abordagem adequada para iniciantes obterem resultados em semanas.</div>
             </div>
           </div>
-
-          <!-- CALENDAR COMPONENT -->
-          <div class="cal-wrap">
-            <div class="cal-imgwrap">
-              <img src="img/r3.png" class="cal-photo" alt="Atleta" onerror="this.style.display='none'">
-            </div>
-            <div class="cal-grid">
-              <div></div>
-              <div class="cal-hdr">Dia 1</div>
-              <div class="cal-hdr">Dia 2</div>
-              <div class="cal-hdr">Dia 3</div>
-              <div class="cal-hdr">Dia 4</div>
-              <div class="cal-hdr">Dia 5</div>
-              <div class="cal-hdr">Dia 6</div>
-              <div class="cal-hdr">Dia 7</div>
-
-              <div class="cal-wk">Semana 1</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-
-              <div class="cal-wk">Semana 2</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-
-              <div class="cal-wk">Semana 3</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-
-              <div class="cal-wk">Semana 4</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-              <div class="cal-cell active">✓</div>
-            </div>
-          </div>
-          <!-- END CALENDAR COMPONENT -->
-
-        </div>
-      </div>
-
-      <div class="stickyc" id="stickyCta">
-        <button class="ctamain" onclick="scrollToPricing()">Obter meu plano →</button>
-      </div>
-
-      <!-- Product / Expert -->
-      <div class="prodsec">
-        <div class="prodin">
-          <div class="prodoico">🎁</div>
-          <div class="prodlbl">Ganhe um bônus com o programa principal</div>
-          <div class="prodtitle">Guia BWM 14 Dias</div>
-          <div class="prodimgw">
-            <img src="img/r4.png" alt="Produto BWM" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div class="goaltit">Os objetivos do seu programa também incluem:</div>
-          <div class="goalgrid">
-            <div class="goalitem"><span class="goalchk">✓</span> Reduzir o estresse</div>
-            <div class="goalitem"><span class="goalchk">✓</span> Sentir-se mais saudável</div>
-            <div class="goalitem"><span class="goalchk">✓</span> Autodisciplina</div>
-            <div class="goalitem"><span class="goalchk">✓</span> Criar hábito físico</div>
-            <div class="goalitem"><span class="goalchk">✓</span> Melhorar o sono</div>
+          <!-- r2 image after last wygitem — full natural height -->
+          <div style="margin:20px -16px 0;overflow:hidden">
+            <img src="img/r2.png" style="width:100%;height:auto;display:block;object-fit:contain" alt=""
+              onerror="this.parentElement.style.display='none'">
           </div>
         </div>
       </div>
 
-      <!-- Social proof -->
-      <div class="socblk" style="background:var(--bg)">
+      <!-- 3. GOALS — redesigned -->
+      <div class="goalsec">
+        <div class="goalsin">
+          <h2 class="goalstitle">Seu programa <span>tamb&eacute;m inclui</span></h2>
+          <p class="goalssub">Al&eacute;m do protocolo completo de treino e dieta, seu plano foi pensado para
+            transformar sua vida em todas as dimens&otilde;es.</p>
+          <div class="goals-grid">
+            <div class="goal-item">
+              <div class="goal-num">1</div>
+              <div class="goal-txt">Reduzir o estresse e a ansiedade do cotidiano</div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-num">2</div>
+              <div class="goal-txt">Sentir-se mais saud&aacute;vel e com mais energia</div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-num">3</div>
+              <div class="goal-txt">Criar autodisciplina e consist&ecirc;ncia</div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-num">4</div>
+              <div class="goal-txt">Criar um h&aacute;bito f&iacute;sico sustent&aacute;vel</div>
+            </div>
+            <div class="goal-item" style="grid-column:1/-1">
+              <div class="goal-num">5</div>
+              <div class="goal-txt">Melhorar a qualidade do sono e da recupera&ccedil;&atilde;o</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BONUS SECTION -->
+      <div class="bonussec">
+        <div class="bonusin">
+          <h2 class="bonustitle">B&ocirc;nus Exclusivos</h2>
+          <p class="bonussub">Para te ajudar ainda mais, al&eacute;m do protocolo completo, voc&ecirc; tamb&eacute;m
+            recebe dois presentes que resolvem os dois fatores que mais sabotam o processo &mdash; fora da dieta e do
+            treino. E o &uacute;ltimo &eacute; literalmente um presente exclusivo.</p>
+
+          <!-- Bonus 1 -->
+          <div class="bonus-card">
+            <div class="bonus-img-col">
+              <img src="img/b1.png" alt="Protocolo Acelerador BWM"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0e05,#2a1408)'">
+            </div>
+            <div class="bonus-txt-col">
+              <span class="bonus-tag">B&Ocirc;NUS 01</span>
+              <div class="bonus-name">Protocolo Acelerador BWM</div>
+              <div class="bonus-desc">F&oacute;rmulas manipuladas usadas h&aacute; mais de 13 anos com alunos. Ajustadas
+                na pr&aacute;tica para controlar fome, reduzir ansiedade, aumentar energia e melhorar o desempenho. Te
+                mant&eacute;m no controle durante todo o processo &mdash; quando a fome aumenta, quando a energia cai ou
+                quando a rotina aperta.</div>
+            </div>
+          </div>
+
+          <!-- Bonus 2 -->
+          <div class="bonus-card">
+            <div class="bonus-img-col">
+              <img src="img/b2.png" alt="Revis&atilde;o Estrat&eacute;gica BWM"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#06001a,#100830)'">
+            </div>
+            <div class="bonus-txt-col">
+              <span class="bonus-tag bonus-tag2">B&Ocirc;NUS 02 &mdash; EXCLUSIVO</span>
+              <div class="bonus-name">Revis&atilde;o Estrat&eacute;gica BWM</div>
+              <div class="bonus-desc">Em um momento espec&iacute;fico do seu processo, voc&ecirc; passa por uma
+                an&aacute;lise individual com algu&eacute;m da equipe, especializada no m&eacute;todo. Um olhar
+                t&eacute;cnico aplicado diretamente no seu caso. Se ao se aproximar do final o seu shape ainda
+                n&atilde;o estiver como voc&ecirc; quer &mdash; voc&ecirc; n&atilde;o fica sozinho. Existe um ajuste
+                direcionado para garantir que voc&ecirc; termine com o resultado que veio buscar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. SOCIAL PROOF -->
+      <div class="socblk">
         <div class="socin">
-          <div class="r-photo-wrap" style="margin-bottom:16px"><img src="img/r5.png" class="r-photo" alt=""
-              onerror="this.parentElement.style.display='none'"></div>
           <div class="laurrow">
-            <span class="laursym">❧</span>
+            <svg width="48" height="70" viewBox="0 0 48 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 64 C18 52 9 42 7 30 C5 18 13 8 19 4" stroke="#E8622A" stroke-width="1.5"
+                stroke-linecap="round" fill="none" />
+              <ellipse cx="9" cy="30" rx="7" ry="3.5" transform="rotate(-30 9 30)" fill="#E8622A" opacity=".9" />
+              <ellipse cx="8" cy="21" rx="6" ry="3" transform="rotate(-18 8 21)" fill="#E8622A" opacity=".8" />
+              <ellipse cx="12" cy="13" rx="5.5" ry="2.5" transform="rotate(-5 12 13)" fill="#E8622A" opacity=".75" />
+              <ellipse cx="10" cy="39" rx="7" ry="3.5" transform="rotate(-42 10 39)" fill="#E8622A" opacity=".85" />
+              <ellipse cx="13" cy="48" rx="6.5" ry="3" transform="rotate(-55 13 48)" fill="#E8622A" opacity=".7" />
+              <ellipse cx="17" cy="56" rx="6" ry="2.5" transform="rotate(-65 17 56)" fill="#E8622A" opacity=".55" />
+            </svg>
             <div>
-              <div class="laurtxt">Mais de 5 mil</div>
-              <div class="socsub">começaram sua jornada de transformação</div>
+              <div class="laurtxt">+3 Milh&otilde;es</div>
             </div>
-            <span class="laursym">❧</span>
+            <svg width="48" height="70" viewBox="0 0 48 70" fill="none" xmlns="http://www.w3.org/2000/svg"
+              style="transform:scaleX(-1)">
+              <path d="M24 64 C18 52 9 42 7 30 C5 18 13 8 19 4" stroke="#E8622A" stroke-width="1.5"
+                stroke-linecap="round" fill="none" />
+              <ellipse cx="9" cy="30" rx="7" ry="3.5" transform="rotate(-30 9 30)" fill="#E8622A" opacity=".9" />
+              <ellipse cx="8" cy="21" rx="6" ry="3" transform="rotate(-18 8 21)" fill="#E8622A" opacity=".8" />
+              <ellipse cx="12" cy="13" rx="5.5" ry="2.5" transform="rotate(-5 12 13)" fill="#E8622A" opacity=".75" />
+              <ellipse cx="10" cy="39" rx="7" ry="3.5" transform="rotate(-42 10 39)" fill="#E8622A" opacity=".85" />
+              <ellipse cx="13" cy="48" rx="6.5" ry="3" transform="rotate(-55 13 48)" fill="#E8622A" opacity=".7" />
+              <ellipse cx="17" cy="56" rx="6" ry="2.5" transform="rotate(-65 17 56)" fill="#E8622A" opacity=".55" />
+            </svg>
           </div>
+          <div class="laursub">come&ccedil;aram sua jornada fitness conosco</div>
           <div class="starsbox">
-            <div class="starsrow">★★★★★</div>
-            <div><span class="ratingn">4,8</span> <span class="starssub">de 5</span></div>
+            <div class="starsrow">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="starssub"><span class="ratingn">4,7</span> de 5</div>
           </div>
-          <div style="font-size:14px;font-weight:700;font-family:var(--fh)">Mais de 200.000 avaliações 5 estrelas de
-            usuários satisfeitos</div>
+          <div class="laur-hero">Mais de 200.000 avalia&ccedil;&otilde;es 5 estrelas de usu&aacute;rios satisfeitos
+          </div>
         </div>
       </div>
 
-      <!-- Champions -->
-      <div class="champblk">
-        <div class="champnum">+71 títulos</div>
-        <div class="champdesc">em campeonatos de fisiculturismo com este método</div>
+      <!-- 6. FULL PLAN — numbered steps -->
+      <div class="fullplan-sec">
+        <div class="fullplan-in">
+          <h2 class="fullplan-title">Plano de treino completo</h2>
+          <div class="steps-list" id="stepsList">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-txt-wrap">
+                <div class="step-title">Crie um h&aacute;bito s&oacute;lido</div>
+                <div class="step-desc">Desenvolva as t&eacute;cnicas corretas de exerc&iacute;cio desde o primeiro dia,
+                  com uma estrutura simples e progressiva que qualquer pessoa consegue seguir.</div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-txt-wrap">
+                <div class="step-title">Elimine a gordura excessiva</div>
+                <div class="step-desc">Melhore a intensidade dos treinos semana a semana e acelere a queima de gordura
+                  sem perder massa muscular.</div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-txt-wrap">
+                <div class="step-title">Alcance o resultado que veio buscar</div>
+                <div class="step-desc">Transforme seu corpo e sua vida para sempre com um m&eacute;todo validado e
+                  acompanhado do in&iacute;cio ao fim.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Pricing -->
+      <!-- 7. PRICING -->
       <div class="pricsec" id="pricingSection">
-        <div class="pricin">
-          <div class="dtimer">Desconto expira em: <span class="timerv" id="timerVal">10:00</span> ⏱️</div>
-          <div class="buyersfeed">1.100+ pessoas adquiriram acesso nas últimas 24h</div>
-          <div class="congrbox"><span style="font-size:22px">🎉</span>
-            <div>
-              <div style="font-size:14px;font-weight:700">Parabéns!</div>
-              <div style="font-size:12px;color:var(--tx2)">Você ganhou o maior desconto!</div>
+        <div class="pric-layout">
+          <div class="pric-left">
+            <div class="pric-buyers">1.100+ pessoas compraram nas &uacute;ltimas 24h</div>
+            <div class="pric-names">
+              <span class="pric-nametag"><strong>lucas*</strong> plano mensal</span>
+              <span class="pric-nametag"><strong>jeremy*</strong> plano mensal</span>
+            </div>
+            <img src="img/r3.png" class="pric-bodyimg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="pric-right">
+            <div class="price-card-wrap">
+              <div class="congrbox">
+                <div style="font-size:17px;font-weight:800;font-family:var(--fh)">Parab&eacute;ns! &#127881;</div>
+                <div style="font-size:13px;color:var(--tx3);margin-top:2px">Voc&ecirc; ganhou o maior desconto extra!
+                </div>
+              </div>
+              <div class="price-body">
+                <!-- b3.png mockup acima do titulo, tamanho natural -->
+                <img src="img/b3.png" style="width:100%;height:auto;display:block;margin-bottom:18px" alt="Desafio BWM"
+                  onerror="this.style.display='none'">
+                <div class="planstitle" style="font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:20px">
+                  Desafio BWM &mdash; 14 Dias</div>
+                <div class="plan-single">
+                  <div class="plan-single-left">
+                    <div class="plan-single-name">PLANO COMPLETO</div>
+                    <div class="plan-single-sub" style="margin-top:6px">Acesso imediato &bull; Sem
+                      renova&ccedil;&atilde;o autom&aacute;tica</div>
+                  </div>
+                  <div class="plan-single-price">
+                    <div class="plan-single-old">R$ 197,00</div>
+                    <div class="plan-single-val">R$ 47</div>
+                    <div class="plan-single-per">pagamento &uacute;nico</div>
+                  </div>
+                </div>
+                <div class="plannote" style="margin:20px 0"><span
+                    style="color:var(--hot);flex-shrink:0">&#127873;</span><span>Inclui b&ocirc;nus Protocolo Acelerador
+                    BWM e Revis&atilde;o Estrat&eacute;gica.</span></div>
+                <button class="ctamain" id="btnGetPlan" onclick="handleGetPlan()"
+                  style="display:flex;width:100%;padding:18px;font-size:16px">Quero o Desafio BWM &#8594;</button>
+                <p style="font-size:11px;color:var(--tx3);text-align:center;margin-top:14px;line-height:1.5">Ao
+                  continuar, voc&ecirc; concorda com nossos <a href="#" style="color:var(--tx3)">Termos</a> e <a
+                    href="#" style="color:var(--tx3)">Pol&iacute;tica de Privacidade</a></p>
+              </div>
             </div>
           </div>
-          <div class="r-photo-wrap" style="margin-bottom:16px"><img src="img/r6.png" class="r-photo" alt=""
-              onerror="this.parentElement.style.display='none'"></div>
-          <div class="planstitle">Adquira seu acesso ao Desafio BWM 14 Dias agora</div>
-          <div class="plancard ppop psel" id="plan-main" onclick="selectPlan('main')">
-            <div class="popbdg">MAIS POPULAR</div>
-            <div class="plantop" style="margin-top:8px">
-              <div class="planradio">
-                <div class="planrdot"></div>
-              </div>
-              <div class="planname">DESAFIO BWM 14 DIAS</div>
-              <div>
-                <div class="planold">De R$ 197,00</div>
-                <div class="planprice">R$ 47,00</div>
-                <div class="planper">acesso único</div>
-              </div>
-            </div>
-            <div class="planbonus">🎁 Guia imprimível + plano de treino e dieta incluído</div>
-          </div>
-          <div class="plannote"><span style="color:var(--hot);font-size:16px">🏋️</span><span>Quem segue o desafio por
-              14 dias relata resultados visíveis já na primeira semana.</span></div>
-          <button class="ctamain" id="btnGetPlan" onclick="handleGetPlan()">Adquirir acesso agora →</button>
-          <p style="font-size:11px;color:var(--tx3);text-align:center;margin-top:10px;line-height:1.5">Acesso imediato
-            após confirmação. Sem renovação automática.</p>
         </div>
       </div>
 
-      <!-- Plan details -->
-      <div style="background:var(--bg);border-top:1px solid rgba(255,255,255,.04);padding:24px 16px">
-        <div style="max-width:700px;margin:0 auto">
-          <h3 style="font-family:var(--fh);font-size:19px;font-weight:800;text-align:center;margin-bottom:16px">Plano de
-            treino e dieta completo</h3>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
-            <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--tx2)"><span
-                style="color:var(--hot)">☑</span> Crie um hábito e desenvolva as técnicas corretas de exercício</div>
-            <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--tx2)"><span
-                style="color:var(--hot)">☑</span> Elimine o excesso de gordura e melhore a intensidade dos treinos</div>
-            <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--tx2)"><span
-                style="color:var(--hot)">☑</span> Alcance seu objetivo e transforme sua vida em 14 dias</div>
-          </div>
-          <button class="ctamain" onclick="handleGetPlan()">Adquirir acesso ao BWM 14 Dias →</button>
-        </div>
-      </div>
-
-      <!-- Guarantee -->
-      <div class="gsec" style="background:var(--bg)">
+      <!-- 8. GUARANTEE -->
+      <div class="gsec">
         <div class="gin">
           <div class="gbox">
-            <div class="gseal"><span class="gsealn">30</span>DIAS APÓS A COMPRA</div>
-            <div>
-              <div class="gtitle">Garantia de Devolução</div>
-              <div class="gtxt">Resultados visíveis em 14 dias ou reembolso de 100% em até 30 dias após a compra. <a
-                  href="#" class="glink">Saiba mais.</a></div>
+            <div class="gbox-text">
+              <div class="gtitle">Money-Back Guarantee</div>
+              <div class="gtxt">Acreditamos que nosso plano vai funcionar para voc&ecirc; e voc&ecirc; ver&aacute;
+                resultados vis&iacute;veis em 4 semanas! Estamos prontos para reembolsar completamente em at&eacute; 30
+                dias ap&oacute;s a compra, caso voc&ecirc; n&atilde;o obtenha resultados vis&iacute;veis e consiga
+                demonstrar que seguiu o plano.<br><br><a href="#" class="glink">Saiba mais sobre as
+                  limita&ccedil;&otilde;es aplic&aacute;veis em nossa pol&iacute;tica de devolu&ccedil;&atilde;o.</a>
+              </div>
+            </div>
+            <div class="gseal-wrap">
+              <div class="gseal">
+                <div class="gseal-ring"></div>
+                <div class="gseal-inner">
+                  <span class="gseal-n">30</span>
+                  <span class="gseal-txt">DAYS AFTER<br>PURCHASE</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Testimonials -->
+      <!-- 9. TESTIMONIALS -->
       <div class="testsec">
         <div class="testin">
           <div class="testtitle">Ajudamos mais de</div>
-          <div class="testnum">5.000+ pessoas</div>
-          <div class="testsub">a alcançar o físico dos seus sonhos em 14 dias</div>
-          <div class="r-photo-wrap" style="margin-bottom:16px"><img src="img/r7.png" class="r-photo" alt=""
-              onerror="this.parentElement.style.display='none'"></div>
+          <div class="testnum">60.000 pessoas</div>
+          <div class="testsub">a alcan&ccedil;ar o f&iacute;sico dos seus sonhos</div>
           <div class="testcards">
             <div class="testcard">
               <div class="testhd">
                 <div class="testav">S</div>
                 <div>
-                  <div class="testnm">Stefano D.</div>
-                  <div class="teststars">★★★★★</div>
+                  <div class="testnm">Stephen Davidson</div>
+                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
-                <div class="testver">✔ Verificado</div>
+                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">Ganhei músculo e reduzi minha barriga visivelmente. Método surpreendentemente eficaz!
-              </div>
+              <div class="testtxt">Ganhei 5kg de m&uacute;sculo mas ao mesmo tempo consigo tirar minha cal&ccedil;a com
+                o cinto ainda preso. M&eacute;todo surpreendentemente eficaz!</div>
             </div>
             <div class="testcard">
               <div class="testhd">
                 <div class="testav">R</div>
                 <div>
-                  <div class="testnm">Roberto M.</div>
-                  <div class="teststars">★★★★★</div>
+                  <div class="testnm">Robert Matthews</div>
+                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
-                <div class="testver">✔ Verificado</div>
+                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">Já na primeira semana desinchei bastante. Devia ter feito isso há muito tempo! 😄
-              </div>
+              <div class="testtxt">&Eacute; uma &oacute;tima maneira de entrar em forma. Devia ter feito isso h&aacute;
+                muito tempo! &#128578;</div>
             </div>
             <div class="testcard">
               <div class="testhd">
                 <div class="testav">H</div>
                 <div>
-                  <div class="testnm">Hugo K.</div>
-                  <div class="teststars">★★★★★</div>
+                  <div class="testnm">Hyrum Keddington</div>
+                  <div class="teststars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
-                <div class="testver">✔ Verificado</div>
+                <div class="testver">&#10004; Verificado</div>
               </div>
-              <div class="testtxt">O primeiro programa que me deu tudo que precisava: dieta, treino e execução diária.
-              </div>
+              <div class="testtxt">O primeiro programa que me deu tudo que precisava para come&ccedil;ar, incluindo um
+                menu e uma lista de compras.</div>
             </div>
           </div>
+          <p style="font-size:12px;color:var(--tx3);margin-top:16px">Voc&ecirc; pode ler como coletamos
+            avalia&ccedil;&otilde;es em nossa <a href="#"
+              style="color:var(--tx3);text-decoration:underline">Pol&iacute;tica de Avalia&ccedil;&otilde;es</a></p>
         </div>
       </div>
 
-      <!-- Footer -->
+      <!-- 10. FOOTER -->
       <div class="rfooter">
-        <div style="font-size:14px;font-weight:700;margin-bottom:4px;font-family:var(--fh)">Siga-nos</div>
-        <div style="font-size:12px;color:var(--tx3);margin-bottom:16px">para turbinar seus resultados!</div>
+        <div style="font-size:16px;font-weight:800;margin-bottom:4px;font-family:var(--fh)">Siga-nos</div>
+        <div style="font-size:13px;color:var(--tx3);margin-bottom:18px">para turbinar seus resultados!</div>
         <div class="footsocial">
-          <a href="#" class="footico" title="Instagram" style="text-decoration:none">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2"
+          <a href="#" class="footico footico-ig" title="Instagram" style="text-decoration:none">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" />
               <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" fill="#E8622A" stroke="none" />
+              <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none" />
             </svg>
           </a>
-          <a href="#" class="footico" title="TikTok" style="text-decoration:none">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8622A" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.09a8.2 8.2 0 004.81 1.55V7.19a4.85 4.85 0 01-1.04-.5z" />
+          <a href="#" class="footico footico-fb" title="Facebook" style="text-decoration:none">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
             </svg>
           </a>
         </div>
-        <div class="foottxt">Alguma dúvida? Estamos <a href="#" class="footlink">aqui</a> para ajudar.</div>
-        <div class="footcopy">© 2025 Desafio BWM 14 Dias. Todos os direitos reservados.</div>
+        <div class="foottxt">Alguma d&uacute;vida? Estamos <a href="#" class="footlink">aqui</a> para ajudar.</div>
+        <div class="footcopy">&copy; 2025 Desafio BWM 14 Dias. Todos os direitos reservados.</div>
       </div>
 
     </div>
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (window.twemoji) { twemoji.parse(document.body, { folder: "svg", ext: ".svg", base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/" }); }
+
+    var rs = document.getElementById("result"), sc = document.getElementById("stickyCTA");
+    new MutationObserver(function () { sc.classList.toggle("vis", rs.classList.contains("active")) }).observe(rs, { attributes: true, attributeFilter: ["class"] });
+    if ("IntersectionObserver" in window) {
+      var ps = document.getElementById("pricingSection");
+      if (ps) { new IntersectionObserver(function (en) { en.forEach(function (e) { sc.style.opacity = e.isIntersecting ? "0" : "1" }) }, { threshold: 0.3 }).observe(ps); }
+    }
+
+    // Scroll reveal for steps
+    if ("IntersectionObserver" in window) {
+      var stepObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("revealed"); stepObs.unobserve(e.target); } });
+      }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
+      document.querySelectorAll(".step-item").forEach(function (el, i) { el.style.transitionDelay = (i * 0.18) + "s"; stepObs.observe(el); });
+    } else {
+      document.querySelectorAll(".step-item").forEach(function (el) { el.classList.add("revealed"); });
+    }
+
+    function renderWaterCups(liters) {
+      var el = document.getElementById("r-water-cups"); if (!el) return;
+      var filled = Math.min(8, Math.round(liters / 0.35));
+      el.innerHTML = "";
+      for (var i = 0; i < 8; i++) { var sp = document.createElement("span"); sp.className = "wcup" + (i >= filled ? " dim" : ""); sp.textContent = "🥤"; el.appendChild(sp); }
+      if (window.twemoji) twemoji.parse(el, { folder: "svg", ext: ".svg", base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/" });
+    }
+
+    function populateResult() {
+      var d = window.bwmData || {};
+      var bmi = parseFloat(d.bmi) || 0, water = parseFloat(d.water) || 2.5, cal = parseInt(d.cal) || 2000;
+      if (bmi > 0) {
+        document.getElementById("r-bmi").textContent = bmi.toFixed(2) + " IMC";
+        var pct = Math.min(100, Math.max(0, ((bmi - 16) / (40 - 16)) * 100));
+        document.getElementById("r-bmi-mkr").style.left = pct + "%";
+        var st = document.getElementById("r-bmi-status");
+        if (bmi < 18.5) { st.textContent = "Abaixo do Peso"; st.className = "bmistatus su"; }
+        else if (bmi < 25) { st.textContent = "Peso Normal"; st.className = "bmistatus sn2"; }
+        else if (bmi < 30) { st.textContent = "Levemente Acima do Peso"; st.className = "bmistatus sow"; }
+        else { st.textContent = "Obeso"; st.className = "bmistatus sob"; }
+      }
+      if (cal > 0) {
+        document.getElementById("r-cal").textContent = cal + " kcal";
+        var cp = Math.min(100, Math.max(0, ((cal - 1000) / (5000 - 1000)) * 100));
+        document.getElementById("r-cal-fill").style.width = cp + "%";
+        document.getElementById("r-cal-thumb").style.left = cp + "%";
+      }
+      document.getElementById("r-water").textContent = water.toFixed(1) + "l";
+      renderWaterCups(water);
+    }
+
+    new MutationObserver(function () { if (rs.classList.contains("active")) setTimeout(populateResult, 200); }).observe(rs, { attributes: true, attributeFilter: ["class"] });
+
+    if (!window.scrollToPricing) window.scrollToPricing = function () { var el = document.getElementById("pricingSection"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
+    if (!window.handleGetPlan) window.handleGetPlan = function () { window.scrollToPricing(); };
+
+    // No animation on first quiz screen
+    (function () {
+      var quizEl = document.getElementById("quiz-screen"), firstTime = true;
+      if (!quizEl) return;
+      new MutationObserver(function () {
+        if (quizEl.classList.contains("active") && firstTime) {
+          firstTime = false; quizEl.style.animation = "none";
+          void quizEl.offsetWidth;
+          requestAnimationFrame(function () { quizEl.style.animation = ""; });
+        }
+      }).observe(quizEl, { attributes: true, attributeFilter: ["class"] });
+    })();
+
+  </script>
   <script src="script.js"></script>
 </body>
 
