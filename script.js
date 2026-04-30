@@ -876,6 +876,9 @@
     tick();
   }
 
+  // DEV ONLY: atalho temporário para pular direto à PV final
+  window.devGoToPV = function () { transTo('result').then(populateResult); };
+
   window.selectPlan = function (id) {
     document.querySelectorAll('.plancard').forEach(function (c) { c.classList.remove('psel'); });
     var el = $('plan-' + id); if (el) el.classList.add('psel');
