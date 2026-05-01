@@ -7,9 +7,10 @@
   <meta name="theme-color" content="#0a0806">
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"></noscript>
   <style>
     :root {
       --hot: #E8622A;
@@ -2045,11 +2046,13 @@
 
       .bonus-img-col {
         width: 100%;
-        height: 180px
+        height: auto
       }
 
       .bonus-img-col img {
-        height: 180px
+        width: 100%;
+        height: auto;
+        object-fit: contain
       }
     }
 
@@ -2529,8 +2532,7 @@
 
     @media(max-width:680px) {
       .pric-bodyimg {
-        width: 90%;
-        margin: 0 auto
+        display: none
       }
     }
 
@@ -2591,6 +2593,13 @@
       font-size: 11px;
       color: var(--tx3);
       text-decoration: line-through
+    }
+
+    .plan-single-val-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap
     }
 
     .plan-single-val {
@@ -2663,6 +2672,18 @@
 
     .gseal-wrap {
       flex-shrink: 0
+    }
+
+    @media(max-width: 600px) {
+      .gbox {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+      }
+
+      .gseal-wrap {
+        order: -1
+      }
     }
 
     .gseal {
@@ -3723,31 +3744,31 @@
       <div class="lcont">
         <h1 class="ltitleland"><span class="ltitle-white">DESAFIO BWM</span><span
             class="ltitle-sep">&nbsp;&middot;&nbsp;</span><span class="ltitle-orange">14 DIAS</span></h1>
-        <p class="lsubland">Construa seu corpo ideal. Plano personalizado baseado no seu IMC, idade e objetivo.
-          Resultados em 14 dias.</p>
+        <p class="lsubland">Construa seu corpo ideal com um Plano personalizado baseado no seu IMC, idade, objetivo e
+          suas respostas, para gerar resultados em 14 dias.</p>
         <div class="lctakey">Selecione sua faixa et&aacute;ria para come&ccedil;ar</div>
         <div class="agrid" id="ageGrid">
           <div class="acard" onclick="selectAge('18-29')">
-            <div class="aimg"><img src="img/c1m1.png" alt="18-29"
-                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129485;</div>'">
+            <div class="aimg"><picture><source srcset="img/c1m1.webp" type="image/webp"><img src="img/c1m1.png" alt="18-29" fetchpriority="high"
+                onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129485;</div>'"></picture>
             </div>
             <div class="albl">18 &ndash; 29 anos</div>
           </div>
           <div class="acard" onclick="selectAge('30-39')">
-            <div class="aimg"><img src="img/c1m2.png" alt="30-39"
-                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'">
+            <div class="aimg"><picture><source srcset="img/c1m2.webp" type="image/webp"><img src="img/c1m2.png" alt="30-39" fetchpriority="high"
+                onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'"></picture>
             </div>
             <div class="albl">30 &ndash; 39 anos</div>
           </div>
           <div class="acard" onclick="selectAge('40-49')">
-            <div class="aimg"><img src="img/c1m3.png" alt="40-49"
-                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'">
+            <div class="aimg"><picture><source srcset="img/c1m3.webp" type="image/webp"><img src="img/c1m3.png" alt="40-49" fetchpriority="high"
+                onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#128104;</div>'"></picture>
             </div>
             <div class="albl">40 &ndash; 49 anos</div>
           </div>
           <div class="acard" onclick="selectAge('50+')">
-            <div class="aimg"><img src="img/c1m4.png" alt="50+"
-                onerror="this.parentElement.innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129491;</div>'">
+            <div class="aimg"><picture><source srcset="img/c1m4.webp" type="image/webp"><img src="img/c1m4.png" alt="50+" fetchpriority="high"
+                onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129491;</div>'"></picture>
             </div>
             <div class="albl">50+ anos</div>
           </div>
@@ -3793,7 +3814,7 @@
           <h2 class="evotitle">Sua evolu&ccedil;&atilde;o nas pr&oacute;ximas 2 semanas</h2>
           <p class="evosub">Baseado nas suas respostas, veja o que te espera</p>
           <div class="evo-hero-wrap">
-            <img src="img/r1.png" class="evo-hero-img" alt="Evolu&ccedil;&atilde;o"
+            <img src="img/r1.png" class="evo-hero-img" alt="Evolu&ccedil;&atilde;o" loading="lazy"
               onerror="this.parentElement.style.display='none'">
           </div>
           <div class="evo-grid-3col" style="position:relative">
@@ -3919,7 +3940,7 @@
             </div>
           </div>
           <div style="margin:20px -16px 0;overflow:hidden">
-            <img src="img/r2.png" style="width:100%;height:auto;display:block;object-fit:contain" alt=""
+            <img src="img/r2.png" style="width:100%;height:auto;display:block;object-fit:contain" alt="" loading="lazy"
               onerror="this.parentElement.style.display='none'">
           </div>
         </div>
@@ -3964,7 +3985,7 @@
             recebe dois presentes que resolvem os dois fatores que mais sabotam o processo &mdash; fora da dieta e do
             treino.</p>
           <div class="bonus-card">
-            <div class="bonus-img-col"><img src="img/b1.png" alt="Protocolo Acelerador BWM"
+            <div class="bonus-img-col"><img src="img/b1.png" alt="Protocolo Acelerador BWM" loading="lazy"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0e05,#2a1408)'"></div>
             <div class="bonus-txt-col">
               <span class="bonus-tag">B&Ocirc;NUS 01</span>
@@ -3975,12 +3996,14 @@
             </div>
           </div>
           <div class="bonus-card">
-            <div class="bonus-img-col"><img src="img/b2.png" alt="Revis&atilde;o Estrat&eacute;gica BWM"
+            <div class="bonus-img-col"><img src="img/b2.png" alt="Revis&atilde;o Estrat&eacute;gica BWM" loading="lazy"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#06001a,#100830)'"></div>
             <div class="bonus-txt-col">
               <span class="bonus-tag bonus-tag2">B&Ocirc;NUS 02 &mdash; EXCLUSIVO</span>
               <div class="bonus-name">Mapa Metab&oacute;lico de Suplementa&ccedil;&atilde;o</div>
-              <div class="bonus-desc">Voc&ecirc; tamb&eacute;m vai receber acesso ao seu Mapa Metab&oacute;lico de Suplementa&ccedil;&atilde;o. Um direcionamento personalizado que mostra, de forma simples e direta, como alinhar o uso de suplementos com o seu objetivo dentro do desafio.</div>
+              <div class="bonus-desc">Voc&ecirc; tamb&eacute;m vai receber acesso ao seu Mapa Metab&oacute;lico de
+                Suplementa&ccedil;&atilde;o. Um direcionamento personalizado que mostra, de forma simples e direta, como
+                alinhar o uso de suplementos com o seu objetivo dentro do desafio.</div>
             </div>
           </div>
         </div>
@@ -4110,7 +4133,7 @@
                 </div>
               </div>
             </div>
-            <img src="img/r3.png" class="pric-bodyimg" alt="" onerror="this.style.display='none'">
+            <img src="img/r3.png" class="pric-bodyimg" alt="" loading="lazy" onerror="this.style.display='none'">
           </div>
           <div class="pric-right">
             <div class="price-card-wrap">
@@ -4120,7 +4143,7 @@
                 <div style="font-size:13px;color:var(--tx3);margin-top:2px">Um &uacute;nico valor, acesso imediato</div>
               </div>
               <div class="price-body">
-                <img src="img/b3.png" style="width:100%;height:auto;display:block;margin-bottom:18px" alt="Desafio BWM"
+                <img src="img/b3.png" style="width:100%;height:auto;display:block;margin-bottom:18px" alt="Desafio BWM" loading="lazy"
                   onerror="this.style.display='none'">
                 <div class="planstitle"
                   style="font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:20px;text-transform:uppercase;letter-spacing:.04em">
@@ -4134,8 +4157,10 @@
                   </div>
                   <div class="plan-single-price">
                     <div class="plan-single-old">R$ 197,00</div>
-                    <div class="plan-single-val">R$ 39,90</div>
-                    <div class="plan-single-per">pagamento &uacute;nico</div>
+                    <div class="plan-single-val-row">
+                      <div class="plan-single-val">R$ 39,90</div>
+                      <div class="plan-single-per">pagamento &uacute;nico</div>
+                    </div>
                   </div>
                 </div>
                 <div class="plannote" style="margin:20px 0"><span
@@ -4185,7 +4210,7 @@
           <div class="vid-carousel-wrap">
             <div class="vid-car-track" id="vidCarTrack">
               <div class="vid-car-slide">
-                <video src="img/v1.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v1.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4195,7 +4220,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v2.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v2.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4205,7 +4230,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v3.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v3.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4215,7 +4240,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v4.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v4.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4225,7 +4250,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v5.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v5.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4235,7 +4260,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v6.mp4" loop muted autoplay playsinline preload="auto"></video>
+                <video src="img/v6.mp4" loop muted autoplay playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4417,26 +4442,44 @@
     }
 
     function populateResult() {
-      var d = window.bwmData || {};
-      var bmi = parseFloat(d.bmi) || 0, water = parseFloat(d.water) || 2.5, cal = parseInt(d.cal) || 2000;
-      if (bmi > 0) {
-        document.getElementById("r-bmi").textContent = bmi.toFixed(2) + " IMC";
+      var ans = {};
+      try { ans = JSON.parse(localStorage.getItem("bwm_answers") || "{}"); } catch (e) { }
+
+      var h = parseFloat(ans.height) || 0;
+      var w = parseFloat(ans.weight) || 0;
+      var goal = ans.goal || "";
+
+      if (h > 0 && w > 0) {
+        var hm = h / 100;
+        var bmi = Math.round((w / (hm * hm)) * 10) / 10;
+        var bmiEl = document.getElementById("r-bmi");
+        if (bmiEl) bmiEl.textContent = bmi.toFixed(1) + " IMC";
         var pct = Math.min(100, Math.max(0, ((bmi - 16) / (40 - 16)) * 100));
-        document.getElementById("r-bmi-mkr").style.left = pct + "%";
+        var mkr = document.getElementById("r-bmi-mkr");
+        if (mkr) setTimeout(function () { mkr.style.left = pct + "%"; }, 400);
         var st = document.getElementById("r-bmi-status");
-        if (bmi < 18.5) { st.textContent = "Abaixo do Peso"; st.className = "bmistatus su"; }
-        else if (bmi < 25) { st.textContent = "Peso Normal"; st.className = "bmistatus sn2"; }
-        else if (bmi < 30) { st.textContent = "Levemente Acima do Peso"; st.className = "bmistatus sow"; }
-        else { st.textContent = "Obeso"; st.className = "bmistatus sob"; }
-      }
-      if (cal > 0) {
-        document.getElementById("r-cal").textContent = cal + " kcal";
+        if (st) {
+          if (bmi < 18.5) { st.textContent = "Abaixo do Peso"; st.className = "bmistatus su"; }
+          else if (bmi < 25) { st.textContent = "Peso Normal"; st.className = "bmistatus sn2"; }
+          else if (bmi < 30) { st.textContent = "Levemente Acima do Peso"; st.className = "bmistatus sow"; }
+          else if (bmi < 35) { st.textContent = "Obesidade Grau I"; st.className = "bmistatus sob"; }
+          else { st.textContent = "Obesidade Grau II"; st.className = "bmistatus sob"; }
+        }
+
+        var mult = { lose_weight: 0.85, dry: 0.83, gain_muscle: 1.15, healthy: 1.0 }[goal] || 1.0;
+        var cal = Math.round((w * 10 + 500) * mult / 50) * 50;
+        var calEl = document.getElementById("r-cal");
+        if (calEl) calEl.textContent = cal + " kcal";
         var cp = Math.min(100, Math.max(0, ((cal - 1000) / (5000 - 1000)) * 100));
-        document.getElementById("r-cal-fill").style.width = cp + "%";
-        document.getElementById("r-cal-thumb").style.left = cp + "%";
+        var cf = document.getElementById("r-cal-fill"), ct = document.getElementById("r-cal-thumb");
+        if (cf) cf.style.width = cp + "%";
+        if (ct) ct.style.left = cp + "%";
+
+        var water = Math.round(w * 35 / 100) / 10;
+        var we = document.getElementById("r-water");
+        if (we) we.textContent = water.toFixed(1) + "l";
+        renderWaterCups(water);
       }
-      document.getElementById("r-water").textContent = water.toFixed(1) + "l";
-      renderWaterCups(water);
     }
     new MutationObserver(function () { if (rs.classList.contains("active")) setTimeout(populateResult, 200); }).observe(rs, { attributes: true, attributeFilter: ["class"] });
 

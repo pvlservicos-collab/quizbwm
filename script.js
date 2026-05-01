@@ -2,8 +2,8 @@
 (function () {
   'use strict';
 
-  var _SBURL = 'SUA_URL_SUPABASE_AQUI';
-  var _SBKEY = 'SUA_CHAVE_SUPABASE_AQUI';
+  var _SBURL = 'https://fftgdntnavupoghgamia.supabase.co';
+  var _SBKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmdGdkbnRuYXZ1cG9naGdhbWlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1ODgzMDYsImV4cCI6MjA5MzE2NDMwNn0.dP_vw2K3uFwjw7H4o2H4HDrJVc74vHO_4bnAK7orCYs';
 
   var S = {
     ageGroup: '18-29',
@@ -832,6 +832,7 @@
 
   window.commitChoice = function (choice) {
     S.answers.commitment = choice;
+    try { localStorage.setItem('bwm_answers', JSON.stringify(S.answers)); } catch (e) {}
     $('commitModal').classList.remove('op');
     transTo('result').then(populateResult);
     startTimer();
