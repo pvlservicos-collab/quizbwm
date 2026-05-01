@@ -837,6 +837,46 @@
     startTimer();
   };
 
+  function initSquareParticles() {
+    var c = $('sqParticles');
+    if (!c) return;
+    c.innerHTML = '';
+    for (var i = 0; i < 14; i++) {
+      var sq = document.createElement('div');
+      sq.className = 'sq-p';
+      var sz = (5 + Math.random() * 8) + 'px';
+      sq.style.cssText = 'left:' + (Math.random() * 95) + '%;width:' + sz + ';height:' + sz + ';animation-duration:' + (3.5 + Math.random() * 5) + 's;animation-delay:' + (Math.random() * 7) + 's';
+      c.appendChild(sq);
+    }
+  }
+
+  function startBuyerNotifications() {
+    var names = [
+      'lucas*', 'ana*', 'gabriel*', 'mariana*', 'rafael*', 'julia*', 'thiago*', 'camila*'
+    ];
+    function cycleCard(cardId, startDelay, interval) {
+      var card = $(cardId);
+      if (!card) return;
+      var nameEl = card.querySelector('.toast-card-name');
+      var idx = Math.floor(Math.random() * names.length);
+      function cycle() {
+        card.classList.remove('tshow');
+        setTimeout(function () {
+          nameEl.textContent = names[idx % names.length] + ' comprou';
+          idx++;
+          card.classList.add('tshow');
+          setTimeout(function () {
+            card.classList.remove('tshow');
+            setTimeout(cycle, 480);
+          }, interval);
+        }, 400);
+      }
+      setTimeout(cycle, startDelay);
+    }
+    cycleCard('toastCard1', 900, 3400);
+    cycleCard('toastCard2', 2400, 3800);
+  }
+
   function populateResult() {
     var ans = S.answers;
     if (ans.height && ans.weight) {
@@ -862,6 +902,20 @@
         if (window.twemoji) twemoji.parse(wc, { folder: 'svg', ext: '.svg', base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/' });
       }
     }
+    initSquareParticles();
+    startBuyerNotifications();
+    var ub = document.getElementById('urgencyBar'); if (ub) ub.style.display = 'block';
+    (function urgCountdown() {
+      var secs = 300, el = document.getElementById('urgTimer');
+      if (!el) return;
+      function tick() {
+        if (secs < 0) secs = 0;
+        var m = Math.floor(secs / 60), s = secs % 60;
+        el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        if (secs > 0) { secs--; setTimeout(tick, 1000); }
+      }
+      tick();
+    })();
   }
 
   function startTimer() {
@@ -888,7 +942,7 @@
     _track(function () {
       _sb.from('fitness_quiz_sessions').update({ cta_clicked_at: new Date().toISOString() }).eq('session_id', S.sid).then(null, null);
     });
-    alert('Redirecionando para o checkout!\n\nSubstitua esta linha pela URL da sua página de pagamento:\nwindow.location.href = "https://seusite.com/checkout"');
+    window.location.href = 'https://ggcheckout.app/checkout/v2/5k9MK9m8b8ZpSm8qkk6z';
   };
 
   window.scrollToPricing = function () {

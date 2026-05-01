@@ -2993,6 +2993,670 @@
       text-overflow: ellipsis;
       flex-shrink: 0
     }
+
+    /* ===== TOAST NOTIFICATIONS ===== */
+    .toast-zone {
+      position: relative;
+      min-height: 76px;
+      margin-bottom: 14px;
+      padding-left: 16px;
+    }
+
+    .buyers-live {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .75);
+      margin-bottom: 10px;
+    }
+
+    .buyers-live-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: blinkDot 1.4s ease-in-out infinite;
+      box-shadow: 0 0 6px rgba(74, 222, 128, .6);
+      flex-shrink: 0;
+    }
+
+    @keyframes blinkDot {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .15
+      }
+    }
+
+    .toast-card {
+      background: rgba(18, 14, 10, .97);
+      border: 1px solid rgba(232, 98, 42, .35);
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 28px rgba(0, 0, 0, .55), 0 0 0 1px rgba(232, 98, 42, .08);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .4s ease, transform .4s ease;
+      max-width: 290px;
+      pointer-events: none;
+    }
+
+    .toast-card.tshow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast-card-ico {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #E8622A, #F59340);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .toast-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .92);
+      line-height: 1.2;
+    }
+
+    .toast-card-sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 2px;
+    }
+
+    /* ===== FLOATING SQUARES ===== */
+    .sq-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .sq-p {
+      position: absolute;
+      border: 1.5px solid rgba(232, 98, 42, .45);
+      border-radius: 2px;
+      animation: sqUp linear infinite;
+      bottom: -12px;
+    }
+
+    @keyframes sqUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0
+      }
+
+      15% {
+        opacity: .9
+      }
+
+      85% {
+        opacity: .9
+      }
+
+      100% {
+        transform: translateY(-280px) rotate(210deg);
+        opacity: 0
+      }
+    }
+
+    /* ===== SEMANA 00 ATUAL ===== */
+    .evo-grid-new {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .evo-card-atual {
+      background: linear-gradient(135deg, #1d1009 0%, #291507 100%);
+      border-bottom: 1px solid rgba(232, 98, 42, .22);
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .evo-card-atual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at left top, rgba(232, 98, 42, .12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .evo-badge-atual {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 11px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, rgba(232, 98, 42, .28), rgba(245, 163, 35, .18));
+      border: 1px solid rgba(232, 98, 42, .55);
+      color: var(--hot);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .evo-atual-pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+      animation: blinkDot 1.4s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(74, 222, 128, .55);
+    }
+
+    .evo-atual-txt {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .8);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .evo-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* ===== WYG ULTRA DESIGN ===== */
+    .wyg-ultra {
+      margin: 4px 0 4px;
+    }
+
+    .wyg-ultra-header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .wyg-ultra-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--hot);
+      background: rgba(232, 98, 42, .1);
+      border: 1px solid rgba(232, 98, 42, .3);
+      border-radius: 30px;
+      padding: 4px 14px;
+      margin-bottom: 12px;
+    }
+
+    .wyg-ultra-title {
+      font-family: var(--fh);
+      font-size: clamp(28px, 7vw, 40px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 10px;
+      background: linear-gradient(100deg, #fff 0%, #F59340 45%, #E8622A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wyg-ultra-sub {
+      font-size: 13px;
+      color: var(--tx3);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .wyg-week-block {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .wyg-week-block-1 {
+      background: linear-gradient(145deg, #1c1005 0%, #2b1608 60%, #1c1005 100%);
+      border: 1px solid rgba(232, 98, 42, .32);
+      box-shadow: 0 0 50px rgba(232, 98, 42, .07), inset 0 0 40px rgba(232, 98, 42, .04);
+    }
+
+    .wyg-week-block-2 {
+      background: linear-gradient(145deg, #06011a 0%, #100930 60%, #06011a 100%);
+      border: 1px solid rgba(120, 80, 255, .38);
+      box-shadow: 0 0 50px rgba(120, 80, 255, .07), inset 0 0 40px rgba(120, 80, 255, .04);
+    }
+
+    .wyg-week-header {
+      padding: 15px 18px 13px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wyg-week-header-1 {
+      background: linear-gradient(90deg, rgba(232, 98, 42, .16) 0%, transparent 75%);
+    }
+
+    .wyg-week-header-2 {
+      background: linear-gradient(90deg, rgba(120, 80, 255, .18) 0%, transparent 75%);
+    }
+
+    .wyg-week-header::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .wyg-week-block-1 .wyg-week-header::after {
+      background: radial-gradient(circle, rgba(232, 98, 42, .22) 0%, transparent 70%);
+    }
+
+    .wyg-week-block-2 .wyg-week-header::after {
+      background: radial-gradient(circle, rgba(120, 80, 255, .22) 0%, transparent 70%);
+    }
+
+    .wyg-week-num {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 30px;
+      flex-shrink: 0;
+    }
+
+    .wyg-week-num-1 {
+      color: var(--hot);
+      background: rgba(232, 98, 42, .15);
+      border: 1px solid rgba(232, 98, 42, .42);
+    }
+
+    .wyg-week-num-2 {
+      color: #b4a0ff;
+      background: rgba(120, 80, 255, .15);
+      border: 1px solid rgba(120, 80, 255, .42);
+    }
+
+    .wyg-week-tag {
+      font-family: var(--fh);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .wyg-week-tag-1 {
+      background: linear-gradient(90deg, #F59340, #E8622A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wyg-week-tag-2 {
+      background: linear-gradient(90deg, #c4b5fd, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wyg-deliveries {
+      padding: 14px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wyg-del-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 15px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wyg-del-item-1 {
+      background: rgba(232, 98, 42, .07);
+      border: 1px solid rgba(232, 98, 42, .2);
+    }
+
+    .wyg-del-item-2 {
+      background: rgba(120, 80, 255, .07);
+      border: 1px solid rgba(120, 80, 255, .22);
+    }
+
+    .wyg-del-ico-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .wyg-del-ico-wrap-1 {
+      background: linear-gradient(135deg, rgba(232, 98, 42, .18), rgba(245, 147, 64, .12));
+      border: 1px solid rgba(232, 98, 42, .3);
+    }
+
+    .wyg-del-ico-wrap-2 {
+      background: linear-gradient(135deg, rgba(124, 58, 237, .18), rgba(167, 139, 255, .12));
+      border: 1px solid rgba(120, 80, 255, .3);
+    }
+
+    .wyg-del-txt {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .wyg-del-title {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      color: rgba(255, 255, 255, .95);
+    }
+
+    .wyg-del-desc {
+      font-size: 11px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, .48);
+    }
+
+    .wyg-del-arrow {
+      font-size: 17px;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .wyg-del-arrow-1 {
+      color: var(--hot);
+    }
+
+    .wyg-del-arrow-2 {
+      color: #a78bff;
+    }
+
+    .wyg-glow-line {
+      height: 2px;
+      margin: 0 18px 18px;
+      border-radius: 99px;
+    }
+
+    .wyg-glow-line-1 {
+      background: linear-gradient(90deg, transparent, rgba(232, 98, 42, .6), transparent);
+    }
+
+    .wyg-glow-line-2 {
+      background: linear-gradient(90deg, transparent, rgba(120, 80, 255, .6), transparent);
+    }
+
+    /* ===== PREMIUM OVERRIDES ===== */
+    .wyg-week-block-1 {
+      background: linear-gradient(145deg, #141210 0%, #1c1510 60%, #141210 100%);
+      border-color: rgba(195, 115, 55, .18);
+      box-shadow: none;
+      animation: none;
+    }
+
+    .wyg-week-block-2 {
+      background: linear-gradient(145deg, #0f0e14 0%, #141320 60%, #0f0e14 100%);
+      border-color: rgba(130, 100, 190, .18);
+      box-shadow: none;
+      animation: none;
+    }
+
+    .wyg-week-header-1 {
+      background: linear-gradient(90deg, rgba(195, 115, 55, .1) 0%, transparent 75%);
+    }
+
+    .wyg-week-header-2 {
+      background: linear-gradient(90deg, rgba(130, 100, 190, .12) 0%, transparent 75%);
+    }
+
+    .wyg-week-num-1 {
+      color: rgba(210, 135, 75, .9);
+      background: rgba(195, 115, 55, .09);
+      border-color: rgba(195, 115, 55, .22);
+    }
+
+    .wyg-week-num-2 {
+      color: rgba(170, 150, 230, .9);
+      background: rgba(130, 100, 190, .09);
+      border-color: rgba(130, 100, 190, .22);
+    }
+
+    .wyg-week-tag-1 {
+      background: linear-gradient(90deg, #d8956a, #c07040);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wyg-week-tag-2 {
+      background: linear-gradient(90deg, #b8a8e8, #7860c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wyg-del-item-1 {
+      background: rgba(195, 115, 55, .05);
+      border-color: rgba(195, 115, 55, .14);
+    }
+
+    .wyg-del-item-2 {
+      background: rgba(130, 100, 190, .05);
+      border-color: rgba(130, 100, 190, .14);
+    }
+
+    .wyg-del-ico-wrap-1 {
+      background: rgba(195, 115, 55, .09);
+      border-color: rgba(195, 115, 55, .18);
+    }
+
+    .wyg-del-ico-wrap-2 {
+      background: rgba(130, 100, 190, .09);
+      border-color: rgba(130, 100, 190, .18);
+    }
+
+    .wyg-del-arrow-1 {
+      color: rgba(200, 120, 60, .7);
+    }
+
+    .wyg-del-arrow-2 {
+      color: rgba(150, 120, 210, .7);
+    }
+
+    .wyg-glow-line-1 {
+      background: linear-gradient(90deg, transparent, rgba(195, 115, 55, .35), transparent);
+    }
+
+    .wyg-glow-line-2 {
+      background: linear-gradient(90deg, transparent, rgba(130, 100, 190, .35), transparent);
+    }
+
+    /* Side by side deliverables */
+    .wyg-side-by-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .wyg-del-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wyg-del-col .wyg-del-item {
+      flex: 1;
+      align-items: flex-start;
+    }
+
+    /* Vida atual card (before state) */
+    .evo-card-before {
+      background: #0b0a09;
+      opacity: .72;
+    }
+
+    .evo-card-before .evo-week-row {
+      background: #111010;
+    }
+
+    .evo-badge-gray {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .evo-dot-gray {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .25);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    /* 2 toasts side by side — corrigido */
+    .toast-zone {
+      min-height: 60px;
+      display: flex;
+      gap: 8px;
+      padding: 0 16px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+      overflow: hidden;
+    }
+
+    .toast-card {
+      flex: 1;
+      min-width: 0;
+      max-width: none;
+      background: rgba(10, 8, 6, .98);
+      border-color: rgba(180, 100, 40, .25);
+    }
+
+    .toast-card-ico {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+      border-radius: 7px;
+      flex-shrink: 0;
+    }
+
+    .toast-card-name {
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toast-card-sub {
+      font-size: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* animação toast mais fluida */
+    .toast-card {
+      transition: opacity .55s cubic-bezier(.4, 0, .2, 1), transform .55s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* wyg-ultra margin */
+    .wyg-ultra {
+      margin: 48px 0 48px;
+    }
+
+    /* mobile: wyg side by side → stack */
+    @media(max-width:500px) {
+      .wyg-side-by-side {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 3-column semanas */
+    .evo-grid-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .evo-grid-3col .evo-card {
+      border-right: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .evo-grid-3col .evo-card:last-child {
+      border-right: none;
+    }
+
+    @media(max-width:640px) {
+      .evo-grid-3col {
+        grid-template-columns: 1fr;
+      }
+
+      .evo-grid-3col .evo-card {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+      }
+
+      .evo-grid-3col .evo-card:last-child {
+        border-bottom: none;
+      }
+    }
+
+    /* gradient text bwm */
+    .bwm-highlight {
+      background: linear-gradient(90deg, #F59340 0%, #E8622A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 8px rgba(232, 98, 42, .4));
+    }
   </style>
 </head>
 
@@ -3032,13 +3696,27 @@
     </div>
   </div>
 
+  <style>
+    @keyframes urgShift {
+      0% {
+        background-position: 0%
+      }
+
+      100% {
+        background-position: 200%
+      }
+    }
+  </style>
+
   <div class="sticky-cta-bar" id="stickyCTA">
     <button class="ctamain" onclick="scrollToPricing()">Obter meu plano &#8594;</button>
   </div>
 
   <!-- LANDING -->
   <!-- DEV ONLY: botão temporário para ir direto à PV final -->
-  <button onclick="devGoToPV()" style="position:fixed;top:10px;right:10px;z-index:99999;background:#ff003c;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border:none;border-radius:6px;cursor:pointer;opacity:.85">⚡ IR PARA PV</button>
+  <button onclick="devGoToPV()"
+    style="position:fixed;top:10px;right:10px;z-index:99999;background:#ff003c;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border:none;border-radius:6px;cursor:pointer;opacity:.85">⚡
+    IR PARA PV</button>
 
   <section id="landing" class="section active">
     <div class="lwrap2">
@@ -3076,7 +3754,8 @@
         </div>
         <p class="llegal">Ao continuar, voc&ecirc; concorda com nossos <a href="#">Termos de Servi&ccedil;o</a> e nossa
           <a href="#">Pol&iacute;tica de Privacidade</a>.<br>Este site n&atilde;o oferece aconselhamento m&eacute;dico.
-          Consulte um profissional de sa&uacute;de.</p>
+          Consulte um profissional de sa&uacute;de.
+        </p>
       </div>
     </div>
   </section>
@@ -3100,6 +3779,12 @@
 
   <!-- RESULT -->
   <section id="result" class="section">
+    <!-- FAIXA DE URGÊNCIA — fluxo normal da página -->
+    <div id="urgencyBar"
+      style="display:none;width:100%;background:linear-gradient(90deg,#9b1c1c,#c81c1c,#9b1c1c);background-size:200% 100%;animation:urgShift 4s linear infinite;padding:9px 16px;text-align:center;font-size:12px;font-weight:700;color:#fff;letter-spacing:.04em">
+      &#9889; OFERTA EXPIRA EM &nbsp;<span id="urgTimer"
+        style="font-variant-numeric:tabular-nums;letter-spacing:.06em">05:00</span>
+    </div>
     <div class="rbody">
 
       <!-- 1. EVOLUTION -->
@@ -3111,23 +3796,37 @@
             <img src="img/r1.png" class="evo-hero-img" alt="Evolu&ccedil;&atilde;o"
               onerror="this.parentElement.style.display='none'">
           </div>
-          <div class="evo-grid">
+          <div class="evo-grid-3col" style="position:relative">
+            <div class="sq-particles" id="sqParticles"></div>
+            <!-- SEMANA 00 -->
             <div class="evo-card">
-              <div class="evo-week-row"><span class="evo-badge">SEMANA 01</span></div>
-              <div class="evo-desc-row">Voc&ecirc; desincha o corpo e o rosto de maneira percept&iacute;vel</div>
+              <div class="evo-week-row" style="gap:8px;background:linear-gradient(90deg,#1d1009,#1a0f07)">
+                <span class="evo-badge">SEMANA 00</span>
+                <div class="evo-atual-pulse" style="width:7px;height:7px;flex-shrink:0"></div>
+              </div>
+              <div class="evo-desc-row">Ponto de partida</div>
               <div class="evo-bullets">
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Desincha seu corpo</span></div>
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Afina seu rosto</span></div>
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Perde peso</span></div>
+                <div class="evo-bullet"><span class="evo-dot-gray"></span><span>Seu peso atual</span></div>
+                <div class="evo-bullet"><span class="evo-dot-gray"></span><span>Sua rotina atual</span></div>
+                <div class="evo-bullet"><span class="evo-dot-gray"></span><span>Sem um plano fixo</span></div>
               </div>
             </div>
+            <!-- SEMANA 01 -->
             <div class="evo-card">
-              <div class="evo-week-row"><span class="evo-badge">SEMANA 02</span></div>
-              <div class="evo-desc-row">M&uacute;sculos mais cheios e pele mais fina e definida</div>
+              <div class="evo-week-row"><span class="evo-badge">SEMANA 01</span></div>
+              <div class="evo-desc-row">Secar r&aacute;pido</div>
               <div class="evo-bullets">
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Afina a pele</span></div>
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Enche o m&uacute;sculo</span></div>
-                <div class="evo-bullet"><span class="evo-dot"></span><span>Acelera seu metabolismo</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Dieta para secar r&aacute;pido</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Treino acelera metabolismo</span></div>
+              </div>
+            </div>
+            <!-- SEMANA 02 -->
+            <div class="evo-card" style="border-right:none">
+              <div class="evo-week-row"><span class="evo-badge">SEMANA 02</span></div>
+              <div class="evo-desc-row">Construir m&uacute;sculo</div>
+              <div class="evo-bullets">
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Dieta m&uacute;sculo limpo</span></div>
+                <div class="evo-bullet"><span class="evo-dot"></span><span>Treino ganho de massa</span></div>
               </div>
             </div>
           </div>
@@ -3174,26 +3873,49 @@
               <div class="water-cups" id="r-water-cups"></div>
             </div>
           </div>
-          <div class="wygtitle" style="margin-top:4px">O que voc&ecirc; recebe?</div>
-          <div class="wygitem">
-            <div class="wygico">&#128203;</div>
-            <div>
-              <div class="wygtit">Um plano personalizado de treino e dieta</div>
-              <div class="wygdesc">Estruturado para você na primeira e na segunda semana</div>
+          <!-- O QUE VOCÊ RECEBE — ULTRA -->
+          <div class="wyg-ultra">
+            <div class="wyg-ultra-header">
+              <div class="wyg-ultra-badge">SEU PLANO COMPLETO</div>
+              <h2 class="wyg-ultra-title">O que voc&ecirc; recebe?</h2>
+              <p class="wyg-ultra-sub">4 entregáveis distribuídos nas 2 semanas do seu plano</p>
             </div>
-          </div>
-          <div class="wygitem">
-            <div class="wygico">&#9201;</div>
-            <div>
-              <div class="wygtit">Plano de rotina</div>
-              <div class="wygdesc">projetado para construir m&uacute;sculos e perder peso.</div>
-            </div>
-          </div>
-          <div class="wygitem">
-            <div class="wygico">&#128099;</div>
-            <div>
-              <div class="wygtit">Passo a passo</div>
-              <div class="wygdesc">abordagem adequada para iniciantes obterem resultados em semanas.</div>
+
+            <div class="wyg-side-by-side">
+              <!-- Coluna semana 1 -->
+              <div class="wyg-del-col">
+                <div class="wyg-del-item wyg-del-item-1">
+                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-1">&#129362;</div>
+                  <div class="wyg-del-txt">
+                    <div class="wyg-del-title">Dieta Secagem</div>
+                    <div class="wyg-del-desc">Elimina gordura e inc&ccedil;o em 7 dias</div>
+                  </div>
+                </div>
+                <div class="wyg-del-item wyg-del-item-1">
+                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-1">&#9889;</div>
+                  <div class="wyg-del-txt">
+                    <div class="wyg-del-title">Treino Metabolismo</div>
+                    <div class="wyg-del-desc">Acelera queima de calorias</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Coluna semana 2 -->
+              <div class="wyg-del-col">
+                <div class="wyg-del-item wyg-del-item-2">
+                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-2">&#128170;</div>
+                  <div class="wyg-del-txt">
+                    <div class="wyg-del-title">Dieta Massa Limpa</div>
+                    <div class="wyg-del-desc">Enche o m&uacute;sculo sem gordura</div>
+                  </div>
+                </div>
+                <div class="wyg-del-item wyg-del-item-2">
+                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-2">&#127947;</div>
+                  <div class="wyg-del-txt">
+                    <div class="wyg-del-title">Treino Hipertrofia</div>
+                    <div class="wyg-del-desc">Ganho de massa acelerado</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div style="margin:20px -16px 0;overflow:hidden">
@@ -3257,9 +3979,8 @@
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#06001a,#100830)'"></div>
             <div class="bonus-txt-col">
               <span class="bonus-tag bonus-tag2">B&Ocirc;NUS 02 &mdash; EXCLUSIVO</span>
-              <div class="bonus-name">Revis&atilde;o Estrat&eacute;gica BWM</div>
-              <div class="bonus-desc">Em um momento espec&iacute;fico do seu processo, voc&ecirc; passa por uma
-                an&aacute;lise individual com algu&eacute;m da equipe, especializada no m&eacute;todo.</div>
+              <div class="bonus-name">Mapa Metab&oacute;lico de Suplementa&ccedil;&atilde;o</div>
+              <div class="bonus-desc">Voc&ecirc; tamb&eacute;m vai receber acesso ao seu Mapa Metab&oacute;lico de Suplementa&ccedil;&atilde;o. Um direcionamento personalizado que mostra, de forma simples e direta, como alinhar o uso de suplementos com o seu objetivo dentro do desafio.</div>
             </div>
           </div>
         </div>
@@ -3369,10 +4090,25 @@
       <div class="pricsec" id="pricingSection">
         <div class="pric-layout">
           <div class="pric-left">
-            <div class="pric-buyers">1.100+ pessoas compraram nas &uacute;ltimas 24h</div>
-            <div class="pric-names">
-              <span class="pric-nametag"><strong>lucas*</strong> plano mensal</span>
-              <span class="pric-nametag"><strong>jeremy*</strong> plano mensal</span>
+            <div class="buyers-live">
+              <div class="buyers-live-dot"></div>
+              <span>6 pessoas compraram agora</span>
+            </div>
+            <div class="toast-zone">
+              <div class="toast-card" id="toastCard1">
+                <div class="toast-card-ico">&#127881;</div>
+                <div>
+                  <div class="toast-card-name">lucas*</div>
+                  <div class="toast-card-sub">plano completo</div>
+                </div>
+              </div>
+              <div class="toast-card" id="toastCard2">
+                <div class="toast-card-ico">&#127775;</div>
+                <div>
+                  <div class="toast-card-name">ana*</div>
+                  <div class="toast-card-sub">plano completo</div>
+                </div>
+              </div>
             </div>
             <img src="img/r3.png" class="pric-bodyimg" alt="" onerror="this.style.display='none'">
           </div>
@@ -3388,7 +4124,7 @@
                   onerror="this.style.display='none'">
                 <div class="planstitle"
                   style="font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:20px;text-transform:uppercase;letter-spacing:.04em">
-                  ADQUIRA SEU ACESSO AO DESAFIO BWM 14 Dias
+                  ADQUIRA SEU ACESSO AO <span class="bwm-highlight">DESAFIO BWM 14 DIAS</span>
                 </div>
                 <div class="plan-single">
                   <div class="plan-single-left">
@@ -3398,7 +4134,7 @@
                   </div>
                   <div class="plan-single-price">
                     <div class="plan-single-old">R$ 197,00</div>
-                    <div class="plan-single-val">R$ 49,90</div>
+                    <div class="plan-single-val">R$ 39,90</div>
                     <div class="plan-single-per">pagamento &uacute;nico</div>
                   </div>
                 </div>
@@ -3424,8 +4160,7 @@
               <div class="gtitle">Garantia de 14 Dias</div>
               <div class="gtxt">Seguiu o plano e n&atilde;o obteve resultado vis&iacute;vel em 14 dias? Devolvemos 100%
                 do seu dinheiro, sem perguntas. Acreditamos que o m&eacute;todo funciona &mdash; e colocamos nosso
-                compromisso financeiro nisso.<br><br><a href="#" class="glink">Saiba mais sobre as
-                  limita&ccedil;&otilde;es aplic&aacute;veis em nossa pol&iacute;tica de devolu&ccedil;&atilde;o.</a>
+                compromisso financeiro nisso.
               </div>
             </div>
             <div class="gseal-wrap">
@@ -3509,46 +4244,7 @@
                     </svg></div>
                 </div>
               </div>
-              <div class="vid-car-slide">
-                <video src="img/v7.mp4" loop muted autoplay playsinline preload="auto"></video>
-                <div class="vid-play-overlay" onclick="toggleVid(this)">
-                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    </svg></div>
-                </div>
-              </div>
-              <div class="vid-car-slide">
-                <video src="img/v8.mp4" loop muted autoplay playsinline preload="auto"></video>
-                <div class="vid-play-overlay" onclick="toggleVid(this)">
-                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    </svg></div>
-                </div>
-              </div>
-              <div class="vid-car-slide">
-                <video src="img/v9.mp4" loop muted autoplay playsinline preload="auto"></video>
-                <div class="vid-play-overlay" onclick="toggleVid(this)">
-                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    </svg></div>
-                </div>
-              </div>
-              <div class="vid-car-slide">
-                <video src="img/v10.mp4" loop muted autoplay playsinline preload="auto"></video>
-                <div class="vid-play-overlay" onclick="toggleVid(this)">
-                  <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    </svg></div>
-                </div>
-              </div>
+
             </div>
           </div>
           <div class="car-nav">
@@ -3620,7 +4316,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-a">
-              <p class="faq-atxt">N&atilde;o. &Eacute; um pagamento &uacute;nico de R$ 49,90 e voc&ecirc; tem acesso
+              <p class="faq-atxt">N&atilde;o. &Eacute; um pagamento &uacute;nico de R$ 39,90 e voc&ecirc; tem acesso
                 imediato a todo o conte&uacute;do. N&atilde;o h&aacute; cobran&ccedil;a autom&aacute;tica ou
                 renova&ccedil;&atilde;o.</p>
             </div>
@@ -3641,7 +4337,8 @@
           <!-- WhatsApp -->
           <div class="wa-wrap">
             <p class="wa-notfound">N&atilde;o encontrou sua d&uacute;vida?</p>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="wa-btn">
+            <a href="https://api.whatsapp.com/send/?phone=5521983101866&text&type=phone_number&app_absent=0"
+              target="_blank" rel="noopener" class="wa-btn">
               <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -3660,7 +4357,8 @@
         <div style="font-size:13px;color:var(--tx3);margin-bottom:18px">para turbinar seus resultados!</div>
         <div class="footsocial">
           <!-- Instagram -->
-          <a href="#" class="footico footico-ig" title="Instagram">
+          <a href="https://www.instagram.com/brenowfm/" target="_blank" rel="noopener" class="footico footico-ig"
+            title="Instagram">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -3669,21 +4367,23 @@
             </svg>
           </a>
           <!-- TikTok -->
-          <a href="#" class="footico footico-tt" title="TikTok">
+          <a href="https://www.tiktok.com/@brenowfm" target="_blank" rel="noopener" class="footico footico-tt"
+            title="TikTok">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
             </svg>
           </a>
           <!-- YouTube -->
-          <a href="#" class="footico footico-yt" title="YouTube">
+          <a href="https://www.youtube.com/@brenowfm" target="_blank" rel="noopener" class="footico footico-yt"
+            title="YouTube">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
           </a>
         </div>
-        <div class="footcopy">&copy; 2025 Desafio BWM 14 Dias. Todos os direitos reservados.</div>
+        <div class="footcopy">&copy; 2026 Desafio BWM 14 Dias. Todos os direitos reservados.</div>
       </div>
 
     </div>
@@ -3741,7 +4441,7 @@
     new MutationObserver(function () { if (rs.classList.contains("active")) setTimeout(populateResult, 200); }).observe(rs, { attributes: true, attributeFilter: ["class"] });
 
     if (!window.scrollToPricing) window.scrollToPricing = function () { var el = document.getElementById("pricingSection"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
-    if (!window.handleGetPlan) window.handleGetPlan = function () { window.scrollToPricing(); };
+    if (!window.handleGetPlan) window.handleGetPlan = function () { window.location.href = "https://ggcheckout.app/checkout/v2/5k9MK9m8b8ZpSm8qkk6z"; };
 
     (function () {
       var quizEl = document.getElementById("quiz-screen"), firstTime = true;
