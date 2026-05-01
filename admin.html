@@ -607,16 +607,18 @@
     (function () {
       'use strict';
 
-      var _SBURL = '', _SBKEY = '', _sb = null;
+      var _SBURL = 'https://fftgdntnavupoghgamia.supabase.co';
+      var _SBKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmdGdkbnRuYXZ1cG9naGdhbWlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1ODgzMDYsImV4cCI6MjA5MzE2NDMwNn0.dP_vw2K3uFwjw7H4o2H4HDrJVc74vHO_4bnAK7orCYs';
+      var _sb = null;
       var currentPeriod = 'today';
       var refreshCountdown = 60, refreshInterval;
       var sessionsChart, goalsChart, bodyTypeChart, devicesChart;
       var leadsData = [];
 
-      // Load config from localStorage
+      // Load config from localStorage (override defaults se o usuário salvou algo)
       try {
-        _SBURL = localStorage.getItem('fq_admin_url') || '';
-        _SBKEY = localStorage.getItem('fq_admin_key') || '';
+        _SBURL = localStorage.getItem('fq_admin_url') || _SBURL;
+        _SBKEY = localStorage.getItem('fq_admin_key') || _SBKEY;
       } catch (e) { }
 
       function saveConfig() {
