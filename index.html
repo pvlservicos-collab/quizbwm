@@ -8,6 +8,10 @@
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/c1m1.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/c1m2.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/c1m3.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/c1m4.webp" type="image/webp" fetchpriority="high">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"></noscript>
@@ -3734,10 +3738,11 @@
   </div>
 
   <!-- LANDING -->
-  <!-- DEV ONLY: botão temporário para ir direto à PV final -->
+  <!-- DEV ONLY: botão temporário para ir direto à PV final — descomente para ativar
   <button onclick="devGoToPV()"
     style="position:fixed;top:10px;right:10px;z-index:99999;background:#ff003c;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border:none;border-radius:6px;cursor:pointer;opacity:.85">⚡
     IR PARA PV</button>
+  -->
 
   <section id="landing" class="section active">
     <div class="lwrap2">
@@ -4414,9 +4419,9 @@
     </div>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
   <script>
-    if (window.twemoji) { twemoji.parse(document.body, { folder: "svg", ext: ".svg", base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/" }); }
+    // twemoji carregado de forma assíncrona — fora do caminho crítico
+    (function () { var s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js'; s.crossOrigin = 'anonymous'; s.async = true; document.head.appendChild(s); })();
 
     // sticky CTA
     var rs = document.getElementById("result"), sc = document.getElementById("stickyCTA");
@@ -4630,7 +4635,7 @@
       mobileCount: 1
     });
   </script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
