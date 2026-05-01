@@ -3647,6 +3647,98 @@
       margin: 48px 0 48px;
     }
 
+    /* ===== WYG JORNADA ===== */
+    .wyg-ng-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .wyg-ng-strip {
+      display: inline-block;
+      background: #ef4444;
+      color: #fff;
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      padding: 4px 13px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .wyg-ng-yes {
+      font-family: var(--fh);
+      font-size: clamp(15px, 4.5vw, 20px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+    }
+    .wyg-journey-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--rl);
+      padding: 20px 18px 18px;
+    }
+    .wyg-journey-week + .wyg-journey-week {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .wyg-journey-week-title {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--hot), var(--ember));
+      color: #fff;
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 5px;
+      margin-bottom: 14px;
+    }
+    .wyg-journey-timeline {
+      display: flex;
+      flex-direction: column;
+    }
+    .wyg-journey-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .wyg-journey-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 14px;
+    }
+    .wyg-journey-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--hot);
+      border: 2px solid rgba(232,98,42,.5);
+      box-shadow: 0 0 8px rgba(232,98,42,.35);
+      flex-shrink: 0;
+    }
+    .wyg-journey-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 18px;
+      background: linear-gradient(to bottom, rgba(232,98,42,.5), rgba(232,98,42,.1));
+      margin: 4px 0;
+    }
+    .wyg-journey-text {
+      font-family: var(--fh);
+      font-size: clamp(13px, 3.5vw, 15px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+      padding-bottom: 16px;
+    }
+    .wyg-journey-item:last-child .wyg-journey-text {
+      padding-bottom: 0;
+    }
+
     /* mobile: wyg side by side → stack */
     @media(max-width:500px) {
       .wyg-side-by-side {
@@ -3933,44 +4025,57 @@
             <div class="wyg-ultra-header">
               <div class="wyg-ultra-badge">SEU PLANO COMPLETO</div>
               <h2 class="wyg-ultra-title">O que voc&ecirc; recebe?</h2>
-              <p class="wyg-ultra-sub">4 entregáveis distribuídos nas 2 semanas do seu plano</p>
             </div>
 
-            <div class="wyg-side-by-side">
-              <!-- Coluna semana 1 -->
-              <div class="wyg-del-col">
-                <div class="wyg-del-item wyg-del-item-1">
-                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-1">&#129362;</div>
-                  <div class="wyg-del-txt">
-                    <div class="wyg-del-title">Dieta Secagem</div>
-                    <div class="wyg-del-desc">Elimina gordura e inc&ccedil;o em 7 dias</div>
+            <!-- Faixa "não é genérico" -->
+            <div class="wyg-ng-header">
+              <div class="wyg-ng-strip">N&atilde;o &eacute; um desafio gen&eacute;rico</div>
+              <div class="wyg-ng-yes">Aqui voc&ecirc; recebe um plano totalmente personalizado para voc&ecirc;</div>
+            </div>
+
+            <!-- Card jornada das semanas -->
+            <div class="wyg-journey-card">
+
+              <!-- Semana 1 -->
+              <div class="wyg-journey-week">
+                <div class="wyg-journey-week-title">1&ordf; semana</div>
+                <div class="wyg-journey-timeline">
+                  <div class="wyg-journey-item">
+                    <div class="wyg-journey-left">
+                      <div class="wyg-journey-dot"></div>
+                      <div class="wyg-journey-connector"></div>
+                    </div>
+                    <div class="wyg-journey-text">Uma dieta para secar</div>
                   </div>
-                </div>
-                <div class="wyg-del-item wyg-del-item-1">
-                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-1">&#9889;</div>
-                  <div class="wyg-del-txt">
-                    <div class="wyg-del-title">Treino Metabolismo</div>
-                    <div class="wyg-del-desc">Acelera queima de calorias</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Coluna semana 2 -->
-              <div class="wyg-del-col">
-                <div class="wyg-del-item wyg-del-item-2">
-                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-2">&#128170;</div>
-                  <div class="wyg-del-txt">
-                    <div class="wyg-del-title">Dieta Massa Limpa</div>
-                    <div class="wyg-del-desc">Enche o m&uacute;sculo sem gordura</div>
-                  </div>
-                </div>
-                <div class="wyg-del-item wyg-del-item-2">
-                  <div class="wyg-del-ico-wrap wyg-del-ico-wrap-2">&#127947;</div>
-                  <div class="wyg-del-txt">
-                    <div class="wyg-del-title">Treino Hipertrofia</div>
-                    <div class="wyg-del-desc">Ganho de massa acelerado</div>
+                  <div class="wyg-journey-item">
+                    <div class="wyg-journey-left">
+                      <div class="wyg-journey-dot"></div>
+                    </div>
+                    <div class="wyg-journey-text">Treino de altas repeti&ccedil;&otilde;es com descansos curtos para acelerar metabolismo</div>
                   </div>
                 </div>
               </div>
+
+              <!-- Semana 2 -->
+              <div class="wyg-journey-week">
+                <div class="wyg-journey-week-title">2&ordf; semana</div>
+                <div class="wyg-journey-timeline">
+                  <div class="wyg-journey-item">
+                    <div class="wyg-journey-left">
+                      <div class="wyg-journey-dot"></div>
+                      <div class="wyg-journey-connector"></div>
+                    </div>
+                    <div class="wyg-journey-text">Uma dieta para ganhos limpos sem ganhar gordura</div>
+                  </div>
+                  <div class="wyg-journey-item">
+                    <div class="wyg-journey-left">
+                      <div class="wyg-journey-dot"></div>
+                    </div>
+                    <div class="wyg-journey-text">Treino de alta intensidade para encher o m&uacute;sculo e afinar a pele</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <div style="margin:20px -16px 0;overflow:hidden">
