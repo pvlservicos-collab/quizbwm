@@ -1356,24 +1356,30 @@
     }
 
     .ltitle-orange {
-      background: linear-gradient(90deg, var(--hot) 0%, var(--hot2) 35%, #fff 50%, var(--hot2) 65%, var(--hot) 100%);
-      background-size: 250% auto;
+      background: linear-gradient(90deg, var(--hot) 0%, var(--hot2) 50%, var(--hot) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-shadow: none;
+      filter: drop-shadow(0 0 22px rgba(232, 98, 42, .65));
+      position: relative;
+      display: inline-block;
+      overflow: hidden
+    }
+
+    .ltitle-shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 20%, rgba(255, 255, 255, .45) 50%, transparent 80%);
+      mix-blend-mode: screen;
+      transform: translateX(-110%);
       animation: shimmerTxt 1.4s linear infinite;
-      filter: drop-shadow(0 0 22px rgba(232, 98, 42, .65))
+      will-change: transform;
+      pointer-events: none
     }
 
     @keyframes shimmerTxt {
-      0% {
-        background-position: 150% center
-      }
-
-      100% {
-        background-position: -150% center
-      }
+      to { transform: translateX(210%) }
     }
 
     .lctakey {
@@ -3748,7 +3754,7 @@
     <div class="lwrap2">
       <div class="lcont">
         <h1 class="ltitleland"><span class="ltitle-white">DESAFIO BWM</span><span
-            class="ltitle-sep">&nbsp;&middot;&nbsp;</span><span class="ltitle-orange">14 DIAS</span></h1>
+            class="ltitle-sep">&nbsp;&middot;&nbsp;</span><span class="ltitle-orange">14 DIAS<span class="ltitle-shimmer" aria-hidden="true"></span></span></h1>
         <p class="lsubland">Construa seu corpo ideal com um Plano personalizado baseado no seu IMC, idade, objetivo e
           suas respostas, para gerar resultados em 14 dias.</p>
         <div class="lctakey">Selecione sua faixa et&aacute;ria para come&ccedil;ar</div>
@@ -4052,23 +4058,23 @@
           <div class="img-carousel-wrap">
             <div class="img-carousel">
               <div class="img-car-track" id="imgCarTrack">
-                <div class="img-car-slide"><img src="img/d1.png" alt="Resultado 1"
+                <div class="img-car-slide"><img src="img/d1.png" alt="Resultado 1" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d2.png" alt="Resultado 2"
+                <div class="img-car-slide"><img src="img/d2.png" alt="Resultado 2" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d3.png" alt="Resultado 3"
+                <div class="img-car-slide"><img src="img/d3.png" alt="Resultado 3" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d4.png" alt="Resultado 4"
+                <div class="img-car-slide"><img src="img/d4.png" alt="Resultado 4" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d5.png" alt="Resultado 5"
+                <div class="img-car-slide"><img src="img/d5.png" alt="Resultado 5" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d6.png" alt="Resultado 6"
+                <div class="img-car-slide"><img src="img/d6.png" alt="Resultado 6" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d7.png" alt="Resultado 7"
+                <div class="img-car-slide"><img src="img/d7.png" alt="Resultado 7" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d8.png" alt="Resultado 8"
+                <div class="img-car-slide"><img src="img/d8.png" alt="Resultado 8" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
-                <div class="img-car-slide"><img src="img/d9.png" alt="Resultado 9"
+                <div class="img-car-slide"><img src="img/d9.png" alt="Resultado 9" loading="lazy"
                     onerror="this.parentElement.style.background='#1a1208'"></div>
               </div>
             </div>
@@ -4215,7 +4221,7 @@
           <div class="vid-carousel-wrap">
             <div class="vid-car-track" id="vidCarTrack">
               <div class="vid-car-slide">
-                <video src="img/v1.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v1.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4225,7 +4231,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v2.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v2.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4235,7 +4241,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v3.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v3.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4245,7 +4251,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v4.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v4.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4255,7 +4261,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v5.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v5.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4265,7 +4271,7 @@
                 </div>
               </div>
               <div class="vid-car-slide">
-                <video src="img/v6.mp4" loop muted autoplay playsinline preload="none"></video>
+                <video data-src="img/v6.mp4" loop muted playsinline preload="none"></video>
                 <div class="vid-play-overlay" onclick="toggleVid(this)">
                   <div class="vid-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                       <path d="M11 5L6 9H2v6h4l5 4V5z" />
@@ -4634,6 +4640,28 @@
       desktopCount: 3,
       mobileCount: 1
     });
+
+    // Lazy-load e autoplay de vídeos via IntersectionObserver
+    (function () {
+      var videos = document.querySelectorAll('video[data-src]');
+      if (!videos.length) return;
+      if (!('IntersectionObserver' in window)) {
+        videos.forEach(function (v) { v.src = v.dataset.src; v.play().catch(function(){}); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src) { v.src = v.dataset.src; }
+            v.play().catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      videos.forEach(function (v) { obs.observe(v); });
+    })();
   </script>
   <script src="script.js" defer></script>
 </body>
