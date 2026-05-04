@@ -1369,7 +1369,8 @@
       filter: drop-shadow(0 0 22px rgba(232, 98, 42, .65));
       position: relative;
       display: inline-block;
-      overflow: hidden
+      overflow: hidden;
+      vertical-align: top
     }
 
     .ltitle-shimmer {
@@ -1487,14 +1488,13 @@
     /* ── Instagram pill mockup ── */
     .ig-pill {
       display: inline-flex;
-      align-items: flex-start;
+      align-items: center;
       background: rgba(255, 255, 255, .05);
       border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 20px;
-      padding: 12px 16px 12px 12px;
+      border-radius: 999px;
+      padding: 10px 20px 10px 10px;
       gap: 13px;
-      max-width: 430px;
-      width: 100%;
+      width: fit-content;
       margin: 0 auto 28px;
       text-align: left
     }
@@ -1517,7 +1517,7 @@
       display: block
     }
 
-    .ig-info { flex: 1; min-width: 0 }
+    .ig-info { min-width: 0 }
 
     .ig-row1 {
       display: flex;
