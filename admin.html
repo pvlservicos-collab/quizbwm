@@ -575,7 +575,7 @@
     <!-- Leads table -->
     <div class="leads-section">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-        <h3 style="margin-bottom:0">📧 Leads capturados</h3>
+        <h3 style="margin-bottom:0">👥 Todas as sessões</h3>
         <button class="export-btn" onclick="exportCSV()">⬇ Exportar CSV</button>
       </div>
       <table>
@@ -589,11 +589,12 @@
             <th>IMC</th>
             <th>Dispositivo</th>
             <th>Status</th>
+            <th>Último Card</th>
           </tr>
         </thead>
         <tbody id="leadsTableBody">
           <tr>
-            <td colspan="8">
+            <td colspan="9">
               <div class="empty">Carregando...</div>
             </td>
           </tr>
@@ -686,9 +687,11 @@
             { q: 'Horas de sono', opts: [['<5h', 23], ['5–6h', 87], ['7–8h', 98], ['8+h', 39]] },
           ],
           leads: [
-            { started_at: new Date().toISOString(), name: 'João Silva', email: 'joao@email.com', age_group: '30-39', answers: { goal: 'lose_weight' }, calculated: { bmi: 26.5 }, device_type: 'mobile', completed_at: new Date().toISOString(), cta_clicked_at: new Date().toISOString() },
-            { started_at: new Date().toISOString(), name: 'Pedro Santos', email: 'pedro@email.com', age_group: '18-29', answers: { goal: 'gain_muscle' }, calculated: { bmi: 23.1 }, device_type: 'desktop', completed_at: new Date().toISOString(), cta_clicked_at: null },
-            { started_at: new Date().toISOString(), name: 'Carlos Mendes', email: 'carlos@email.com', age_group: '40-49', answers: { goal: 'wellbeing' }, calculated: { bmi: 28.9 }, device_type: 'mobile', completed_at: new Date().toISOString(), cta_clicked_at: null },
+            { started_at: new Date().toISOString(), name: 'João Silva', email: 'joao@email.com', age_group: '30-39', answers: { goal: 'lose_weight' }, calculated: { bmi: 26.5 }, device_type: 'mobile', completed_at: new Date().toISOString(), cta_clicked_at: new Date().toISOString(), last_card: '31/31 – E-mail' },
+            { started_at: new Date().toISOString(), name: 'Pedro Santos', email: 'pedro@email.com', age_group: '18-29', answers: { goal: 'gain_muscle' }, calculated: { bmi: 23.1 }, device_type: 'desktop', completed_at: new Date().toISOString(), cta_clicked_at: null, last_card: '31/31 – E-mail' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: '40-49', answers: { goal: 'lose_weight' }, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: '15/31 – Altura' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: '18-29', answers: {}, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: '3/31 – Corpo Desejado' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: null, answers: null, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: null },
           ]
         };
       }
@@ -787,11 +790,11 @@
         leadsData = leads;
         var tbody = document.getElementById('leadsTableBody');
         if (!leads || !leads.length) {
-          tbody.innerHTML = '<tr><td colspan="8"><div class="empty">Nenhum lead ainda.</div></td></tr>';
+          tbody.innerHTML = '<tr><td colspan="9"><div class="empty">Nenhum lead ainda.</div></td></tr>';
           return;
         }
         var goalMap = { lose_weight: 'Perder peso', gain_muscle: 'Ganhar massa', get_shredded: 'Definir', wellbeing: 'Bem-estar' };
-        var html = leads.slice(0, 50).map(function (row) {
+        var html = leads.slice(0, 200).map(function (row) {
           var dt = row.started_at ? new Date(row.started_at).toLocaleDateString('pt-BR') : '—';
           var goal = (row.answers && row.answers.goal) ? (goalMap[row.answers.goal] || row.answers.goal) : '—';
           var bmi = (row.calculated && row.calculated.bmi) ? row.calculated.bmi.toFixed(1) : '—';
@@ -806,6 +809,7 @@
             '<td>' + bmi + '</td>' +
             '<td>' + (row.device_type || '—') + '</td>' +
             '<td><span class="badge badge-' + status + '">' + statusLabel + '</span></td>' +
+            '<td style="color:#64748B;font-size:11px">' + (row.last_card || '—') + '</td>' +
             '</tr>';
         }).join('');
         tbody.innerHTML = html;
@@ -813,10 +817,11 @@
 
       function exportCSV() {
         if (!leadsData.length) { alert('Nenhum dado para exportar.'); return; }
-        var cols = ['Data', 'Nome', 'Email', 'Faixa Etária', 'Objetivo', 'IMC', 'Dispositivo'];
+        var cols = ['Data', 'Nome', 'Email', 'Faixa Etária', 'Objetivo', 'IMC', 'Dispositivo', 'Status', 'Último Card'];
         var rows = [cols.join(',')];
         var goalMap = { lose_weight: 'Perder peso', gain_muscle: 'Ganhar massa', get_shredded: 'Definir', wellbeing: 'Bem-estar' };
         leadsData.forEach(function (row) {
+          var status = row.cta_clicked_at ? 'Comprou' : (row.completed_at ? 'Completo' : 'Iniciou');
           rows.push([
             row.started_at ? new Date(row.started_at).toLocaleDateString('pt-BR') : '',
             row.name || '',
@@ -824,7 +829,9 @@
             row.age_group || '',
             (row.answers && row.answers.goal) ? (goalMap[row.answers.goal] || row.answers.goal) : '',
             (row.calculated && row.calculated.bmi) ? row.calculated.bmi.toFixed(1) : '',
-            row.device_type || ''
+            row.device_type || '',
+            status,
+            row.last_card || ''
           ].map(function (v) { return '"' + (v || '').replace(/"/g, '""') + '"'; }).join(','));
         });
         var blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
@@ -916,9 +923,7 @@
           });
           renderAnswerTables(distrib);
 
-          // Leads
-          var leadsRows = data.filter(function (r) { return r.email; });
-          renderLeads(leadsRows);
+          renderLeads(data);
 
         } catch (err) {
           showError('Erro ao carregar dados: ' + (err.message || JSON.stringify(err)));

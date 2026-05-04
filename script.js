@@ -285,6 +285,35 @@
   var TOTAL = STEPS.length;
   var $ = function (id) { return document.getElementById(id); };
 
+  var STEP_LABELS = [
+    'Tipo de Corpo', 'Objetivo', 'Corpo Desejado', 'Áreas Problemáticas',
+    'Info Idade', 'Melhor Forma', 'Mudança de Peso', 'Atividades',
+    'Gráfico Resultados', 'Limitações', 'Local de Treino', 'Intensidade',
+    'Frequência', 'Duração do Treino', 'Gráfico Cortisol', 'Altura',
+    'Peso', 'Exercícios (Swipe)', 'Consumo de Açúcar', 'Consumo de Água',
+    'Dia Típico', 'Nível de Energia', 'Horas de Sono', 'Score de Sono',
+    'Escala Fôlego', 'Escala Rotina', 'Escala Conhecimento',
+    'Nome', 'Data de Nascimento', 'Idade Corporal', 'E-mail'
+  ];
+
+  function _saveLastCard() {
+    if (!S.sid) return;
+    var label = (S.step + 1) + '/' + TOTAL + ' – ' + (STEP_LABELS[S.step] || (STEPS[S.step] ? STEPS[S.step].key : ''));
+    try {
+      fetch(_SBURL + '/rest/v1/fitness_quiz_sessions?session_id=eq.' + encodeURIComponent(S.sid), {
+        method: 'PATCH',
+        headers: {
+          'apikey': _SBKEY,
+          'Authorization': 'Bearer ' + _SBKEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ last_card: label }),
+        keepalive: true
+      });
+    } catch (e) { }
+  }
+
   function transTo(id) {
     return new Promise(function (res) {
       var cur = document.querySelector('.section.active');
@@ -456,7 +485,7 @@
     var unit = S.answers.heightUnit || 'cm';
     return '<h2 class="stitle aitem">Qual é a sua altura?</h2>'
       + '<div class="urow aitem"><button class="ubtn' + (unit === 'ft' ? ' on' : '') + '" onclick="setHUnit(\'ft\')">ft, in</button><button class="ubtn' + (unit === 'cm' ? ' on' : '') + '" onclick="setHUnit(\'cm\')">cm</button></div>'
-      + '<div class="ig aitem"><label class="ilbl">Altura (' + unit + ')</label><div class="iu"><input class="qinp" id="hInp" type="number" inputmode="numeric" placeholder="' + (unit === 'cm' ? '175' : '5.9') + '" min="' + (unit === 'cm' ? 100 : 3) + '" max="' + (unit === 'cm' ? 250 : 8) + '"><span class="iulbl">' + unit + '</span></div></div>'
+      + '<div class="ig aitem"><label class="ilbl">Altura (' + unit + ')</label><div class="iu"><input class="qinp" id="hInp" type="text" inputmode="' + (unit === 'cm' ? 'numeric' : 'decimal') + '" placeholder="' + (unit === 'cm' ? '175' : '5.9') + '"><span class="iulbl">' + unit + '</span></div></div>'
       + '<div class="crow aitem"><input type="checkbox" class="cchk" id="consentChk" checked><label class="ctxt" for="consentChk">Consinto que o BWM processe meus dados para fornecer meu plano personalizado. <a href="#">Política de Privacidade</a>.</label></div>'
       + '<button class="btn aitem" onclick="submitH()">Continuar →</button>';
   }
@@ -648,6 +677,15 @@
         dobEl.value = v;
       });
     }
+
+    if (step.type === 'input-height') {
+      var hInpEl = $('hInp');
+      if (hInpEl && (S.answers.heightUnit || 'cm') === 'cm') {
+        hInpEl.addEventListener('input', function () {
+          hInpEl.value = hInpEl.value.replace(/[^0-9]/g, '');
+        });
+      }
+    }
   }
 
   function animPath(id) {
@@ -736,8 +774,10 @@
   };
 
   window.submitH = function () {
-    var inp = $('hInp'), val = parseFloat(inp ? inp.value : '0');
+    var inp = $('hInp');
     var unit = S.answers.heightUnit || 'cm';
+    var raw = (inp ? inp.value : '').replace(/[^0-9.]/g, '');
+    var val = parseFloat(raw);
     if (!val || val < (unit === 'cm' ? 100 : 3)) { if (inp) inp.style.borderColor = '#ef4444'; return; }
     S.answers.height = unit === 'cm' ? val : Math.round(val * 30.48);
     advStep();
@@ -953,16 +993,11 @@
   window.selectAge = function (age) {
     S.ageGroup = age;
     S.answers.ageGroup = age;
-    S.sid = _uuid();
     _firstRender = true;
-    try { sessionStorage.setItem('bwm_sid', S.sid); } catch (e) { }
-    var u = _utms();
     _track(function () {
-      _sb.from('fitness_quiz_sessions').insert({
-        session_id: S.sid, started_at: new Date().toISOString(),
-        age_group: age, device_type: _device(),
-        utm_source: u.source, utm_medium: u.medium, utm_campaign: u.campaign
-      }).then(null, null);
+      _sb.from('fitness_quiz_sessions').update({
+        age_group: age
+      }).eq('session_id', S.sid).then(null, null);
     });
     transTo('quiz-screen').then(function () {
       S.step = 0;
@@ -984,8 +1019,35 @@
     if (cont) cont.disabled = false;
   };
 
+  function initSession() {
+    var existing;
+    try { existing = sessionStorage.getItem('bwm_sid'); } catch (e) {}
+    if (existing) {
+      S.sid = existing;
+      return;
+    }
+    S.sid = _uuid();
+    try { sessionStorage.setItem('bwm_sid', S.sid); } catch (e) {}
+    var u = _utms();
+    _track(function () {
+      _sb.from('fitness_quiz_sessions').insert({
+        session_id: S.sid,
+        started_at: new Date().toISOString(),
+        device_type: _device(),
+        utm_source: u.source,
+        utm_medium: u.medium,
+        utm_campaign: u.campaign
+      }).then(null, null);
+    });
+  }
+
   function init() {
+    initSession();
     $('backBtn').addEventListener('click', goBack, { passive: true });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') _saveLastCard();
+    });
+    window.addEventListener('pagehide', _saveLastCard);
   }
   init();
 })();
