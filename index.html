@@ -1484,6 +1484,132 @@
       color: #555
     }
 
+    /* ── Instagram pill mockup ── */
+    .ig-pill {
+      display: inline-flex;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 20px;
+      padding: 12px 16px 12px 12px;
+      gap: 13px;
+      max-width: 430px;
+      width: 100%;
+      margin: 0 auto 28px;
+      text-align: left
+    }
+
+    .ig-avatar-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      padding: 2.5px;
+      flex-shrink: 0
+    }
+
+    .ig-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0a0806;
+      display: block
+    }
+
+    .ig-info { flex: 1; min-width: 0 }
+
+    .ig-row1 {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 2px
+    }
+
+    .ig-handle {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      font-family: var(--fh)
+    }
+
+    .ig-check {
+      width: 14px;
+      height: 14px;
+      background: #0095f6;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+      flex-shrink: 0
+    }
+
+    .ig-name-line {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 5px
+    }
+
+    .ig-stats {
+      display: flex;
+      gap: 10px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 5px;
+      flex-wrap: wrap
+    }
+
+    .ig-stats strong {
+      color: rgba(255, 255, 255, .9);
+      font-weight: 700
+    }
+
+    .ig-bio {
+      font-size: 10px;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.45
+    }
+
+    .ig-arrows { color: var(--hot) }
+
+    /* ── Override ltitleland para copy longa ── */
+    .ltitleland {
+      font-size: clamp(26px, 3.8vw, 52px);
+      white-space: normal;
+      line-height: 1.18;
+      margin-bottom: 20px
+    }
+
+    /* ── Badge quiz ── */
+    .lquiz-badge {
+      display: inline-block;
+      background: var(--hot);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--fh);
+      border-radius: 10px;
+      padding: 8px 20px;
+      margin: 0 auto 22px;
+      line-height: 1.4
+    }
+
+    /* ── Click hint abaixo dos cards ── */
+    .lclick-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 13px;
+      color: var(--tx3);
+      margin-top: 4px;
+      margin-bottom: 14px
+    }
+
     @media(max-width:700px) {
       .lwrap2 {
         padding: 40px 16px 48px;
@@ -1491,7 +1617,7 @@
       }
 
       .ltitleland {
-        font-size: clamp(26px, 7.5vw, 46px);
+        font-size: clamp(24px, 7vw, 36px);
         white-space: normal
       }
 
@@ -3852,12 +3978,34 @@
   <section id="landing" class="section active">
     <div class="lwrap2">
       <div class="lcont">
+
+        <!-- Mockup perfil Instagram -->
+        <div class="ig-pill">
+          <div class="ig-avatar-wrap">
+            <img src="img/fotoinsta.jpg" alt="Dr. Breno Moura" class="ig-avatar-img">
+          </div>
+          <div class="ig-info">
+            <div class="ig-row1">
+              <span class="ig-handle">brenowfm</span>
+              <span class="ig-check">✓</span>
+            </div>
+            <div class="ig-name-line">Dr. Breno Moura / Alta Performance</div>
+            <div class="ig-stats">
+              <span><strong>349</strong> posts</span>
+              <span><strong>35,9 mil</strong> seguidores</span>
+              <span><strong>7.157</strong> seguindo</span>
+            </div>
+          </div>
+        </div>
+
         <h1 class="ltitleland"><span class="ltitle-white">DESAFIO BWM</span><span
             class="ltitle-sep">&nbsp;&middot;&nbsp;</span><span class="ltitle-orange">14 DIAS<span
               class="ltitle-shimmer" aria-hidden="true"></span></span></h1>
         <p class="lsubland">Construa seu corpo ideal com um Plano personalizado baseado no seu IMC, idade, objetivo e
           suas respostas, para gerar resultados em 14 dias.</p>
         <div class="lctakey">Selecione sua faixa et&aacute;ria para come&ccedil;ar</div>
+
+        <!-- Cards de faixa etária -->
         <div class="agrid" id="ageGrid">
           <div class="acard" onclick="selectAge('18-29')">
             <div class="aimg">
@@ -3892,16 +4040,21 @@
           <div class="acard" onclick="selectAge('50+')">
             <div class="aimg">
               <picture>
-                <source srcset="img/c1m4.webp" type="image/webp"><img src="img/c1m4.png" alt="50+" fetchpriority="high"
+                <source srcset="img/c1m4.webp" type="image/webp"><img src="img/c1m4.png" alt="50+"
+                  fetchpriority="high"
                   onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:58px;padding-bottom:6px&quot;>&#129491;</div>'">
               </picture>
             </div>
             <div class="albl">50+ anos</div>
           </div>
         </div>
-        <p class="llegal">Ao continuar, voc&ecirc; concorda com nossos <a href="#">Termos de Servi&ccedil;o</a> e nossa
-          <a href="#">Pol&iacute;tica de Privacidade</a>.<br>Este site n&atilde;o oferece aconselhamento m&eacute;dico.
-          Consulte um profissional de sa&uacute;de.
+
+        <!-- Hint clique -->
+        <div class="lclick-hint">🖱️ <span>Clique em uma das opções acima</span></div>
+
+        <p class="llegal">Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e nossa
+          <a href="#">Política de Privacidade</a>.<br>Este site não oferece aconselhamento médico.
+          Consulte um profissional de saúde.
         </p>
       </div>
     </div>
