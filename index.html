@@ -1578,7 +1578,8 @@
 
     /* ── Override ltitleland para copy longa ── */
     .ltitleland {
-      font-size: clamp(26px, 3.8vw, 52px);
+      font-size: 1.65rem;
+      font-weight: 800;
       white-space: normal;
       line-height: 1.18;
       margin-bottom: 20px
@@ -1589,13 +1590,14 @@
       display: inline-block;
       background: var(--hot);
       color: #fff;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 10px;
+      font-weight: 300;
       font-family: var(--fh);
-      border-radius: 10px;
-      padding: 8px 20px;
+      border-radius: 6px;
+      padding: 3px 12px;
       margin: 0 auto 22px;
-      line-height: 1.4
+      line-height: 1.4;
+      letter-spacing: .12em
     }
 
     /* ── Click hint abaixo dos cards ── */
@@ -1617,9 +1619,16 @@
       }
 
       .ltitleland {
-        font-size: clamp(24px, 7vw, 36px);
+        font-size: 1.1rem;
+        font-weight: 800;
         white-space: normal;
         margin-bottom: 6px
+      }
+
+      .lquiz-badge {
+        font-size: 9px;
+        padding: 3px 10px;
+        font-weight: 300
       }
 
       .lsubland {
@@ -3944,6 +3953,21 @@
       filter: drop-shadow(0 0 8px rgba(232, 98, 42, .4));
     }
   </style>
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+  <script>
+    window.pixelId = "69f8c98c8e0fb0263462ceee";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
 </head>
 
 <body>
@@ -4489,7 +4513,7 @@
                     style="color:var(--hot);flex-shrink:0">&#127873;</span><span>Inclui b&ocirc;nus Protocolo Acelerador
                     BWM e Mapa Metabólico de Suplementação</span></div>
                 <button class="ctamain" id="btnGetPlan" onclick="handleGetPlan()"
-                  style="display:flex;width:100%;padding:18px;font-size:16px">Quero o Desafio BWM &#8594;</button>
+                  style="display:flex;width:100%;padding:18px;font-size:16px">Quero o Desafio BWM</button>
                 <p style="font-size:11px;color:var(--tx3);text-align:center;margin-top:14px;line-height:1.5">Ao
                   continuar, voc&ecirc; concorda com nossos <a href="#" style="color:var(--tx3)">Termos</a> e <a
                     href="#" style="color:var(--tx3)">Pol&iacute;tica de Privacidade</a></p>
