@@ -7,7 +7,7 @@
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap"
     rel="stylesheet">
   <style>
     * {
@@ -673,7 +673,7 @@
     }
 
     .r-card-lbl {
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 800;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -687,10 +687,79 @@
     }
 
     .r-card-txt {
-      font-size: 14px;
+      font-size: 12px;
       color: #fff;
       line-height: 1.7;
       text-align: left
+    }
+
+    .dep-wrap {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,.03) 100%);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 14px;
+      overflow: hidden
+    }
+
+    .dep-img {
+      flex: 0 0 48%;
+      max-width: 48%;
+      min-height: 200px;
+      object-fit: cover;
+      object-position: top center;
+      display: block
+    }
+
+    .dep-body {
+      flex: 1;
+      min-width: 0;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left
+    }
+
+    .dep-lbl {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #E83232;
+      margin-bottom: 14px
+    }
+
+    .dep-quote {
+      font-size: 15px;
+      color: #fff;
+      line-height: 1.65;
+      margin-bottom: 16px
+    }
+
+    .dep-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff
+    }
+
+    @media(max-width:500px) {
+      .dep-wrap {
+        flex-direction: column
+      }
+
+      .dep-img {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        min-height: 260px
+      }
+
+      .dep-body {
+        text-align: center;
+        align-items: center
+      }
     }
 
     .r-sig {
@@ -698,7 +767,7 @@
       align-items: flex-start;
       gap: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 12px;
       color: #fff;
       line-height: 1.55;
       text-align: left
@@ -1321,7 +1390,7 @@
 
     .mentor-img-col {
       flex-shrink: 0;
-      width: 160px;
+      width: 240px;
       overflow: hidden;
       background: #18100a;
       position: relative
@@ -1390,11 +1459,15 @@
 
       .mentor-img-col {
         width: 100%;
-        height: 220px
+        height: 360px
       }
 
       .mentor-img-col img {
         object-position: top center
+      }
+
+      .car-sl {
+        aspect-ratio: 2/3
       }
     }
 
@@ -1937,15 +2010,16 @@
       font-weight: 700
     }
 
-    .land-title {
+    .bwm-headline-main {
+      font-family: 'Inter', 'Manrope', sans-serif;
       font-size: clamp(26px, 7vw, 56px);
       font-weight: 900;
+      font-variation-settings: 'wght' 900;
       line-height: 1.05;
-      letter-spacing: -.01em;
+      letter-spacing: -.02em;
       margin-bottom: 14px;
       white-space: nowrap;
-      -webkit-font-smoothing: auto;
-      font-smooth: auto
+      -webkit-font-smoothing: auto
     }
 
     .lt-white {
@@ -1975,7 +2049,8 @@
     }
 
     .land-sub {
-      font-size: 0.9375rem;
+      font-size: 0.8rem;
+      letter-spacing: .05em;
       color: #fff;
       line-height: 1.65;
       max-width: 520px;
@@ -2112,13 +2187,13 @@
     }
 
     @media(max-width:600px) {
-      .land-title {
+      .bwm-headline-main {
         font-size: 1.55rem;
         white-space: normal
       }
 
       .land-sub {
-        font-size: 0.75rem
+        font-size: 0.64rem
       }
 
       .intro-inner { max-width: 95vw }
@@ -2374,7 +2449,7 @@
         </div>
       </div>
 
-      <h1 class="land-title"><span class="lt-white">DESAFIO BWM</span><span
+      <h1 class="bwm-headline-main"><span class="lt-white">DESAFIO BWM</span><span
           class="lt-sep">&nbsp;&middot;&nbsp;</span><span class="lt-orange">14 DIAS</span></h1>
       <p class="land-sub">Construa seu corpo ideal com um Plano personalizado baseado no seu IMC, idade, objetivo e suas
         respostas, para gerar resultados em 14 dias.</p>
@@ -2622,6 +2697,24 @@
                   </svg></div>
               </div>
             </div>
+            <div class="vid-car-sl"><video data-src="img/v7.mp4" loop muted playsinline preload="none"></video>
+              <div class="vid-play-ov paused" onclick="toggleVid(this)">
+                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                  </svg></div>
+              </div>
+            </div>
+            <div class="vid-car-sl"><video data-src="img/v8.mp4" loop muted playsinline preload="none"></video>
+              <div class="vid-play-ov paused" onclick="toggleVid(this)">
+                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                  </svg></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="car-nav">
@@ -2657,15 +2750,15 @@
           campeonatos de fisiculturismo</div>
         <div class="car-wrap">
           <div class="car-track" id="carTrack">
-            <div class="car-sl"><img src="img/d1.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d2.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d3.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d4.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d5.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d6.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d7.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d8.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d9.png" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d1.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d2.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d3.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d4.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d5.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d6.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d7.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d8.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d9.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
           </div>
         </div>
         <div class="car-nav"><button class="car-btn" id="carPrev">&#8249;</button>
@@ -3442,12 +3535,12 @@
         var gKey = genderVal === 'female' ? 'f' : 'm';
         var dep = DEPS[p.key] && DEPS[p.key][gKey];
         if (dep) {
-          depEl.innerHTML = '<div style="display:flex;gap:0;align-items:stretch;background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(255,255,255,.13);border-radius:14px;overflow:hidden">'
-            + '<img src="img/' + dep.img + '.jpg" alt="' + dep.name + '" loading="lazy" style="flex:0 0 48%;max-width:48%;min-height:200px;object-fit:cover;object-position:top center;display:block" onerror="this.style.display=\'none\'">'
-            + '<div style="flex:1;min-width:0;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;text-align:left">'
-            + '<div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E83232;margin-bottom:14px">Resultado real</div>'
-            + '<p style="font-size:15px;color:#fff;line-height:1.65;margin-bottom:16px">&ldquo;' + dep.quote + '&rdquo;</p>'
-            + '<div style="font-size:13px;font-weight:800;color:#fff">— ' + dep.name + '</div>'
+          depEl.innerHTML = '<div class="dep-wrap">'
+            + '<img src="img/' + dep.img + '.jpg" alt="' + dep.name + '" loading="lazy" class="dep-img" onerror="this.style.display=\'none\'">'
+            + '<div class="dep-body">'
+            + '<div class="dep-lbl">Resultado real</div>'
+            + '<p class="dep-quote">&ldquo;' + dep.quote + '&rdquo;</p>'
+            + '<div class="dep-name">— ' + dep.name + '</div>'
             + '</div></div>';
         }
       }
