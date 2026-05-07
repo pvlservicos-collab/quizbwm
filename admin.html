@@ -288,7 +288,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 12px;
-      min-width: 600px;
+      min-width: 900px;
     }
 
     th {
@@ -585,16 +585,19 @@
             <th>Nome</th>
             <th>E-mail</th>
             <th>Faixa Etária</th>
+            <th>Sexo</th>
             <th>Objetivo</th>
             <th>IMC</th>
             <th>Dispositivo</th>
-            <th>Status</th>
+            <th>Perfil</th>
+            <th>PV</th>
+            <th>CTA</th>
             <th>Último Card</th>
           </tr>
         </thead>
         <tbody id="leadsTableBody">
           <tr>
-            <td colspan="9">
+            <td colspan="12">
               <div class="empty">Carregando...</div>
             </td>
           </tr>
@@ -687,11 +690,11 @@
             { q: 'Horas de sono', opts: [['<5h', 23], ['5–6h', 87], ['7–8h', 98], ['8+h', 39]] },
           ],
           leads: [
-            { started_at: new Date().toISOString(), name: 'João Silva', email: 'joao@email.com', age_group: '30-39', answers: { goal: 'lose_weight' }, calculated: { bmi: 26.5 }, device_type: 'mobile', completed_at: new Date().toISOString(), cta_clicked_at: new Date().toISOString(), last_card: '31/31 – E-mail' },
-            { started_at: new Date().toISOString(), name: 'Pedro Santos', email: 'pedro@email.com', age_group: '18-29', answers: { goal: 'gain_muscle' }, calculated: { bmi: 23.1 }, device_type: 'desktop', completed_at: new Date().toISOString(), cta_clicked_at: null, last_card: '31/31 – E-mail' },
-            { started_at: new Date().toISOString(), name: null, email: null, age_group: '40-49', answers: { goal: 'lose_weight' }, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: '15/31 – Altura' },
-            { started_at: new Date().toISOString(), name: null, email: null, age_group: '18-29', answers: {}, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: '3/31 – Corpo Desejado' },
-            { started_at: new Date().toISOString(), name: null, email: null, age_group: null, answers: null, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: null },
+            { started_at: new Date().toISOString(), name: 'João Silva', email: 'joao@email.com', age_group: '30-39', gender: 'male', profile_result: 'C', answers: { goal: 'lose_weight' }, calculated: { bmi: 26.5 }, device_type: 'mobile', completed_at: new Date().toISOString(), cta_clicked_at: new Date().toISOString(), last_card: 'Q7/7' },
+            { started_at: new Date().toISOString(), name: 'Pedro Santos', email: 'pedro@email.com', age_group: '18-29', gender: 'male', profile_result: 'M', answers: { goal: 'gain_muscle' }, calculated: { bmi: 23.1 }, device_type: 'desktop', completed_at: new Date().toISOString(), cta_clicked_at: null, last_card: 'Q7/7' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: '40-49', gender: 'female', profile_result: 'I', answers: { goal: 'lose_weight' }, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: 'Q4/7' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: '18-29', gender: 'female', profile_result: null, answers: {}, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: 'Q2/7' },
+            { started_at: new Date().toISOString(), name: null, email: null, age_group: null, gender: null, profile_result: null, answers: null, calculated: null, device_type: 'mobile', completed_at: null, cta_clicked_at: null, last_card: null },
           ]
         };
       }
@@ -790,25 +793,35 @@
         leadsData = leads;
         var tbody = document.getElementById('leadsTableBody');
         if (!leads || !leads.length) {
-          tbody.innerHTML = '<tr><td colspan="9"><div class="empty">Nenhum lead ainda.</div></td></tr>';
+          tbody.innerHTML = '<tr><td colspan="12"><div class="empty">Nenhum lead ainda.</div></td></tr>';
           return;
         }
         var goalMap = { lose_weight: 'Perder peso', gain_muscle: 'Ganhar massa', get_shredded: 'Definir', wellbeing: 'Bem-estar' };
+        var profileMap = { C: 'Cortisol', I: 'Insulina', F: 'Inflamação', M: 'Metabolismo' };
+        var profileCol = { C: '#E83232', I: '#2563EB', F: '#059669', M: '#7C3AED' };
         var html = leads.slice(0, 200).map(function (row) {
           var dt = row.started_at ? new Date(row.started_at).toLocaleDateString('pt-BR') : '—';
           var goal = (row.answers && row.answers.goal) ? (goalMap[row.answers.goal] || row.answers.goal) : '—';
           var bmi = (row.calculated && row.calculated.bmi) ? row.calculated.bmi.toFixed(1) : '—';
-          var status = row.cta_clicked_at ? 'complete' : (row.completed_at ? 'partial' : 'started');
-          var statusLabel = { complete: 'Comprou', partial: 'Completo', started: 'Iniciou' }[status];
+          var gender = row.gender === 'male' ? 'M' : (row.gender === 'female' ? 'F' : '—');
+          var pKey = row.profile_result;
+          var profileCell = pKey && profileMap[pKey]
+            ? '<span style="display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;background:' + profileCol[pKey] + '22;color:' + profileCol[pKey] + '">' + profileMap[pKey] + '</span>'
+            : '—';
+          var pvCell = row.completed_at ? '<span class="badge badge-partial">Chegou</span>' : '<span style="color:#CBD5E1">—</span>';
+          var ctaCell = row.cta_clicked_at ? '<span class="badge badge-complete">Clicou</span>' : '<span style="color:#CBD5E1">—</span>';
           return '<tr>' +
             '<td>' + dt + '</td>' +
             '<td>' + (row.name || '—') + '</td>' +
             '<td><a href="mailto:' + (row.email || '') + '">' + (row.email || '—') + '</a></td>' +
             '<td>' + (row.age_group || '—') + '</td>' +
+            '<td>' + gender + '</td>' +
             '<td>' + goal + '</td>' +
             '<td>' + bmi + '</td>' +
             '<td>' + (row.device_type || '—') + '</td>' +
-            '<td><span class="badge badge-' + status + '">' + statusLabel + '</span></td>' +
+            '<td>' + profileCell + '</td>' +
+            '<td>' + pvCell + '</td>' +
+            '<td>' + ctaCell + '</td>' +
             '<td style="color:#64748B;font-size:11px">' + (row.last_card || '—') + '</td>' +
             '</tr>';
         }).join('');
@@ -817,20 +830,25 @@
 
       function exportCSV() {
         if (!leadsData.length) { alert('Nenhum dado para exportar.'); return; }
-        var cols = ['Data', 'Nome', 'Email', 'Faixa Etária', 'Objetivo', 'IMC', 'Dispositivo', 'Status', 'Último Card'];
+        var cols = ['Data', 'Nome', 'Email', 'Faixa Etária', 'Sexo', 'Objetivo', 'IMC', 'Dispositivo', 'Perfil', 'PV', 'CTA', 'Último Card'];
         var rows = [cols.join(',')];
         var goalMap = { lose_weight: 'Perder peso', gain_muscle: 'Ganhar massa', get_shredded: 'Definir', wellbeing: 'Bem-estar' };
+        var profileMap = { C: 'Cortisol', I: 'Insulina', F: 'Inflamação', M: 'Metabolismo' };
         leadsData.forEach(function (row) {
-          var status = row.cta_clicked_at ? 'Comprou' : (row.completed_at ? 'Completo' : 'Iniciou');
+          var gender = row.gender === 'male' ? 'Masculino' : (row.gender === 'female' ? 'Feminino' : '');
+          var profile = row.profile_result ? (profileMap[row.profile_result] || row.profile_result) : '';
           rows.push([
             row.started_at ? new Date(row.started_at).toLocaleDateString('pt-BR') : '',
             row.name || '',
             row.email || '',
             row.age_group || '',
+            gender,
             (row.answers && row.answers.goal) ? (goalMap[row.answers.goal] || row.answers.goal) : '',
             (row.calculated && row.calculated.bmi) ? row.calculated.bmi.toFixed(1) : '',
             row.device_type || '',
-            status,
+            profile,
+            row.completed_at ? 'Sim' : 'Não',
+            row.cta_clicked_at ? 'Sim' : 'Não',
             row.last_card || ''
           ].map(function (v) { return '"' + (v || '').replace(/"/g, '""') + '"'; }).join(','));
         });

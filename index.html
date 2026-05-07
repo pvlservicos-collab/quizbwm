@@ -1349,7 +1349,14 @@
 
     @media(max-width:580px) {
       .vid-car-sl {
-        width: 100%
+        width: 100%;
+        aspect-ratio: unset;
+        height: 280px
+      }
+
+      .vid-car-sec {
+        padding-left: 64px;
+        padding-right: 64px
       }
     }
 
@@ -2429,7 +2436,6 @@
 
   <!-- ═══════ INTRO ═══════ -->
   <div id="sc-intro" class="screen on">
-    <button onclick="skipToResult()" style="position:absolute;top:14px;right:14px;z-index:10;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;color:#fff;font-size:11px;font-weight:700;font-family:'Manrope',sans-serif;padding:6px 12px;cursor:pointer;letter-spacing:.04em;transition:background .18s,color .18s" onmouseover="this.style.background='rgba(255,255,255,.14)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.55)'">Ver oferta →</button>
     <div class="land-cont">
 
       <!-- Instagram pill -->
@@ -3329,10 +3335,42 @@
       { t: 'O que você percebe com mais clareza no seu caso?', opts: [{ t: 'Gordura piora com mais estresse ou quando treino demais', e: '😤', s: { C: 4 } }, { t: 'Gordura piora claramente quando como mais carboidrato', e: '🍞', s: { I: 4 } }, { t: 'Corpo inchado, pesado, recuperação ruim', e: '💧', s: { F: 4 } }, { t: 'Corpo para de responder depois de um tempo em qualquer protocolo', e: '🔒', s: { M: 4 } }] },
     ];
 
+    // ── SUPABASE TRACKING ──
+    var _SB_URL = 'https://fftgdntnavupoghgamia.supabase.co';
+    var _SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmdGdkbnRuYXZ1cG9naGdhbWlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1ODgzMDYsImV4cCI6MjA5MzE2NDMwNn0.dP_vw2K3uFwjw7H4o2H4HDrJVc74vHO_4bnAK7orCYs';
+    var _SB_SID = (function () {
+      try {
+        var s = sessionStorage.getItem('bwm_sid_v2');
+        if (!s) { s = 'bwm-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9); sessionStorage.setItem('bwm_sid_v2', s); }
+        return s;
+      } catch (e) { return 'bwm-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9); }
+    })();
+    function _sbPatch(data) {
+      try {
+        fetch(_SB_URL + '/rest/v1/fitness_quiz_sessions?session_id=eq.' + encodeURIComponent(_SB_SID), {
+          method: 'PATCH',
+          headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify(data), keepalive: true
+        });
+      } catch (e) { }
+    }
+    (function () {
+      try {
+        if (sessionStorage.getItem('bwm_sid_ins')) return;
+        var p = new URLSearchParams(window.location.search);
+        fetch(_SB_URL + '/rest/v1/fitness_quiz_sessions', {
+          method: 'POST',
+          headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ session_id: _SB_SID, started_at: new Date().toISOString(), device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop', utm_source: p.get('utm_source') || null, utm_medium: p.get('utm_medium') || null, utm_campaign: p.get('utm_campaign') || null })
+        }).then(function () { try { sessionStorage.setItem('bwm_sid_ins', '1'); } catch (e) { } });
+      } catch (e) { }
+    })();
+
     // ── GENDER / AGE SELECTION ──
     var ageStep = false;
     function selectGender(g) {
       try { localStorage.setItem('bwm_gender', g); } catch (e) { }
+      _sbPatch({ gender: g });
       ageStep = true;
       go('sc-quiz');
       renderAgeCards();
@@ -3362,6 +3400,7 @@
     }
     function selectAge(range) {
       try { localStorage.setItem('bwm_age', range); } catch (e) { }
+      _sbPatch({ age_group: range });
       ageStep = false;
       startQuiz();
     }
@@ -3411,6 +3450,7 @@
       if (btns[i]) btns[i].classList.add('sel');
       Object.keys(o.s || {}).forEach(function (k) { scores[k] = (scores[k] || 0) + o.s[k]; });
       scoreHistory.push({ C: scores.C || 0, I: scores.I || 0, F: scores.F || 0, M: scores.M || 0 });
+      _sbPatch({ last_card: 'Q' + (qIdx + 1) + '/' + QS.length });
       var next = qIdx + 1;
       if (q.micro) {
         microData = { type: q.micro, zone: o.zone, effort: o.effort, result: o.result, next: next };
@@ -3460,12 +3500,13 @@
 
     // ── LOADING ──
     function skipToResult() {
-      if (!profile) { var winner = Object.entries(scores).sort(function (a, b) { return b[1] - a[1]; })[0][0]; profile = PROFS[winner] || PROFS['C']; }
+      if (!profile) { var winner = Object.entries(scores).sort(function (a, b) { return b[1] - a[1]; })[0][0]; profile = PROFS[winner] || PROFS['C']; _sbPatch({ profile_result: winner, last_card: 'Resultado' }); }
       showResult();
     }
     function startLoad() {
       var winner = Object.entries(scores).sort(function (a, b) { return b[1] - a[1]; })[0][0];
       profile = PROFS[winner];
+      _sbPatch({ profile_result: winner, last_card: 'Resultado' });
       go('sc-load');
       var pct = 0, mi = 0, msgs = ['Analisando seu perfil metabólico...', 'Identificando o gargalo principal...', 'Preparando seu resultado...'];
       var iv = setInterval(function () {
@@ -3478,6 +3519,7 @@
 
     // ── RESULT ──
     function showResult() {
+      _sbPatch({ completed_at: new Date().toISOString() });
       populateResult(); go('sc-result');
       setTimeout(function () { initCar(); initVidCar(); startToasts(); startUrgency(); initVidLazy(); }, 200);
     }
@@ -3550,7 +3592,7 @@
     // ── PRICING ──
     var pricEl = document.getElementById('pricSec');
     function scrollToPric() { if (pricEl) pricEl.scrollIntoView({ behavior: 'smooth' }); }
-    function handleBuy() { window.location.href = 'https://ggcheckout.app/checkout/v2/5k9MK9m8b8ZpSm8qkk6z'; }
+    function handleBuy() { _sbPatch({ cta_clicked_at: new Date().toISOString() }); window.location.href = 'https://ggcheckout.app/checkout/v2/5k9MK9m8b8ZpSm8qkk6z'; }
 
     // ── TOASTS ──
     var tnames = [['lucas*'], ['mariana*'], ['rafael*'], ['ana*'], ['pedro*'], ['carla*'], ['gabriel*'], ['thiago*'], ['fernanda*'], ['rodrigo*']];
