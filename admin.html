@@ -164,6 +164,12 @@
     </div>
   </div>
 
+  <!-- Dropout chart -->
+  <div class="chart-box" style="margin-bottom:24px">
+    <h3>🚪 Onde as pessoas saem — card mais comum de abandono</h3>
+    <canvas id="dropoutChart" style="max-height:260px"></canvas>
+  </div>
+
   <!-- Answer distribution -->
   <div class="section-title">📊 Distribuição de respostas por pergunta</div>
   <div class="tables-grid" id="tablesGrid">
@@ -207,7 +213,7 @@
   var _sb = null;
   var currentPeriod = 'today';
   var refreshCountdown = 60, refreshInterval;
-  var sessionsChart, profileChart, devicesChart;
+  var sessionsChart, profileChart, devicesChart, dropoutChart;
   var _sessionsData = [];
 
   // Quiz questions & short option labels (for answer distribution)
@@ -223,6 +229,8 @@
 
   var PROFILE_LABELS = { C: 'Cortisol', I: 'Insulina', F: 'Inflamação', M: 'Metabolismo' };
   var PROFILE_COLORS = { C: '#E83232', I: '#3B82F6', F: '#22C55E', M: '#A855F7' };
+  var CARD_ORDER = ['_bounce', 'Sexo', 'Idade', 'Q1/7', 'Q2/7', 'Q3/7', 'Q4/7', 'Q5/7', 'Q6/7', 'Q7/7', 'Resultado'];
+  var CARD_MAP = { '_bounce': 'Sem interação', 'Sexo': 'Tela 1/10', 'Idade': 'Tela 2/10', 'Q1/7': 'Tela 3/10', 'Q2/7': 'Tela 4/10', 'Q3/7': 'Tela 5/10', 'Q4/7': 'Tela 6/10', 'Q5/7': 'Tela 7/10', 'Q6/7': 'Tela 8/10', 'Q7/7': 'Tela 9/10', 'Resultado': 'Tela 10/10' };
 
   try {
     _SBURL = localStorage.getItem('fq_admin_url') || _SBURL;
@@ -280,6 +288,63 @@
       data: { labels: ['Mobile', 'Desktop'], datasets: [{ data: [0, 0], backgroundColor: [red, '#3B82F6'], borderWidth: 0 }] },
       options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { padding: 10, boxWidth: 12 } } } }
     });
+
+    var dropoutLabelsPlugin = {
+      id: 'dropoutLabels',
+      afterDatasetsDraw: function(chart) {
+        var ctx = chart.ctx;
+        chart.data.datasets.forEach(function(dataset, i) {
+          var meta = chart.getDatasetMeta(i);
+          meta.data.forEach(function(bar, index) {
+            var value = dataset.data[index];
+            if (!value) return;
+            var barWidth = Math.abs(bar.x - bar.base);
+            ctx.save();
+            ctx.font = '700 11px -apple-system, sans-serif';
+            ctx.textBaseline = 'middle';
+            if (barWidth >= 36) {
+              // Inside bar, left-aligned with shadow
+              ctx.textAlign = 'left';
+              ctx.shadowColor = 'rgba(0,0,0,.55)';
+              ctx.shadowBlur = 3;
+              ctx.shadowOffsetX = 0;
+              ctx.shadowOffsetY = 1;
+              ctx.fillStyle = '#fff';
+              ctx.fillText(value, bar.base + 8, bar.y);
+            } else {
+              // Too narrow — show right of bar in dark
+              ctx.fillStyle = '#334155';
+              ctx.textAlign = 'left';
+              ctx.fillText(value, bar.x + 5, bar.y);
+            }
+            ctx.restore();
+          });
+        });
+      }
+    };
+    dropoutChart = new Chart(document.getElementById('dropoutChart'), {
+      type: 'bar',
+      data: {
+        labels: CARD_ORDER.map(function(c) { return CARD_MAP[c]; }),
+        datasets: [{
+          label: 'Sessões',
+          data: Array(11).fill(0),
+          backgroundColor: CARD_ORDER.map(function(c) { return c === '_bounce' ? '#94A3B855' : '#E8323266'; }),
+          borderColor: CARD_ORDER.map(function(c) { return c === '_bounce' ? '#94A3B8' : '#E83232'; }),
+          borderWidth: 1.5,
+          borderRadius: 4,
+          clip: false
+        }]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y',
+        layout: { padding: { right: 30 } },
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true, grid: { color: '#E2E8F0' } }, y: { grid: { display: false } } }
+      },
+      plugins: [dropoutLabelsPlugin]
+    });
   }
 
   function renderCards(d) {
@@ -306,17 +371,19 @@
 
     devicesChart.data.datasets[0].data = [d.devices.mobile || 0, d.devices.desktop || 0];
     devicesChart.update();
+
+    dropoutChart.data.datasets[0].data = CARD_ORDER.map(function(c) { return d.dropoutCounts[c] || 0; });
+    dropoutChart.update();
   }
 
-  function renderAnswerDist(answerCounts) {
+  function renderAnswerDist(questions) {
     var grid = document.getElementById('tablesGrid');
     var html = '';
-    QS_ADMIN.forEach(function (q, qi) {
-      var counts = answerCounts[qi] || q.opts.map(function () { return 0; });
-      var total = counts.reduce(function (a, b) { return a + b; }, 0);
+    questions.forEach(function (q) {
+      var total = q.counts.reduce(function (a, b) { return a + b; }, 0);
       html += '<div class="q-table"><h4>' + q.t + '</h4>';
-      q.opts.forEach(function (opt, oi) {
-        var cnt = counts[oi] || 0;
+      q.opts.forEach(function (opt, i) {
+        var cnt = q.counts[i] || 0;
         var pct = total > 0 ? Math.round(cnt / total * 100) : 0;
         html += '<div class="q-row">'
           + '<div class="q-option-text" title="' + opt + '">' + opt + '</div>'
@@ -327,7 +394,7 @@
       });
       html += '</div>';
     });
-    grid.innerHTML = html || '<div class="empty">Sem dados de respostas ainda. As respostas aparecem aqui após os usuários completarem o quiz com a versão atualizada do quiz.js.</div>';
+    grid.innerHTML = html || '<div class="empty">Sem dados ainda.</div>';
   }
 
   function renderSessions(data) {
@@ -355,7 +422,7 @@
         + '<td>' + profileCell + '</td>'
         + '<td>' + (row.device_type || '—') + '</td>'
         + '<td>' + ctaCell + '</td>'
-        + '<td style="color:#64748B;font-size:11px">' + (row.last_card || '—') + '</td>'
+        + '<td style="color:#64748B;font-size:11px">' + (row.last_card ? (CARD_MAP[row.last_card] || row.last_card) : '—') + '</td>'
         + '<td><button class="del-btn" onclick="deleteRow(\'' + sid + '\')" title="Apagar sessão">✕</button></td>'
         + '</tr>';
     }).join('');
@@ -370,7 +437,7 @@
       var dt = row.started_at ? new Date(row.started_at).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
       var gender = row.gender === 'male' ? 'Masculino' : (row.gender === 'female' ? 'Feminino' : '');
       var profile = row.profile_result ? (PROFILE_LABELS[row.profile_result] || row.profile_result) : '';
-      rows.push([dt, gender, row.age_group || '', profile, row.device_type || '', row.cta_clicked_at ? 'Sim' : 'Não', row.last_card || '']
+      rows.push([dt, gender, row.age_group || '', profile, row.device_type || '', row.cta_clicked_at ? 'Sim' : 'Não', row.last_card ? (CARD_MAP[row.last_card] || row.last_card) : '']
         .map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(','));
     });
     var blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
@@ -401,7 +468,9 @@
 
     if (!sb) {
       renderCards({ sessions: 0, completed: 0, cta: 0, mobile: 0, topProfile: null });
-      renderAnswerDist(QS_ADMIN.map(function (q) { return q.opts.map(function () { return 0; }); }));
+      var emptyQ = [{ t: 'Faixa etária', opts: ['18–29', '30–39', '40–49', '50+'], counts: [0,0,0,0] }]
+        .concat(QS_ADMIN.map(function(q) { return { t: q.t, opts: q.opts, counts: q.opts.map(function(){ return 0; }) }; }));
+      renderAnswerDist(emptyQ);
       renderSessions([]);
       return;
     }
@@ -423,6 +492,10 @@
       var devices = { mobile: 0, desktop: 0 };
       var dailySessions = Array(14).fill(0);
       var answerCounts = QS_ADMIN.map(function (q) { return q.opts.map(function () { return 0; }); });
+      var ageKeys = ['18-29', '30-39', '40-49', '50+'];
+      var ageCounts = [0, 0, 0, 0];
+      var dropoutCounts = {};
+      CARD_ORDER.forEach(function(c) { dropoutCounts[c] = 0; });
 
       data.forEach(function (row) {
         if (row.profile_result && profiles[row.profile_result] !== undefined) profiles[row.profile_result]++;
@@ -430,6 +503,12 @@
 
         var diff = Math.floor((Date.now() - new Date(row.started_at).getTime()) / 86400000);
         if (diff >= 0 && diff < 14) dailySessions[13 - diff]++;
+
+        var ageIdx = ageKeys.indexOf(row.age_group);
+        if (ageIdx >= 0) ageCounts[ageIdx]++;
+
+        if (row.last_card && dropoutCounts[row.last_card] !== undefined) dropoutCounts[row.last_card]++;
+        else if (!row.last_card) dropoutCounts['_bounce']++;
 
         if (row.answers) {
           for (var qi = 0; qi < QS_ADMIN.length; qi++) {
@@ -448,9 +527,12 @@
       var topProfileEntry = Object.entries(profiles).sort(function (a, b) { return b[1] - a[1]; })[0];
       var topProfile = topProfileEntry && topProfileEntry[1] > 0 ? topProfileEntry[0] : null;
 
+      var questions = [{ t: 'Faixa etária', opts: ['18–29', '30–39', '40–49', '50+'], counts: ageCounts }]
+        .concat(QS_ADMIN.map(function(q, qi) { return { t: q.t, opts: q.opts, counts: answerCounts[qi] }; }));
+
       renderCards({ sessions: sessions, completed: completed, cta: cta, mobile: mobile, topProfile: topProfile });
-      renderCharts({ profiles: profiles, devices: devices, dailySessions: dailySessions });
-      renderAnswerDist(answerCounts);
+      renderCharts({ profiles: profiles, devices: devices, dailySessions: dailySessions, dropoutCounts: dropoutCounts });
+      renderAnswerDist(questions);
       renderSessions(data);
 
     } catch (err) {
