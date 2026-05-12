@@ -80,6 +80,7 @@
         return s;
       } catch (e) { return 'bwm-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9); }
     })();
+    var _sbAnswers = {};
     function _sbPatch(data) {
       try {
         fetch(_SB_URL + '/rest/v1/fitness_quiz_sessions?session_id=eq.' + encodeURIComponent(_SB_SID), {
@@ -107,7 +108,7 @@
     var ageStep = false;
     function selectGender(g) {
       try { localStorage.setItem('bwm_gender', g); } catch (e) { }
-      _sbPatch({ gender: g });
+      _sbPatch({ gender: g, last_card: 'Sexo' });
       ageStep = true;
       go('sc-quiz');
       renderAgeCards();
@@ -137,7 +138,7 @@
     }
     function selectAge(range) {
       try { localStorage.setItem('bwm_age', range); } catch (e) { }
-      _sbPatch({ age_group: range });
+      _sbPatch({ age_group: range, last_card: 'Idade' });
       ageStep = false;
       startQuiz();
     }
@@ -165,7 +166,7 @@
 
     // ── QUIZ ──
     var qIdx = 0, scores = { C: 0, I: 0, F: 0, M: 0 }, scoreHistory = [], microTmr = null, microData = null, profile = null;
-    function startQuiz() { qIdx = 0; scores = { C: 0, I: 0, F: 0, M: 0 }; scoreHistory = []; go('sc-quiz'); renderQ(); }
+    function startQuiz() { qIdx = 0; scores = { C: 0, I: 0, F: 0, M: 0 }; scoreHistory = []; _sbAnswers = {}; go('sc-quiz'); renderQ(); }
     function updProg() {
       var p = Math.round((qIdx / QS.length) * 100);
       document.getElementById('prog-fill').style.width = p + '%';
@@ -187,7 +188,8 @@
       if (btns[i]) btns[i].classList.add('sel');
       Object.keys(o.s || {}).forEach(function (k) { scores[k] = (scores[k] || 0) + o.s[k]; });
       scoreHistory.push({ C: scores.C || 0, I: scores.I || 0, F: scores.F || 0, M: scores.M || 0 });
-      _sbPatch({ last_card: 'Q' + (qIdx + 1) + '/' + QS.length });
+      _sbAnswers['q' + (qIdx + 1)] = i;
+      _sbPatch({ last_card: 'Q' + (qIdx + 1) + '/' + QS.length, answers: _sbAnswers });
       var next = qIdx + 1;
       if (q.micro) {
         microData = { type: q.micro, zone: o.zone, effort: o.effort, result: o.result, next: next };
