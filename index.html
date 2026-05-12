@@ -7,6 +7,7 @@
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api6.ipify.org">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"></noscript>
   <style>
@@ -3373,7 +3374,7 @@
         });
       } catch (e) { }
     }
-    (window.requestIdleCallback || function(fn) { setTimeout(fn, 1); })(function () {
+    window.addEventListener('load', function () {
       try {
         if (sessionStorage.getItem('bwm_sid_ins')) return;
         var p = new URLSearchParams(window.location.search);
@@ -3383,7 +3384,7 @@
           body: JSON.stringify({ session_id: _SB_SID, started_at: new Date().toISOString(), device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop', utm_source: p.get('utm_source') || null, utm_medium: p.get('utm_medium') || null, utm_campaign: p.get('utm_campaign') || null })
         }).then(function () { try { sessionStorage.setItem('bwm_sid_ins', '1'); } catch (e) { } });
       } catch (e) { }
-    });
+    }, { once: true });
 
     // ── GENDER / AGE SELECTION ──
     var ageStep = false;
@@ -3626,12 +3627,12 @@
     function initCar() {
       var track = document.getElementById('carTrack'), dotsEl = document.getElementById('carDots'), prev = document.getElementById('carPrev'), next = document.getElementById('carNext');
       if (!track) return;
-      var slides = track.querySelectorAll('.car-sl'), total = slides.length, cur = 0;
+      var slides = track.querySelectorAll('.car-sl'), total = slides.length, cur = 0, iw = 0;
       function pv() { return window.innerWidth <= 580 ? 2 : 3; }
-      function setSz() { var p = pv(), gap = 10, w = track.parentElement.offsetWidth, iw = (w - (gap * (p - 1))) / p; slides.forEach(function (s) { s.style.width = iw + 'px'; }); track.style.gap = gap + 'px'; }
+      function setSz() { var p = pv(), gap = 10, w = track.parentElement.offsetWidth; iw = (w - (gap * (p - 1))) / p; slides.forEach(function (s) { s.style.width = iw + 'px'; }); track.style.gap = gap + 'px'; }
       function bDots() { dotsEl.innerHTML = ''; var p = Math.ceil(total / pv()); for (var i = 0; i < p; i++) { var d = document.createElement('button'); d.className = 'cdot' + (i === 0 ? ' on' : ''); (function (idx) { d.onclick = function () { goTo(idx * pv()); }; })(i); dotsEl.appendChild(d); } }
       function uDots() { var ds = dotsEl.querySelectorAll('.cdot'), page = Math.floor(cur / pv()); ds.forEach(function (d, i) { d.classList.toggle('on', i === page); }); }
-      function goTo(idx) { cur = Math.max(0, Math.min(idx, total - pv())); var p = pv(), gap = 10, iw = (track.parentElement.offsetWidth - (gap * (p - 1))) / p; track.style.transform = 'translateX(-' + ((iw + gap) * cur) + 'px)'; uDots(); prev.disabled = (cur === 0); next.disabled = (cur >= total - pv()); }
+      function goTo(idx) { cur = Math.max(0, Math.min(idx, total - pv())); var gap = 10; track.style.transform = 'translateX(-' + ((iw + gap) * cur) + 'px)'; uDots(); prev.disabled = (cur === 0); next.disabled = (cur >= total - pv()); }
       bDots(); setSz(); goTo(0);
       window.addEventListener('resize', function () { bDots(); setSz(); goTo(0); });
       prev.onclick = function () { goTo(cur - pv()); };
@@ -3649,12 +3650,12 @@
     function initVidCar() {
       var track = document.getElementById('vidCarTrack'), dotsEl = document.getElementById('vidDots'), prev = document.getElementById('vidPrev'), next = document.getElementById('vidNext');
       if (!track) return;
-      var slides = track.querySelectorAll('.vid-car-sl'), total = slides.length, cur = 0;
+      var slides = track.querySelectorAll('.vid-car-sl'), total = slides.length, cur = 0, iw = 0;
       function pv() { return window.innerWidth <= 580 ? 1 : 3; }
-      function setSz() { var p = pv(), gap = 12, w = track.parentElement.offsetWidth, iw = (w - (gap * (p - 1))) / p; slides.forEach(function (s) { s.style.width = iw + 'px'; }); track.style.gap = gap + 'px'; }
+      function setSz() { var p = pv(), gap = 12, w = track.parentElement.offsetWidth; iw = (w - (gap * (p - 1))) / p; slides.forEach(function (s) { s.style.width = iw + 'px'; }); track.style.gap = gap + 'px'; }
       function bDots() { dotsEl.innerHTML = ''; var pg = Math.ceil(total / pv()); for (var i = 0; i < pg; i++) { var d = document.createElement('button'); d.className = 'cdot' + (i === 0 ? ' on' : ''); (function (idx) { d.onclick = function () { goTo(idx * pv()); }; })(i); dotsEl.appendChild(d); } }
       function uDots() { var ds = dotsEl.querySelectorAll('.cdot'), page = Math.floor(cur / pv()); ds.forEach(function (d, i) { d.classList.toggle('on', i === page); }); }
-      function goTo(idx) { cur = Math.max(0, Math.min(idx, total - pv())); var p = pv(), gap = 12, iw = (track.parentElement.offsetWidth - (gap * (p - 1))) / p; track.style.transform = 'translateX(-' + ((iw + gap) * cur) + 'px)'; uDots(); prev.disabled = (cur === 0); next.disabled = (cur >= total - pv()); }
+      function goTo(idx) { cur = Math.max(0, Math.min(idx, total - pv())); var gap = 12; track.style.transform = 'translateX(-' + ((iw + gap) * cur) + 'px)'; uDots(); prev.disabled = (cur === 0); next.disabled = (cur >= total - pv()); }
       bDots(); setSz(); goTo(0);
       window.addEventListener('resize', function () { bDots(); setSz(); goTo(0); });
       prev.onclick = function () { goTo(cur - pv()); }; next.onclick = function () { goTo(cur + pv()); };
