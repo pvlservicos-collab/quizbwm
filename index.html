@@ -7,7 +7,7 @@
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://api6.ipify.org">
+  <link rel="preconnect" href="https://api6.ipify.org" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"></noscript>
   <style>
@@ -3375,15 +3375,17 @@
       } catch (e) { }
     }
     window.addEventListener('load', function () {
-      try {
-        if (sessionStorage.getItem('bwm_sid_ins')) return;
-        var p = new URLSearchParams(window.location.search);
-        fetch(_SB_URL + '/rest/v1/fitness_quiz_sessions', {
-          method: 'POST',
-          headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-          body: JSON.stringify({ session_id: _SB_SID, started_at: new Date().toISOString(), device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop', utm_source: p.get('utm_source') || null, utm_medium: p.get('utm_medium') || null, utm_campaign: p.get('utm_campaign') || null })
-        }).then(function () { try { sessionStorage.setItem('bwm_sid_ins', '1'); } catch (e) { } });
-      } catch (e) { }
+      setTimeout(function () {
+        try {
+          if (sessionStorage.getItem('bwm_sid_ins')) return;
+          var p = new URLSearchParams(window.location.search);
+          fetch(_SB_URL + '/rest/v1/fitness_quiz_sessions', {
+            method: 'POST',
+            headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+            body: JSON.stringify({ session_id: _SB_SID, started_at: new Date().toISOString(), device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop', utm_source: p.get('utm_source') || null, utm_medium: p.get('utm_medium') || null, utm_campaign: p.get('utm_campaign') || null })
+          }).then(function () { try { sessionStorage.setItem('bwm_sid_ins', '1'); } catch (e) { } });
+        } catch (e) { }
+      }, 500);
     }, { once: true });
 
     // ── GENDER / AGE SELECTION ──
