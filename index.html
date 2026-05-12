@@ -2456,7 +2456,7 @@
       <!-- Instagram pill -->
       <div class="ig-pill">
         <div class="ig-av-wrap">
-          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" width="48" height="48" onerror="this.style.display='none'">
+          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" width="48" height="48" fetchpriority="low" onerror="this.style.display='none'">
         </div>
         <div class="ig-info">
           <div class="ig-row1">
@@ -3373,7 +3373,7 @@
         });
       } catch (e) { }
     }
-    (function () {
+    (window.requestIdleCallback || function(fn) { setTimeout(fn, 1); })(function () {
       try {
         if (sessionStorage.getItem('bwm_sid_ins')) return;
         var p = new URLSearchParams(window.location.search);
@@ -3383,7 +3383,7 @@
           body: JSON.stringify({ session_id: _SB_SID, started_at: new Date().toISOString(), device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop', utm_source: p.get('utm_source') || null, utm_medium: p.get('utm_medium') || null, utm_campaign: p.get('utm_campaign') || null })
         }).then(function () { try { sessionStorage.setItem('bwm_sid_ins', '1'); } catch (e) { } });
       } catch (e) { }
-    })();
+    });
 
     // ── GENDER / AGE SELECTION ──
     var ageStep = false;
