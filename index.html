@@ -7,8 +7,8 @@
   <title>Desafio BWM 14 Dias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap"
-    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"></noscript>
   <style>
     * {
       margin: 0;
@@ -2456,7 +2456,7 @@
       <!-- Instagram pill -->
       <div class="ig-pill">
         <div class="ig-av-wrap">
-          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" onerror="this.style.display='none'">
+          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" width="48" height="48" onerror="this.style.display='none'">
         </div>
         <div class="ig-info">
           <div class="ig-row1">
@@ -2483,7 +2483,8 @@
             <div class="aimg">
               <picture>
                 <source srcset="img/c1m1.webp" type="image/webp">
-                <img src="img/c1m1.png" alt="Homem" fetchpriority="high"
+                <img src="img/c1m1.png" alt="Homem" fetchpriority="high" width="943" height="704"
+                  sizes="(max-width: 480px) calc(47.5vw - 6px), calc(25vw - 6px)"
                   onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:72px;display:flex;align-items:flex-end;justify-content:center;height:100%;padding-bottom:8px&quot;>&#128104;</div>'">
               </picture>
             </div>
@@ -2493,7 +2494,8 @@
             <div class="aimg">
               <picture>
                 <source srcset="img/c1m2.webp" type="image/webp">
-                <img src="img/c1m2.png" alt="Mulher" fetchpriority="high"
+                <img src="img/c1m2.png" alt="Mulher" fetchpriority="high" width="943" height="704"
+                  sizes="(max-width: 480px) calc(47.5vw - 6px), calc(25vw - 6px)"
                   onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:72px;display:flex;align-items:flex-end;justify-content:center;height:100%;padding-bottom:8px&quot;>&#128105;</div>'">
               </picture>
             </div>
