@@ -2415,20 +2415,20 @@
       border: 1px solid
     }
   </style>
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    async
-    defer
-  ></script>
   <script>
-    window.pixelId = "69f8c98c8e0fb0263462ceee";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
+    window.addEventListener('load', function () {
+      var s1 = document.createElement('script');
+      s1.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+      s1.setAttribute('data-utmify-prevent-xcod-sck', '');
+      s1.setAttribute('data-utmify-prevent-subids', '');
+      s1.async = true;
+      document.head.appendChild(s1);
+      window.pixelId = "69f8c98c8e0fb0263462ceee";
+      var s2 = document.createElement('script');
+      s2.async = true;
+      s2.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
+      document.head.appendChild(s2);
+    }, { once: true });
   </script>
 </head>
 
@@ -2912,7 +2912,7 @@
         </div>
         <div class="mentor-card">
           <div class="mentor-img-col">
-            <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/fotoexpertfinal.webp" alt="Dr. Breno Moura" loading="lazy" onerror="this.style.display='none'">
           </div>
           <div class="mentor-txt-col">
             <div>
