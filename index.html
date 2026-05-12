@@ -3,15 +3,38 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
   <title>Desafio BWM 14 Dias</title>
+
+  <!-- ====== PRECONNECTS (estabelecem conexão TLS antes do request) ====== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://api6.ipify.org" crossorigin>
   <link rel="preconnect" href="https://fftgdntnavupoghgamia.supabase.co">
+
+  <!-- ====== DNS-PREFETCH para domínios de tracking (carregados depois) ====== -->
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://www.facebook.com">
+  <link rel="dns-prefetch" href="https://cdn.utmify.com.br">
+
+  <!-- ====== PRELOAD das imagens LCP (intro) ====== -->
+  <link rel="preload" as="image" href="img/c1m1.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/c1m2.webp" type="image/webp" fetchpriority="high">
+
+  <!-- ====== Quiz JS deferido ====== -->
   <script defer src="quiz.js"></script>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ====== Fonts (não-bloqueante via swap async) ====== -->
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&family=Inter:wght@900&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&family=Inter:wght@900&display=swap"
+      rel="stylesheet">
+  </noscript>
+
   <style>
     * {
       margin: 0;
@@ -58,15 +81,16 @@
       display: flex
     }
 
-    /* ─── INTRO ─── */
+    /* ─── INTRO (definição única consolidada) ─── */
     #sc-intro {
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
-      padding: 5dvh 3vw 6dvh;
+      padding: clamp(24px, 4dvh, 52px) 1rem clamp(32px, 5dvh, 64px);
       position: relative;
       overflow: hidden;
-      background: radial-gradient(ellipse 55% 80% at 0% 50%, rgba(160,160,160,.09) 0%, transparent 55%), radial-gradient(ellipse 55% 80% at 100% 50%, rgba(160,160,160,.09) 0%, transparent 55%), #000000;
+      overflow-y: auto;
+      background: radial-gradient(ellipse 55% 80% at 0% 50%, rgba(160, 160, 160, .09) 0%, transparent 55%), radial-gradient(ellipse 55% 80% at 100% 50%, rgba(160, 160, 160, .09) 0%, transparent 55%), #000000;
       border-top: none
     }
 
@@ -141,11 +165,9 @@
     /* ─── MAIN BTN ─── */
     .btn-main {
       color: #fff !important;
-      color: #fff !important;
       width: 100%;
       padding: 1rem;
       background: linear-gradient(135deg, #E83232, #C01818);
-      color: #fff;
       font-size: 1rem;
       font-weight: 800;
       border: none;
@@ -287,7 +309,6 @@
       gap: 0.625rem
     }
 
-    /* BOTÃO, não div, resolve mobile */
     .opt-btn {
       width: 100%;
       padding: 2.5vh 1.5vw 2.5vh 4.5vw;
@@ -607,7 +628,6 @@
       }
     }
 
-    /* Profile hero */
     .r-hero {
       padding: 4vh 16px 3vh;
       text-align: center;
@@ -659,7 +679,7 @@
     }
 
     .r-card {
-      background: linear-gradient(135deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,.03) 100%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, .09) 0%, rgba(255, 255, 255, .03) 100%);
       border: 1px solid rgba(255, 255, 255, .13);
       border-radius: 14px;
       padding: 16px;
@@ -700,8 +720,8 @@
       display: flex;
       gap: 0;
       align-items: stretch;
-      background: linear-gradient(135deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,.03) 100%);
-      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(135deg, rgba(255, 255, 255, .09) 0%, rgba(255, 255, 255, .03) 100%);
+      border: 1px solid rgba(255, 255, 255, .13);
       border-radius: 14px;
       overflow: hidden
     }
@@ -783,10 +803,9 @@
       background: #E83232;
       flex-shrink: 0;
       margin-top: 5px;
-      box-shadow: 0 0 6px rgba(232,50,50,.5)
+      box-shadow: 0 0 6px rgba(232, 50, 50, .5)
     }
 
-    /* Evo */
     .sec {
       padding: 4vh 18px 3vh;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -941,7 +960,6 @@
       }
     }
 
-    /* WYG */
     .wyg-badge {
       display: inline-block;
       font-size: 10px;
@@ -1058,7 +1076,6 @@
       padding-bottom: 0
     }
 
-    /* Bonus */
     .bonus-card {
       background: linear-gradient(135deg, #18110a, #120d08);
       border: 1px solid rgba(232, 50, 50, .2);
@@ -1144,7 +1161,6 @@
       line-height: 1.65
     }
 
-    /* Social */
     .soc-sec {
       padding: 5vh 18px;
       text-align: center;
@@ -1169,7 +1185,6 @@
       margin-bottom: 18px
     }
 
-    /* Carousel */
     .car-wrap {
       overflow: hidden;
       border-radius: 12px
@@ -1258,7 +1273,6 @@
       box-shadow: 0 0 7px rgba(232, 50, 50, .5)
     }
 
-    /* Video carousel */
     .vid-car-sec {
       padding: 4vh 18px 3vh;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -1363,7 +1377,6 @@
       }
     }
 
-    /* Mentor section */
     .mentor-sec {
       padding: 5vh 18px 4vh;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -1482,7 +1495,6 @@
       }
     }
 
-    /* Pricing */
     .pric-sec {
       padding: 4vh 18px 5vh;
       border-top: 1px solid rgba(255, 255, 255, .04);
@@ -1518,11 +1530,11 @@
       justify-content: space-between;
       gap: 12px;
       padding: 21px;
-      background: linear-gradient(135deg, rgba(232,50,50,.28) 0%, rgba(192,24,24,.16) 100%);
-      border: 1.5px solid rgba(232,50,50,.65);
+      background: linear-gradient(135deg, rgba(232, 50, 50, .28) 0%, rgba(192, 24, 24, .16) 100%);
+      border: 1.5px solid rgba(232, 50, 50, .65);
       border-radius: 11px 11px 0 0;
       margin-bottom: 0;
-      box-shadow: 0 4px 28px rgba(232,50,50,.14)
+      box-shadow: 0 4px 28px rgba(232, 50, 50, .14)
     }
 
     .plan-name {
@@ -1668,7 +1680,6 @@
       transform: scale(.97)
     }
 
-    /* Guarantee */
     .g-box {
       background: #1a1614;
       border: 1px solid rgba(255, 255, 255, .07);
@@ -1750,9 +1761,6 @@
       line-height: .8
     }
 
-    /* WA result section */
-
-    /* FAQ */
     .faq-item {
       border: 1px solid rgba(255, 255, 255, .07);
       border-radius: 9px;
@@ -1828,7 +1836,6 @@
       line-height: 1.7
     }
 
-    /* Footer */
     .rfooter {
       background: #0d0b09;
       padding: 28px 16px 72px;
@@ -1876,7 +1883,6 @@
       background: #FF0000
     }
 
-    /* Sticky CTA */
     .sticky {
       display: none;
       position: fixed;
@@ -1905,32 +1911,22 @@
       font-size: 14px
     }
 
-    /* ─── INTRO LANDING ─── */
-    #sc-intro {
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      padding: clamp(24px, 4dvh, 52px) 1rem clamp(32px, 5dvh, 64px);
-      position: relative;
-      overflow: hidden;
-      overflow-y: auto;
-      background: radial-gradient(ellipse 55% 80% at 0% 50%, rgba(160,160,160,.09) 0%, transparent 55%), radial-gradient(ellipse 55% 80% at 100% 50%, rgba(160,160,160,.09) 0%, transparent 55%), #000000;
-      border-top: none
-    }
-
-    #sc-intro::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #000 20%, transparent 75%);
-      pointer-events: none
-    }
-
     /* ─── MICRO PROGRESS BAR ─── */
-    .micro-prog { margin-top: 18px; height: 3px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden }
-    .micro-prog-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #C01818, #E83232, #F55050); border-radius: 2px; transition: width 2.1s linear }
+    .micro-prog {
+      margin-top: 18px;
+      height: 3px;
+      background: rgba(255, 255, 255, .12);
+      border-radius: 2px;
+      overflow: hidden
+    }
+
+    .micro-prog-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #C01818, #E83232, #F55050);
+      border-radius: 2px;
+      transition: width 2.1s linear
+    }
 
     .land-cont {
       position: relative;
@@ -2051,12 +2047,18 @@
       background-clip: text;
       display: inline-block;
       vertical-align: top;
-      animation: shimTxt 2s linear infinite
+      animation: shimTxt 2s linear infinite;
+      will-change: background-position
     }
 
     @keyframes shimTxt {
-      from { background-position: 100% 0 }
-      to   { background-position: -100% 0 }
+      from {
+        background-position: 100% 0
+      }
+
+      to {
+        background-position: -100% 0
+      }
     }
 
     .land-sub {
@@ -2180,7 +2182,6 @@
       color: rgba(255, 255, 255, .32)
     }
 
-    /* Step animation */
     .land-step {
       animation: stepIn .3s cubic-bezier(.4, 0, .2, 1) both
     }
@@ -2207,19 +2208,35 @@
         font-size: 0.64rem
       }
 
-      .intro-inner { max-width: 95vw }
+      .intro-inner {
+        max-width: 95vw
+      }
 
-      .land-cont { max-width: 95vw }
+      .land-cont {
+        max-width: 95vw
+      }
 
-      .quiz-inner { max-width: 95vw }
+      .quiz-inner {
+        max-width: 95vw
+      }
 
-      #sc-intro { padding: 5dvh 2vw 6dvh }
+      #sc-intro {
+        padding: 5dvh 2vw 6dvh
+      }
 
-      #sc-quiz { padding: clamp(110px, 16dvh, 170px) 2vw clamp(40px, 6dvh, 80px) }
+      #sc-quiz {
+        padding: clamp(110px, 16dvh, 170px) 2vw clamp(40px, 6dvh, 80px)
+      }
 
-      .opt-btn { padding: 1.5vh 2vw 1.5vh 9vw }
+      .opt-btn {
+        padding: 1.5vh 2vw 1.5vh 9vw
+      }
 
-      .opt-btn::before { left: 2vw; width: 2vh; height: 2vh }
+      .opt-btn::before {
+        left: 2vw;
+        width: 2vh;
+        height: 2vh
+      }
 
       .agrid {
         grid-template-columns: repeat(4, 1fr);
@@ -2417,20 +2434,51 @@
       border: 1px solid
     }
   </style>
+
+  <!-- ====== TRACKING DEFERIDO: carrega na 1ª interação OU após 4s ====== -->
   <script>
-    window.addEventListener('load', function () {
-      var s1 = document.createElement('script');
-      s1.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
-      s1.setAttribute('data-utmify-prevent-xcod-sck', '');
-      s1.setAttribute('data-utmify-prevent-subids', '');
-      s1.async = true;
-      document.head.appendChild(s1);
-      window.pixelId = "69f8c98c8e0fb0263462ceee";
-      var s2 = document.createElement('script');
-      s2.async = true;
-      s2.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
-      document.head.appendChild(s2);
-    }, { once: true });
+    (function () {
+      var loaded = false;
+      function loadTracking() {
+        if (loaded) return;
+        loaded = true;
+
+        // utmify UTMs
+        var s1 = document.createElement('script');
+        s1.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+        s1.setAttribute('data-utmify-prevent-xcod-sck', '');
+        s1.setAttribute('data-utmify-prevent-subids', '');
+        s1.async = true;
+        document.head.appendChild(s1);
+
+        // utmify pixel
+        window.pixelId = "69f8c98c8e0fb0263462ceee";
+        var s2 = document.createElement('script');
+        s2.async = true;
+        s2.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
+        document.head.appendChild(s2);
+
+        // Remove listeners depois que carregar
+        events.forEach(function (e) {
+          window.removeEventListener(e, loadTracking, { passive: true });
+        });
+      }
+
+      var events = ['pointerdown', 'touchstart', 'mousemove', 'keydown', 'scroll'];
+      events.forEach(function (e) {
+        window.addEventListener(e, loadTracking, { passive: true, once: true });
+      });
+
+      // Fallback: garante que os pixels carreguem mesmo sem interação
+      // (importante para PageView nos relatórios)
+      if (document.readyState === 'complete') {
+        setTimeout(loadTracking, 4000);
+      } else {
+        window.addEventListener('load', function () {
+          setTimeout(loadTracking, 4000);
+        }, { once: true });
+      }
+    })();
   </script>
 </head>
 
@@ -2459,7 +2507,8 @@
       <!-- Instagram pill -->
       <div class="ig-pill">
         <div class="ig-av-wrap">
-          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" width="48" height="48" fetchpriority="low" onerror="this.style.display='none'">
+          <img src="img/fotoinsta.webp" alt="Dr. Breno Moura" class="ig-av-img" width="48" height="48"
+            fetchpriority="low" decoding="async" loading="eager" onerror="this.style.display='none'">
         </div>
         <div class="ig-info">
           <div class="ig-row1">
@@ -2486,7 +2535,7 @@
             <div class="aimg">
               <picture>
                 <source srcset="img/c1m1.webp" type="image/webp">
-                <img src="img/c1m1.png" alt="Homem" fetchpriority="high" width="943" height="704"
+                <img src="img/c1m1.png" alt="Homem" fetchpriority="high" decoding="async" width="943" height="704"
                   sizes="(max-width: 480px) calc(47.5vw - 6px), calc(25vw - 6px)"
                   onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:72px;display:flex;align-items:flex-end;justify-content:center;height:100%;padding-bottom:8px&quot;>&#128104;</div>'">
               </picture>
@@ -2497,7 +2546,7 @@
             <div class="aimg">
               <picture>
                 <source srcset="img/c1m2.webp" type="image/webp">
-                <img src="img/c1m2.png" alt="Mulher" fetchpriority="high" width="943" height="704"
+                <img src="img/c1m2.png" alt="Mulher" fetchpriority="high" decoding="async" width="943" height="704"
                   sizes="(max-width: 480px) calc(47.5vw - 6px), calc(25vw - 6px)"
                   onerror="this.closest('.aimg').innerHTML='<div style=&quot;font-size:72px;display:flex;align-items:flex-end;justify-content:center;height:100%;padding-bottom:8px&quot;>&#128105;</div>'">
               </picture>
@@ -2543,8 +2592,11 @@
           Seu perfil metab&oacute;lico</div>
         <div id="rName" class="r-name">Cortisol Elevado</div>
         <p id="rHeadline" class="r-headline">...</p>
-        <div id="rLineChart" style="margin:18px 0;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px">
-          <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:10px">Evolução metabólica por pergunta</div>
+        <div id="rLineChart"
+          style="margin:18px 0;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px">
+          <div
+            style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:10px">
+            Evolução metabólica por pergunta</div>
           <div id="rLineLegend" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px"></div>
           <div id="rLineSvg"></div>
         </div>
@@ -2569,10 +2621,11 @@
     <!-- EVOLUTION -->
     <div class="sec" style="background: #000000; border-top: none;">
       <div class="sec-in">
-        <h2 class="sec-title">E o mesmo m&eacute;todo pode garantir sua evolu&ccedil;&atilde;o nas pr&oacute;ximas 2 semanas</h2>
+        <h2 class="sec-title">E o mesmo m&eacute;todo pode garantir sua evolu&ccedil;&atilde;o nas pr&oacute;ximas 2
+          semanas</h2>
         <p class="sec-sub">Baseado no seu perfil metab&oacute;lico</p>
         <div style="border-radius:12px 12px 0 0;overflow:hidden">
-          <img src="img/r1.png" style="width:100%;height:auto;display:block" alt="" loading="lazy"
+          <img src="img/r1.png" style="width:100%;height:auto;display:block" alt="" loading="lazy" decoding="async"
             onerror="this.parentElement.style.display='none'">
         </div>
         <div class="evo-grid">
@@ -2602,7 +2655,9 @@
         <p style="font-size:10px;color:#fff;text-align:center;margin-top:10px;line-height:1.5">
           *Resultados baseados no seu perfil. Resultados individuais variam.</p>
         <div style="text-align:center;margin-top:18px">
-          <button onclick="scrollToPric()" class="cta-btn" style="display:inline-flex;width:auto;min-width:260px;padding:15px 32px;border-radius:50px;font-size:15px">Ver meu plano personalizado &darr;</button>
+          <button onclick="scrollToPric()" class="cta-btn"
+            style="display:inline-flex;width:auto;min-width:260px;padding:15px 32px;border-radius:50px;font-size:15px">Ver
+            meu plano personalizado &darr;</button>
         </div>
       </div>
     </div>
@@ -2658,7 +2713,7 @@
           </div>
         </div>
         <div style="margin:16px -18px 0;overflow:hidden">
-          <img src="img/r2.png" style="width:100%;height:auto;display:block" alt="" loading="lazy"
+          <img src="img/r2.png" style="width:100%;height:auto;display:block" alt="" loading="lazy" decoding="async"
             onerror="this.parentElement.style.display='none'">
         </div>
       </div>
@@ -2779,15 +2834,24 @@
           campeonatos de fisiculturismo</div>
         <div class="car-wrap">
           <div class="car-track" id="carTrack">
-            <div class="car-sl"><img src="img/d1.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d2.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d3.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d4.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d5.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d6.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d7.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d8.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d9.jpg" alt="" onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d1.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d2.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d3.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d4.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d5.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d6.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d7.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d8.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
+            <div class="car-sl"><img src="img/d9.jpg" alt="" loading="lazy" decoding="async"
+                onerror="this.parentElement.style.minHeight='100px'"></div>
           </div>
         </div>
         <div class="car-nav"><button class="car-btn" id="carPrev">&#8249;</button>
@@ -2826,21 +2890,28 @@
               imediato</div>
           </div>
           <div class="pric-body">
-            <img src="img/b3.png" style="width:85%;max-width:320px;height:auto;display:block;margin:0 auto 24px;border-radius:8px"
-              alt="" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/b3.png"
+              style="width:85%;max-width:320px;height:auto;display:block;margin:0 auto 24px;border-radius:8px" alt=""
+              loading="lazy" decoding="async" onerror="this.style.display='none'">
 
             <!-- SEMANA 1 -->
             <div style="margin-bottom:20px">
-              <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E83232;margin-bottom:4px">1ª Semana</div>
+              <div
+                style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E83232;margin-bottom:4px">
+                1ª Semana</div>
               <div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:14px">Reset Metabólico</div>
               <div style="display:flex;flex-direction:column;gap:12px">
                 <div style="display:flex;align-items:flex-start;gap:11px">
-                  <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
-                  <span style="font-size:14px;color:#fff;line-height:1.55">Uma dieta para secar, desinchar e eliminar a gordura acumulada</span>
+                  <span
+                    style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
+                  <span style="font-size:14px;color:#fff;line-height:1.55">Uma dieta para secar, desinchar e eliminar a
+                    gordura acumulada</span>
                 </div>
                 <div style="display:flex;align-items:flex-start;gap:11px">
-                  <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
-                  <span style="font-size:14px;color:#fff;line-height:1.55">Treino de altas repetições com descansos curtos para acelerar o metabolismo</span>
+                  <span
+                    style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
+                  <span style="font-size:14px;color:#fff;line-height:1.55">Treino de altas repetições com descansos
+                    curtos para acelerar o metabolismo</span>
                 </div>
               </div>
             </div>
@@ -2849,16 +2920,22 @@
 
             <!-- SEMANA 2 -->
             <div style="margin-bottom:24px">
-              <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E83232;margin-bottom:4px">2ª Semana</div>
+              <div
+                style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E83232;margin-bottom:4px">
+                2ª Semana</div>
               <div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:14px">Encher a Musculatura</div>
               <div style="display:flex;flex-direction:column;gap:12px">
                 <div style="display:flex;align-items:flex-start;gap:11px">
-                  <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
-                  <span style="font-size:14px;color:#fff;line-height:1.55">Uma dieta para ganhos limpos sem acumular gordura</span>
+                  <span
+                    style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
+                  <span style="font-size:14px;color:#fff;line-height:1.55">Uma dieta para ganhos limpos sem acumular
+                    gordura</span>
                 </div>
                 <div style="display:flex;align-items:flex-start;gap:11px">
-                  <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
-                  <span style="font-size:14px;color:#fff;line-height:1.55">Treino de alta intensidade para encher o músculo e afinar a pele</span>
+                  <span
+                    style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#E83232;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:900;margin-top:1px">✓</span>
+                  <span style="font-size:14px;color:#fff;line-height:1.55">Treino de alta intensidade para encher o
+                    músculo e afinar a pele</span>
                 </div>
               </div>
             </div>
@@ -2876,11 +2953,13 @@
                 <div class="plan-val">R$&nbsp;47</div>
               </div>
             </div>
-            <div style="background:rgba(255,255,255,.06);border-radius:0 0 9px 9px;padding:7px 14px;text-align:center;margin-bottom:14px;font-size:11px;font-weight:600;color:#fff;line-height:1.4">Clique no bot&atilde;o abaixo para garantir sua oferta ⬇️</div>
+            <div
+              style="background:rgba(255,255,255,.06);border-radius:0 0 9px 9px;padding:7px 14px;text-align:center;margin-bottom:14px;font-size:11px;font-weight:600;color:#fff;line-height:1.4">
+              Clique no bot&atilde;o abaixo para garantir sua oferta ⬇️</div>
             <button class="cta-btn" onclick="handleBuy()">Quero o Desafio BWM</button>
             <p style="font-size:10px;color:#fff;text-align:center;margin-top:12px;line-height:1.5">Ao
-              continuar, voc&ecirc; concorda com nossos <a href="#" style="color:#fff">Termos</a> e <a
-                href="#" style="color:#fff">Privacidade</a></p>
+              continuar, voc&ecirc; concorda com nossos <a href="#" style="color:#fff">Termos</a> e <a href="#"
+                style="color:#fff">Privacidade</a></p>
           </div>
         </div>
       </div>
@@ -2914,7 +2993,8 @@
         </div>
         <div class="mentor-card">
           <div class="mentor-img-col">
-            <img src="img/fotoexpertfinal.webp" alt="Dr. Breno Moura" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/fotoexpertfinal.webp" alt="Dr. Breno Moura" loading="lazy" decoding="async"
+              onerror="this.style.display='none'">
           </div>
           <div class="mentor-txt-col">
             <div>
@@ -3001,20 +3081,20 @@
       <div style="font-size:13px;font-weight:800;margin-bottom:4px">Siga-nos</div>
       <div style="font-size:11px;color:#fff;margin-bottom:14px">para turbinar seus resultados!</div>
       <div class="footsoc">
-        <a href="https://www.instagram.com/brenowfm/" target="_blank" class="fico fi-ig"><svg width="22" height="22"
-            viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+        <a href="https://www.instagram.com/brenowfm/" target="_blank" rel="noopener" class="fico fi-ig"><svg width="22"
+            height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" />
             <circle cx="12" cy="12" r="4" />
             <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none" />
           </svg></a>
-        <a href="https://www.tiktok.com/@brenowfm" target="_blank" class="fico fi-tt"><svg width="20" height="20"
-            viewBox="0 0 24 24" fill="white">
+        <a href="https://www.tiktok.com/@brenowfm" target="_blank" rel="noopener" class="fico fi-tt"><svg width="20"
+            height="20" viewBox="0 0 24 24" fill="white">
             <path
               d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
           </svg></a>
-        <a href="https://www.youtube.com/@brenowfm" target="_blank" class="fico fi-yt"><svg width="22" height="22"
-            viewBox="0 0 24 24" fill="white">
+        <a href="https://www.youtube.com/@brenowfm" target="_blank" rel="noopener" class="fico fi-yt"><svg width="22"
+            height="22" viewBox="0 0 24 24" fill="white">
             <path
               d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
           </svg></a>
@@ -3047,9 +3127,9 @@
       </div>
 
       <h2 class="docs-sec">2. Perguntas e pontuação</h2>
-      <p style="font-size:11px;color:#fff;margin-bottom:12px">Scores: <span
-          class="sc sc-C">C=Cortisol</span> <span class="sc sc-I">I=Insulina</span> <span
-          class="sc sc-F">F=Inflamação</span> <span class="sc sc-M">M=Metabolismo</span></p>
+      <p style="font-size:11px;color:#fff;margin-bottom:12px">Scores: <span class="sc sc-C">C=Cortisol</span> <span
+          class="sc sc-I">I=Insulina</span> <span class="sc sc-F">F=Inflamação</span> <span
+          class="sc sc-M">M=Metabolismo</span></p>
       <div class="dq">
         <div class="dq-n">P1</div>
         <div class="dq-q">Qual frase descreve melhor o que você vive hoje?</div>
@@ -3173,8 +3253,8 @@
           </div>
           <div class="dq-opt">
             <div class="dq-l">B</div>
-            <div class="dq-t">Rendimento oscila sem motivo claro <em
-                style="font-size:10px;color:#fff">[82%/28%]</em></div>
+            <div class="dq-t">Rendimento oscila sem motivo claro <em style="font-size:10px;color:#fff">[82%/28%]</em>
+            </div>
             <div class="dq-sc"><span class="sc sc-C">C+3</span><span class="sc sc-M">M+1</span></div>
           </div>
           <div class="dq-opt">
@@ -3185,8 +3265,8 @@
           </div>
           <div class="dq-opt">
             <div class="dq-l">D</div>
-            <div class="dq-t">Me recupero bem e o treino rende <em
-                style="font-size:10px;color:#fff">[72%/68%, msg positiva]</em></div>
+            <div class="dq-t">Me recupero bem e o treino rende <em style="font-size:10px;color:#fff">[72%/68%, msg
+                positiva]</em></div>
             <div class="dq-sc"><span class="sc sc-C">C+1</span></div>
           </div>
         </div>
