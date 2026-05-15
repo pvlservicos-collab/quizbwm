@@ -2559,6 +2559,9 @@
 
       <p class="land-legal">Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e nossa <a
           href="#">Política de Privacidade</a>.<br>Este site não oferece aconselhamento médico.</p>
+      <div style="margin-top:18px">
+        <button onclick="goToPricing()" style="background:none;border:none;font-size:11px;color:rgba(255,255,255,.35);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:inherit">Ir direto para a p&aacute;gina de vendas &rarr;</button>
+      </div>
     </div>
   </div>
 
@@ -2604,6 +2607,7 @@
           <div class="r-card">
             <div class="r-card-lbl" id="rl1">O que est&aacute; acontecendo</div>
             <div id="rMech" class="r-card-txt">...</div>
+            <button onclick="cycleTestimonial()" class="cta-btn" style="margin-top:14px;padding:12px;font-size:13px;border-radius:10px">Ver pr&oacute;ximo depoimento &rarr;</button>
           </div>
           <div class="r-card">
             <div class="r-card-lbl" id="rl2">Sinais do seu perfil</div>
@@ -2656,8 +2660,7 @@
           *Resultados baseados no seu perfil. Resultados individuais variam.</p>
         <div style="text-align:center;margin-top:18px">
           <button onclick="scrollToPric()" class="cta-btn"
-            style="display:inline-flex;width:auto;min-width:260px;padding:15px 32px;border-radius:50px;font-size:15px">Ver
-            meu plano personalizado &darr;</button>
+            style="display:inline-flex;width:auto;min-width:260px;padding:15px 32px;border-radius:50px;font-size:15px">Quero um plano para mim !</button>
         </div>
       </div>
     </div>
@@ -2671,7 +2674,7 @@
         </div>
         <div class="no-gen">
           <div class="no-gen-tag">N&atilde;o &eacute; um desafio gen&eacute;rico</div>
-          <div class="no-gen-txt">Um plano totalmente personalizado para voc&ecirc;</div>
+          <div class="no-gen-txt">Um plano espec&iacute;fico para destravar e come&ccedil;ar evoluir</div>
         </div>
         <div class="wyg-card">
           <div class="wyg-wk">
@@ -2763,99 +2766,12 @@
                   </svg></div>
               </div>
             </div>
-            <div class="vid-car-sl"><video data-src="img/v5.mp4" loop muted playsinline preload="none"></video>
-              <div class="vid-play-ov paused" onclick="toggleVid(this)">
-                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                  </svg></div>
-              </div>
-            </div>
-            <div class="vid-car-sl"><video data-src="img/v6.mp4" loop muted playsinline preload="none"></video>
-              <div class="vid-play-ov paused" onclick="toggleVid(this)">
-                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                  </svg></div>
-              </div>
-            </div>
-            <div class="vid-car-sl"><video data-src="img/v7.mp4" loop muted playsinline preload="none"></video>
-              <div class="vid-play-ov paused" onclick="toggleVid(this)">
-                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                  </svg></div>
-              </div>
-            </div>
-            <div class="vid-car-sl"><video data-src="img/v8.mp4" loop muted playsinline preload="none"></video>
-              <div class="vid-play-ov paused" onclick="toggleVid(this)">
-                <div class="vid-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                    <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                    <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2" stroke-linecap="round" />
-                  </svg></div>
-              </div>
-            </div>
           </div>
         </div>
         <div class="car-nav">
           <button class="car-btn" id="vidPrev">&#8249;</button>
           <div class="car-dots" id="vidDots"></div>
           <button class="car-btn" id="vidNext">&#8250;</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SOCIAL PROOF -->
-    <div class="soc-sec">
-      <div class="soc-in">
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px">
-          <svg width="36" height="56" viewBox="0 0 48 70" fill="none">
-            <path d="M24 64 C18 52 9 42 7 30 C5 18 13 8 19 4" stroke="#E83232" stroke-width="1.5" stroke-linecap="round"
-              fill="none" />
-            <ellipse cx="9" cy="30" rx="7" ry="3.5" transform="rotate(-30 9 30)" fill="#E83232" opacity=".9" />
-            <ellipse cx="8" cy="21" rx="6" ry="3" transform="rotate(-18 8 21)" fill="#E83232" opacity=".8" />
-            <ellipse cx="12" cy="13" rx="5.5" ry="2.5" transform="rotate(-5 12 13)" fill="#E83232" opacity=".75" />
-          </svg>
-          <div class="soc-num">+5 Mil</div>
-          <svg width="36" height="56" viewBox="0 0 48 70" fill="none" style="transform:scaleX(-1)">
-            <path d="M24 64 C18 52 9 42 7 30 C5 18 13 8 19 4" stroke="#E83232" stroke-width="1.5" stroke-linecap="round"
-              fill="none" />
-            <ellipse cx="9" cy="30" rx="7" ry="3.5" transform="rotate(-30 9 30)" fill="#E83232" opacity=".9" />
-            <ellipse cx="8" cy="21" rx="6" ry="3" transform="rotate(-18 8 21)" fill="#E83232" opacity=".8" />
-            <ellipse cx="12" cy="13" rx="5.5" ry="2.5" transform="rotate(-5 12 13)" fill="#E83232" opacity=".75" />
-          </svg>
-        </div>
-        <div class="soc-sub" style="margin-bottom:8px">Come&ccedil;aram a jornada de transforma&ccedil;&atilde;o</div>
-        <div style="font-size:13px;font-weight:700;color:#E83232;margin-bottom:22px">Mais de 71 t&iacute;tulos em
-          campeonatos de fisiculturismo</div>
-        <div class="car-wrap">
-          <div class="car-track" id="carTrack">
-            <div class="car-sl"><img src="img/d1.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d2.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d3.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d4.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d5.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d6.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d7.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d8.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-            <div class="car-sl"><img src="img/d9.jpg" alt="" loading="lazy" decoding="async"
-                onerror="this.parentElement.style.minHeight='100px'"></div>
-          </div>
-        </div>
-        <div class="car-nav"><button class="car-btn" id="carPrev">&#8249;</button>
-          <div class="car-dots" id="carDots"></div><button class="car-btn" id="carNext">&#8250;</button>
         </div>
       </div>
     </div>

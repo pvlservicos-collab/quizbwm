@@ -13,10 +13,10 @@
       I: {
         key: 'I', letter: 'I', color: '#3B82F6', bg: 'rgba(59,130,246,.08)', border: 'rgba(59,130,246,.28)',
         badge: 'INSULINA DESREGULADA', name: 'Insulina Desregulada',
-        headline: 'Seu corpo está acumulando em vez de construindo, e o carboidrato é o termômetro disso.',
-        mechanism: 'Com resistência à insulina, o carboidrato vai para gordura em vez de músculo. A queima de gordura fica bloqueada mesmo em déficit calórico.',
+        headline: 'Seu corpo está acumulando gordura ao invés de construir músculo, é a culpa é do carboidrato e/ou gordura ruim em excesso',
+        mechanism: 'com a insulina desregulada o carboidrato vai para gordura em vez de músculo. A queima de gordura fica bloqueada mesmo em déficit calórico.',
         signals: ['Inchaço ou moleza depois de comer carbo', 'Gordura abdominal que resiste a qualquer dieta', 'Difícil ganhar músculo sem ganhar gordura junto', 'Sensação de engordar fácil mesmo comendo pouco'],
-        solution: 'Os primeiros 7 dias usam composição específica de macros para reduzir insulina basal e reativar os receptores. Na semana 2, o carboidrato vai direto para músculo, e a recomposição começa de verdade.',
+        solution: 'A primeira semana prepara o corpo. A alimentação é ajustada para melhorar o controle da insulina e fazer o metabolismo responder melhor.\n\nNa segunda semana, o carboidrato volta com mais estratégia. Em vez de virar acúmulo, ele tende a ser melhor usado como energia para treino, músculo e recuperação. A partir daí, a recomposição corporal começa a aparecer de verdade.',
         evo1: ['Carboidrato reduzido estrategicamente', 'Insulina normalizando', 'Queima de gordura desbloqueada'],
         evo2: ['Carbo reintroduzido com precisão', 'Nutrição indo para músculo', 'Recomposição real iniciando']
       },
@@ -44,20 +44,20 @@
     var ZONES = { belly: { title: 'Barriga e pochete', hint: 'Sinal comum de cortisol elevado ou resistência à insulina' }, flanks: { title: 'Flancos e cintura', hint: 'Padrão típico de cortisol cronicamente alto' }, chest: { title: 'Peito e região superior', hint: 'Indica possível resistência à insulina' }, full: { title: 'Gordura difusa', hint: 'Sugere inflamação sistêmica ou metabolismo adaptado' } };
     var DEPS = {
       C: {
-        m: { img: 'fotodep6', name: 'Ramon', quote: 'Rotina militar, pouco sono, vida puxada — minha barriga não respondia a nada que eu fazia. Em 14 dias o resultado apareceu.' },
-        f: { img: 'fotodep8', name: 'Ellen', quote: 'Sem ganhar peso, minha cintura foi perdendo forma. Comecei o protocolo e em 2 semanas o contorno voltou.' }
+        m: { img: 'fotodep6', name: 'Ramon', intro: 'Ramon tinha o mesmo perfil metabólico que você, o cortisol elevado depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Rotina militar, pouco sono, vida puxada — minha barriga não respondia a nada que eu fazia. Em 14 dias o resultado apareceu.' },
+        f: { img: 'fotodep8', name: 'Ellen', intro: 'Ellen tinha o mesmo perfil metabólico que você, o cortisol elevado depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Sem ganhar peso, minha cintura foi perdendo forma. Comecei o protocolo e em 2 semanas o contorno voltou.' }
       },
       I: {
-        m: { img: 'fotodep2', name: 'Victor', quote: 'Tinha a pochete há anos. Com o protocolo o abdômen começou a aparecer de verdade — gordura abdominal que nunca tinha saído antes.' },
-        f: { img: 'fotodep8', name: 'Ellen', quote: 'Gordura travada nos flancos e na cintura. Em 14 dias vi diferença real onde nunca consegui antes.' }
+        m: { img: 'fotodep2', name: 'Victor', intro: 'Victor tinha o mesmo perfil metabólico que você, a insulina desregulada depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Tinha a pochete há anos. Com o protocolo o abdômen começou a aparecer de verdade — gordura abdominal que nunca tinha saído antes.' },
+        f: { img: 'fotodep8', name: 'Ellen', intro: 'Ellen tinha o mesmo perfil metabólico que você, a insulina desregulada depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Gordura travada nos flancos e na cintura. Em 14 dias vi diferença real onde nunca consegui antes.' }
       },
       F: {
-        m: { img: 'fotodep3', name: 'Lucas', quote: 'Fiquei mais seco e mais forte sem restrição extrema. Corpo menos inchado, resultado mais limpo em menos de 2 semanas.' },
-        f: { img: 'fotodep1', name: 'Ingrid', quote: 'Comia pouco e o corpo estava completamente travado. Com o método certo, a gordura começou a sair e o inchaço sumiu.' }
+        m: { img: 'fotodep3', name: 'Lucas', intro: 'Lucas tinha o mesmo perfil metabólico que você, a inflamação silenciosa depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Fiquei mais seco e mais forte sem restrição extrema. Corpo menos inchado, resultado mais limpo em menos de 2 semanas.' },
+        f: { img: 'fotodep1', name: 'Ingrid', intro: 'Ingrid tinha o mesmo perfil metabólico que você, a inflamação silenciosa depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Comia pouco e o corpo estava completamente travado. Com o método certo, a gordura começou a sair e o inchaço sumiu.' }
       },
       M: {
-        m: { img: 'fotodep4', name: 'Rafael', quote: 'Passei de 1800 para 2300 kcal e fiquei mais seco. Meu metabolismo estava adaptado e eu não sabia disso.' },
-        f: { img: 'fotodep1', name: 'Ingrid', quote: 'Meu corpo não respondia mais a nada. Com o método certo o travamento reverteu completamente em 14 dias.' }
+        m: { img: 'fotodep4', name: 'Rafael', intro: 'Rafael tinha o mesmo perfil metabólico que você, o metabolismo adaptado depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Passei de 1800 para 2300 kcal e fiquei mais seco. Meu metabolismo estava adaptado e eu não sabia disso.' },
+        f: { img: 'fotodep1', name: 'Ingrid', intro: 'Ingrid tinha o mesmo perfil metabólico que você, o metabolismo adaptado depois de fazer o desafio destravou e quando ajeitou começou a ter resultado rápidamente,', quote: 'Meu corpo não respondia mais a nada. Com o método certo o travamento reverteu completamente em 14 dias.' }
       }
     };
     var QS = [
@@ -167,6 +167,7 @@
     // ── QUIZ ──
     var qIdx = 0, scores = { C: 0, I: 0, F: 0, M: 0 }, scoreHistory = [], microTmr = null, microData = null, profile = null;
     function startQuiz() { qIdx = 0; scores = { C: 0, I: 0, F: 0, M: 0 }; scoreHistory = []; _sbAnswers = {}; go('sc-quiz'); renderQ(); }
+    function goToPricing() { if (!profile) { profile = PROFS['C']; } showResult(); setTimeout(function () { var el = document.getElementById('pricSec'); if (el) { var top = el.getBoundingClientRect().top + window.pageYOffset; window.scrollTo(0, top); } }, 500); }
     function updProg() {
       var p = Math.round((qIdx / QS.length) * 100);
       document.getElementById('prog-fill').style.width = p + '%';
@@ -321,7 +322,7 @@
             + '<img src="img/' + dep.img + '.jpg" alt="' + dep.name + '" loading="lazy" class="dep-img" onerror="this.style.display=\'none\'">'
             + '<div class="dep-body">'
             + '<div class="dep-lbl">Resultado real</div>'
-            + '<p class="dep-quote">&ldquo;' + dep.quote + '&rdquo;</p>'
+            + '<p class="dep-quote">' + (dep.intro || dep.quote) + '</p>'
             + '<div class="dep-name">— ' + dep.name + '</div>'
             + '</div></div>';
         }
@@ -332,6 +333,28 @@
     var pricEl = document.getElementById('pricSec');
     function scrollToPric() { if (pricEl) pricEl.scrollIntoView({ behavior: 'smooth' }); }
     function handleBuy() { _sbPatch({ cta_clicked_at: new Date().toISOString() }); window.location.href = 'https://checkout.ticto.app/O284F0D2A'; }
+
+    // ── CYCLE TESTIMONIALS ──
+    var _allDeps = [
+      { dep: DEPS.C.m }, { dep: DEPS.C.f },
+      { dep: DEPS.I.m }, { dep: DEPS.I.f },
+      { dep: DEPS.F.m }, { dep: DEPS.F.f },
+      { dep: DEPS.M.m }, { dep: DEPS.M.f }
+    ];
+    var _depIdx = -1;
+    function cycleTestimonial() {
+      _depIdx = (_depIdx + 1) % _allDeps.length;
+      var dep = _allDeps[_depIdx].dep;
+      var depEl = document.getElementById('depCard');
+      if (!depEl || !dep) return;
+      depEl.innerHTML = '<div class="dep-wrap">'
+        + '<img src="img/' + dep.img + '.jpg" alt="' + dep.name + '" loading="lazy" class="dep-img" onerror="this.style.display=\'none\'">'
+        + '<div class="dep-body">'
+        + '<div class="dep-lbl">Resultado real</div>'
+        + '<p class="dep-quote">' + (dep.intro || dep.quote) + '</p>'
+        + '<div class="dep-name">\u2014 ' + dep.name + '</div>'
+        + '</div></div>';
+    }
 
     // ── TOASTS ──
     var tnames = [['lucas*'], ['mariana*'], ['rafael*'], ['ana*'], ['pedro*'], ['carla*'], ['gabriel*'], ['thiago*'], ['fernanda*'], ['rodrigo*']];
